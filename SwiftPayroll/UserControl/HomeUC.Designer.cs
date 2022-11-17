@@ -43,13 +43,13 @@ namespace SwiftPayroll
             // SignInBtn
             // 
             this.SignInBtn.BorderColor = System.Drawing.Color.Transparent;
-            this.SignInBtn.BorderRadius = 8;
+            this.SignInBtn.BorderRadius = 4;
             this.SignInBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.SignInBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.SignInBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.SignInBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.SignInBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(70)))), ((int)(((byte)(234)))));
-            this.SignInBtn.Font = new System.Drawing.Font("Montserrat", 18F, System.Drawing.FontStyle.Bold);
+            this.SignInBtn.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SignInBtn.ForeColor = System.Drawing.Color.White;
             this.SignInBtn.Location = new System.Drawing.Point(45, 351);
             this.SignInBtn.Name = "SignInBtn";
@@ -61,14 +61,14 @@ namespace SwiftPayroll
             // SignUpBtn
             // 
             this.SignUpBtn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(70)))), ((int)(((byte)(234)))));
-            this.SignUpBtn.BorderRadius = 8;
+            this.SignUpBtn.BorderRadius = 4;
             this.SignUpBtn.BorderThickness = 1;
             this.SignUpBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.SignUpBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.SignUpBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.SignUpBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.SignUpBtn.FillColor = System.Drawing.Color.Transparent;
-            this.SignUpBtn.Font = new System.Drawing.Font("Montserrat", 18F, System.Drawing.FontStyle.Bold);
+            this.SignUpBtn.Font = new System.Drawing.Font("Montserrat", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SignUpBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(70)))), ((int)(((byte)(234)))));
             this.SignUpBtn.Location = new System.Drawing.Point(221, 351);
             this.SignUpBtn.Name = "SignUpBtn";

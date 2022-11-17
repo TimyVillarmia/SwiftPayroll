@@ -8,22 +8,31 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
-
+using Guna.UI2.WinForms;
 
 namespace SwiftPayroll
 {
     public partial class MainForm : Form
     {
-        public static MainForm form;
+
+        // Auto-implemented properties
+        //creating a property to be able to access it from other classes
+        public HomeUC homeUC { get; set; }
+        public LoginUC loginUC { get; set; }
+        public Guna2Button homeBtn { get; set; }
 
         public MainForm()
         {
             InitializeComponent();
-            form = this;
+         
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+          
+            homeBtn = HomeBtn;
+            
             // Active Button Colors
             HomeBtn.FillColor = Color.FromArgb(98, 70, 234);
             HomeBtn.ForeColor = Color.White;
@@ -32,9 +41,15 @@ namespace SwiftPayroll
             AboutBtn.ForeColor = Color.FromArgb(43, 44, 52);
             TeamBtn.ForeColor = Color.FromArgb(43, 44, 52);
 
-            HomeUC home = new HomeUC(form);
+            // Usercontrols as object by instantiateing 
+            // and the passing the "this" as parameters
+            // "this" refers to "MainForm" Class
+            homeUC = new HomeUC(this); 
+            loginUC = new LoginUC(this);
 
-            MainPanel.Controls.Add(home);
+            // adding the Usercontrols inside the Panel
+            MainPanel.Controls.Add(homeUC);
+            MainPanel.Controls.Add(loginUC);
 
 
         }
@@ -49,6 +64,9 @@ namespace SwiftPayroll
             AboutBtn.ForeColor = Color.FromArgb(43, 44, 52);
             TeamBtn.FillColor = Color.Transparent;
             TeamBtn.ForeColor = Color.FromArgb(43, 44, 52);
+
+            //Current Usercontrol view
+            homeUC.BringToFront();
 
         }
 

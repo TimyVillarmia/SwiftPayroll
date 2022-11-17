@@ -17,16 +17,21 @@ namespace SwiftPayroll
         {
             InitializeComponent();
         }
-        public HomeUC(MainForm form)
+        public HomeUC(MainForm form1)
         {
             InitializeComponent();
-            MainForm = form;
+            MainForm = form1;
 
         }
 
         private void SignInBtn_Click(object sender, EventArgs e)
         {
-            //MainForm.
+            //Current Usercontrol view
+            MainForm.loginUC.BringToFront();
+
+            // Unactive Button Color
+            MainForm.homeBtn.FillColor = Color.Transparent;
+            MainForm.homeBtn.ForeColor = Color.FromArgb(43, 44, 52);
         }
 
   

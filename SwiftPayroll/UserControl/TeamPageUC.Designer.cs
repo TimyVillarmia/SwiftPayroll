@@ -202,7 +202,6 @@
             // 
             // guna2PictureBox1
             // 
-            this.guna2PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.guna2PictureBox1.Image = global::SwiftPayroll.Properties.Resources.TimyPIc1;
             this.guna2PictureBox1.ImageRotate = 0F;
             this.guna2PictureBox1.Location = new System.Drawing.Point(33, 184);
@@ -217,7 +216,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.guna2CustomGradientPanel1);      
+            this.Controls.Add(this.guna2CustomGradientPanel1);
             this.Size = new System.Drawing.Size(1000, 680);
             this.guna2CustomGradientPanel1.ResumeLayout(false);
             this.guna2CustomGradientPanel1.PerformLayout();

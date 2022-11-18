@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
@@ -27,6 +28,8 @@ namespace SwiftPayroll
             MainForm.createUC.BringToFront();
         }
 
+
+
         private void SignInBtn_Click(object sender, EventArgs e)
         {
             Database DBObj = new Database();
@@ -44,32 +47,28 @@ namespace SwiftPayroll
                 SQLiteCommand cmd = new SQLiteCommand(query, DBObj.connection);
                 cmd.Parameters.AddWithValue("@Username", UsernameTxt.Text);
                 cmd.Parameters.AddWithValue("@Password", PasswordTxt.Text);
+                SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
 
-                
-                //var output = DBObj.connection.Q
-                //SQLiteDataReader account = cmd.ExecuteReader();
+                if (dt.Rows.Count > 0)
+                {
 
-                //SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
-                //DataTable dt = new DataTable();
-                //da.Fill(dt);
-
-                
-
-                //if (dt.Rows.Count > 0)
-                //{
-
-                //    MessageBox.Show("Login Successfully");
-                //    ParentForm.Hide();
-                //    Dashboard dashboard = new Dashboard();
-                //    dashboard.ShowDialog();
-                //    ParentForm.Close();
+                    MessageBox.Show("Login Successfully");
+                    ParentForm.Hide();
+                    Dashboard dashboard = new Dashboard();
+                    dashboard.ShowDialog();
+                    ParentForm.Close();
+                    DBObj.CloseConnection();
 
 
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Wrong username and password combination");
-                //}
+
+                }
+                else
+                {
+                    MessageBox.Show("Wrong username and password combination");
+
+                }
 
             }
         }

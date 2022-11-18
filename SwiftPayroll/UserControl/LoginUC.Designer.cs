@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.MaskPassword = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.SignUpLinkLabel = new System.Windows.Forms.LinkLabel();
             this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,7 +38,6 @@
             this.PasswordTxt = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.SignInBtn = new Guna.UI2.WinForms.Guna2Button();
-            this.MaskPassword = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.guna2CustomGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -62,6 +62,23 @@
             this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
             this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(397, 477);
             this.guna2CustomGradientPanel1.TabIndex = 3;
+            // 
+            // MaskPassword
+            // 
+            this.MaskPassword.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.MaskPassword.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.MaskPassword.CheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.MaskPassword.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.MaskPassword.Location = new System.Drawing.Point(318, 297);
+            this.MaskPassword.Name = "MaskPassword";
+            this.MaskPassword.Size = new System.Drawing.Size(35, 20);
+            this.MaskPassword.TabIndex = 20;
+            this.MaskPassword.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.MaskPassword.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.MaskPassword.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.MaskPassword.UncheckedState.InnerColor = System.Drawing.Color.White;
+            this.MaskPassword.UseTransparentBackground = true;
+            this.MaskPassword.CheckedChanged += new System.EventHandler(this.MaskPassword_CheckedChanged);
             // 
             // SignUpLinkLabel
             // 
@@ -117,7 +134,7 @@
             this.UsernameTxt.PlaceholderText = "Enter Username";
             this.UsernameTxt.SelectedText = "";
             this.UsernameTxt.Size = new System.Drawing.Size(331, 43);
-            this.UsernameTxt.TabIndex = 16;
+            this.UsernameTxt.TabIndex = 1;
             // 
             // ForgotLinkLabel
             // 
@@ -152,7 +169,7 @@
             this.PasswordTxt.PlaceholderText = "Enter Password";
             this.PasswordTxt.SelectedText = "";
             this.PasswordTxt.Size = new System.Drawing.Size(331, 43);
-            this.PasswordTxt.TabIndex = 14;
+            this.PasswordTxt.TabIndex = 2;
             // 
             // guna2PictureBox2
             // 
@@ -182,23 +199,6 @@
             this.SignInBtn.TabIndex = 12;
             this.SignInBtn.Text = "SIGN IN";
             this.SignInBtn.Click += new System.EventHandler(this.SignInBtn_Click);
-            // 
-            // MaskPassword
-            // 
-            this.MaskPassword.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.MaskPassword.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.MaskPassword.CheckedState.InnerBorderColor = System.Drawing.Color.White;
-            this.MaskPassword.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.MaskPassword.Location = new System.Drawing.Point(318, 297);
-            this.MaskPassword.Name = "MaskPassword";
-            this.MaskPassword.Size = new System.Drawing.Size(35, 20);
-            this.MaskPassword.TabIndex = 20;
-            this.MaskPassword.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.MaskPassword.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.MaskPassword.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
-            this.MaskPassword.UncheckedState.InnerColor = System.Drawing.Color.White;
-            this.MaskPassword.UseTransparentBackground = true;
-            this.MaskPassword.CheckedChanged += new System.EventHandler(this.MaskPassword_CheckedChanged);
             // 
             // LoginUC
             // 

@@ -19,6 +19,8 @@ namespace SwiftPayroll
         //creating a property to be able to access it from other classes
         public HomeUC homeUC { get; set; }
         public LoginUC loginUC { get; set; }
+        public CreateUC createUC { get; set; }
+        public TeamPageUC teampageUC { get; set; }
         public Guna2Button homeBtn { get; set; }
 
         public MainForm()
@@ -46,10 +48,14 @@ namespace SwiftPayroll
             // "this" refers to "MainForm" Class
             homeUC = new HomeUC(this); 
             loginUC = new LoginUC(this);
+            createUC = new CreateUC(this);
+            teampageUC = new TeamPageUC();
 
             // adding the Usercontrols inside the Panel
             MainPanel.Controls.Add(homeUC);
             MainPanel.Controls.Add(loginUC);
+            MainPanel.Controls.Add(createUC);
+            MainPanel.Controls.Add(teampageUC);
 
 
         }
@@ -92,6 +98,9 @@ namespace SwiftPayroll
             HomeBtn.ForeColor = Color.FromArgb(43, 44, 52);
             AboutBtn.FillColor = Color.Transparent;
             AboutBtn.ForeColor = Color.FromArgb(43, 44, 52);
+
+            //Current Usercontrol view
+            teampageUC.BringToFront();
         }
 
   

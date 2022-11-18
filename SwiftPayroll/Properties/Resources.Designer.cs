@@ -93,6 +93,36 @@ namespace SwiftPayroll.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap KeithPic {
+            get {
+                object obj = ResourceManager.GetObject("KeithPic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap OUR_TEAM_Team_of_Designers_and_Developers {
+            get {
+                object obj = ResourceManager.GetObject("OUR TEAM Team of Designers and Developers", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ShinleePic {
+            get {
+                object obj = ResourceManager.GetObject("ShinleePic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SWIFTPayroll {
             get {
                 object obj = ResourceManager.GetObject("SWIFTPayroll", resourceCulture);
@@ -106,6 +136,16 @@ namespace SwiftPayroll.Properties {
         internal static System.Drawing.Bitmap team_5701_1 {
             get {
                 object obj = ResourceManager.GetObject("team-5701 1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TimyPIc1 {
+            get {
+                object obj = ResourceManager.GetObject("TimyPIc1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

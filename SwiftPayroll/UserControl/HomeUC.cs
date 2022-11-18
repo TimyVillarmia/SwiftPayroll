@@ -21,6 +21,7 @@ namespace SwiftPayroll
         {
             InitializeComponent();
             MainForm = form1;
+            
 
         }
 
@@ -34,6 +35,12 @@ namespace SwiftPayroll
             MainForm.homeBtn.ForeColor = Color.FromArgb(43, 44, 52);
         }
 
-  
+        private void SignUpBtn_Click(object sender, EventArgs e)
+        {
+            MainForm.createUC.BringToFront();
+            // Unactive Button Color
+            MainForm.homeBtn.FillColor = Color.Transparent;
+            MainForm.homeBtn.ForeColor = Color.FromArgb(43, 44, 52);
+        }
     }
 }

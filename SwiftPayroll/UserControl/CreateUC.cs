@@ -10,18 +10,18 @@ using System.Windows.Forms;
 
 namespace SwiftPayroll
 {
-    public partial class LoginUC : UserControl
+    public partial class CreateUC : UserControl
     {
         public MainForm MainForm;
-        public LoginUC(MainForm form1)
+        public CreateUC(MainForm form1)
         {
             InitializeComponent();
             MainForm = form1;
         }
 
-        private void SignUpLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void SignInLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MainForm.createUC.BringToFront();
+            MainForm.loginUC.BringToFront();
         }
     }
 }

@@ -75,6 +75,7 @@ namespace SwiftPayroll
             this.SignUpBtn.Size = new System.Drawing.Size(148, 45);
             this.SignUpBtn.TabIndex = 4;
             this.SignUpBtn.Text = "SIGN UP";
+            this.SignUpBtn.Click += new System.EventHandler(this.SignUpBtn_Click);
             // 
             // label1
             // 
@@ -115,7 +116,7 @@ namespace SwiftPayroll
             this.guna2PictureBox1.ImageRotate = 0F;
             this.guna2PictureBox1.Location = new System.Drawing.Point(45, 22);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(512, 227);
+            this.guna2PictureBox1.Size = new System.Drawing.Size(518, 227);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2PictureBox1.TabIndex = 0;
             this.guna2PictureBox1.TabStop = false;

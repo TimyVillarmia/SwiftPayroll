@@ -34,11 +34,13 @@ namespace SwiftPayroll
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.MainPanel = new Guna.UI2.WinForms.Guna2Panel();
-            this.LOGO = new Guna.UI2.WinForms.Guna2PictureBox();
             this.HomeBtn = new Guna.UI2.WinForms.Guna2Button();
             this.AboutBtn = new Guna.UI2.WinForms.Guna2Button();
             this.TeamBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.LOGO = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.LOGO)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2BorderlessForm1
@@ -68,17 +70,6 @@ namespace SwiftPayroll
             this.MainPanel.Name = "MainPanel";
             this.MainPanel.Size = new System.Drawing.Size(1000, 680);
             this.MainPanel.TabIndex = 5;
-            // 
-            // LOGO
-            // 
-            this.LOGO.Image = global::SwiftPayroll.Properties.Resources.SWIFTPayroll;
-            this.LOGO.ImageRotate = 0F;
-            this.LOGO.Location = new System.Drawing.Point(45, 49);
-            this.LOGO.Name = "LOGO";
-            this.LOGO.Size = new System.Drawing.Size(224, 32);
-            this.LOGO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.LOGO.TabIndex = 0;
-            this.LOGO.TabStop = false;
             // 
             // HomeBtn
             // 
@@ -131,12 +122,34 @@ namespace SwiftPayroll
             this.TeamBtn.Text = "THE TEAM";
             this.TeamBtn.Click += new System.EventHandler(this.TeamBtn_Click);
             // 
+            // LOGO
+            // 
+            this.LOGO.ImageRotate = 0F;
+            this.LOGO.Location = new System.Drawing.Point(45, 49);
+            this.LOGO.Name = "LOGO";
+            this.LOGO.Size = new System.Drawing.Size(224, 32);
+            this.LOGO.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.LOGO.TabIndex = 0;
+            this.LOGO.TabStop = false;
+            // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.Image = global::SwiftPayroll.Properties.Resources.SWIFTPayroll;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(45, 57);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(224, 32);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.guna2PictureBox1.TabIndex = 6;
+            this.guna2PictureBox1.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.ClientSize = new System.Drawing.Size(1000, 800);
+            this.Controls.Add(this.guna2PictureBox1);
             this.Controls.Add(this.MainPanel);
             this.Controls.Add(this.guna2ControlBox1);
             this.Controls.Add(this.TeamBtn);
@@ -145,9 +158,11 @@ namespace SwiftPayroll
             this.Controls.Add(this.LOGO);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "t";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.LOGO)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,6 +177,7 @@ namespace SwiftPayroll
         private Guna.UI2.WinForms.Guna2Button AboutBtn;
         private Guna.UI2.WinForms.Guna2Button HomeBtn;
         private Guna.UI2.WinForms.Guna2PictureBox LOGO;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
     }
 }
 

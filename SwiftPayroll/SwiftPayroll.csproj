@@ -94,6 +94,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\TeamPageUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\TeamPageUC.Designer.cs">
+      <DependentUpon>TeamPageUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\CreateUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\CreateUC.Designer.cs">
+      <DependentUpon>CreateUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\LoginUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -114,6 +131,9 @@
     <Compile Include="UserControl\HomeUC.Designer.cs">
       <DependentUpon>HomeUC.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControl\CreateUC.resx">
+      <DependentUpon>CreateUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\LoginUC.resx">
       <DependentUpon>LoginUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,16 +142,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="UserControl\HomeUC.resx">
       <DependentUpon>HomeUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\TeamPageUC.resx">
+      <DependentUpon>TeamPageUC.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Accounts.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -164,6 +182,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\team-5701 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OUR TEAM Team of Designers and Developers.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TimyPIc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KeithPic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ShinleePic.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

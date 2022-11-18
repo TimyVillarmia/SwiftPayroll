@@ -44,27 +44,32 @@ namespace SwiftPayroll
                 SQLiteCommand cmd = new SQLiteCommand(query, DBObj.connection);
                 cmd.Parameters.AddWithValue("@Username", UsernameTxt.Text);
                 cmd.Parameters.AddWithValue("@Password", PasswordTxt.Text);
-                SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
+
+                
+                //var output = DBObj.connection.Q
+                //SQLiteDataReader account = cmd.ExecuteReader();
+
+                //SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
+                //DataTable dt = new DataTable();
+                //da.Fill(dt);
+
+                
+
+                //if (dt.Rows.Count > 0)
+                //{
+
+                //    MessageBox.Show("Login Successfully");
+                //    ParentForm.Hide();
+                //    Dashboard dashboard = new Dashboard();
+                //    dashboard.ShowDialog();
+                //    ParentForm.Close();
 
 
-
-                if (dt.Rows.Count > 0)
-                {
-
-                    MessageBox.Show("Login Successfully");
-                    ParentForm.Hide();
-                    Dashboard dashboard = new Dashboard();
-                    dashboard.ShowDialog();
-                    ParentForm.Close();
-
-
-                }
-                else
-                {
-                    MessageBox.Show("Wrong username and password combination");
-                }
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Wrong username and password combination");
+                //}
 
             }
         }

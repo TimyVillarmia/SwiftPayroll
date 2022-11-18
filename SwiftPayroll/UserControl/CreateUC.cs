@@ -59,7 +59,7 @@ namespace SwiftPayroll
                 try
                 {
                     //Instantiate a UserInto object with the necessary arguments
-                    UserInfo user = new UserInfo(UsernameTxt.Text, PasswordTxt.Text, EmailTxt.Text, RoleCombo.SelectedItem.ToString(), TypeComboBox.SelectedItem.ToString());
+                    UserInfo user = new UserInfo(UsernameTxt.Text.Trim(), PasswordTxt.Text.Trim(), EmailTxt.Text, RoleCombo.SelectedItem.ToString().Trim(), TypeComboBox.SelectedItem.ToString());
                     // creating a string variable "query" with a "INSERT" Statement
                     string query = "INSERT INTO Accounts(username,password,email,role,type) VALUES(@Username,@Password,@Email,@Role,@Type);";
                     // Calling the OpenConnection method from the Database class to open the connection to a database

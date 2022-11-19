@@ -14,7 +14,14 @@ namespace SwiftPayroll
         public SQLiteConnection connection;
         public Database()
         {
-     
+            //Instantiate SQLiteConnect object which is used for opening connection to the database
+            connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
+            //check whether database file exist or not
+            if (!File.Exists("./Accounts.db;Version=3;"))
+            {
+                SQLiteConnection.CreateFile("./Accounts.db;Version=3;");
+                Console.WriteLine("Db File Created");
+            }
         }
 
         public void OpenConnection()

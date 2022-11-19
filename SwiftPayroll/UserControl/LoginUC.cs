@@ -33,6 +33,11 @@ namespace SwiftPayroll
                 INSERT DISPOSE STATEMENT
 
              */
+
+
+            // Clear all entries
+            UsernameTxt.Text = "";
+            PasswordTxt.Text = "";
         }
 
 
@@ -73,6 +78,12 @@ namespace SwiftPayroll
                     ParentForm.Close();
                     //close connection 
                     DBObj.CloseConnection();
+                    DBObj.connection.Dispose();
+
+                    // Clear all entries
+                    UsernameTxt.Text = "";
+                    PasswordTxt.Text = "";
+
 
 
 
@@ -104,6 +115,10 @@ namespace SwiftPayroll
         private void ForgotLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MainForm.recoveryUC.BringToFront();
+
+            // Clear all entries
+            UsernameTxt.Text = "";
+            PasswordTxt.Text = "";
         }
     }
     

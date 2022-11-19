@@ -84,6 +84,7 @@
             this.MaskPassword.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
             this.MaskPassword.UncheckedState.InnerColor = System.Drawing.Color.White;
             this.MaskPassword.UseTransparentBackground = true;
+            this.MaskPassword.CheckedChanged += new System.EventHandler(this.MaskPassword_CheckedChanged);
             // 
             // BackLinkLabel
             // 
@@ -235,6 +236,7 @@
             this.RecoverBtn.Size = new System.Drawing.Size(331, 43);
             this.RecoverBtn.TabIndex = 19;
             this.RecoverBtn.Text = "Recover account";
+            this.RecoverBtn.Click += new System.EventHandler(this.RecoverBtn_Click);
             // 
             // OTPBtn
             // 
@@ -252,6 +254,7 @@
             this.OTPBtn.Size = new System.Drawing.Size(141, 43);
             this.OTPBtn.TabIndex = 32;
             this.OTPBtn.Text = "Send OTP";
+            this.OTPBtn.Click += new System.EventHandler(this.OTPBtn_Click);
             // 
             // label4
             // 

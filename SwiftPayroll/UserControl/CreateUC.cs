@@ -23,6 +23,15 @@ namespace SwiftPayroll
         private void SignInLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MainForm.loginUC.BringToFront();
+
+            // Clear all entries
+            EmailTxt.Text = "";
+            UsernameTxt.Text = "";
+            PasswordTxt.Text = "";
+            ConfirmPasswordTxt.Text = "";
+            RoleCombo.SelectedItem = null;
+            TermsCheck.Checked = false;
+
         }
 
         private void MaskPassword_CheckedChanged(object sender, EventArgs e)
@@ -88,7 +97,7 @@ namespace SwiftPayroll
                 catch (Exception)
                 {
                     //notify
-                    MessageBox.Show("Unable to create account");
+                    MessageBox.Show("Make sure the Username is unique and Email is not currently registed");
                     return;
                 }
 

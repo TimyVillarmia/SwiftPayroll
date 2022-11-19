@@ -48,7 +48,7 @@
             // 
             // guna2CustomGradientPanel1
             // 
-            this.guna2CustomGradientPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2CustomGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(209)))), ((int)(((byte)(233)))));
             this.guna2CustomGradientPanel1.BorderRadius = 4;
             this.guna2CustomGradientPanel1.Controls.Add(this.TypeComboBox);
             this.guna2CustomGradientPanel1.Controls.Add(this.MaskPassword);
@@ -94,6 +94,7 @@
             // 
             // MaskPassword
             // 
+            this.MaskPassword.BackColor = System.Drawing.Color.Transparent;
             this.MaskPassword.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.MaskPassword.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.MaskPassword.CheckedState.InnerBorderColor = System.Drawing.Color.White;
@@ -149,7 +150,7 @@
             this.TermsCheck.CheckedState.BorderRadius = 0;
             this.TermsCheck.CheckedState.BorderThickness = 0;
             this.TermsCheck.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TermsCheck.Font = new System.Drawing.Font("Montserrat", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TermsCheck.Font = new System.Drawing.Font("Montserrat", 8.249999F);
             this.TermsCheck.Location = new System.Drawing.Point(33, 349);
             this.TermsCheck.Name = "TermsCheck";
             this.TermsCheck.Size = new System.Drawing.Size(247, 19);
@@ -314,7 +315,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Transparent;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.Controls.Add(this.guna2CustomGradientPanel1);
             this.DoubleBuffered = true;
             this.Name = "CreateUC";

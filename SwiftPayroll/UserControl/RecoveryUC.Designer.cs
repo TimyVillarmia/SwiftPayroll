@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.OTPBtn = new Guna.UI2.WinForms.Guna2Button();
             this.MaskPassword = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.BackLinkLabel = new System.Windows.Forms.LinkLabel();
             this.PasswordTxt = new Guna.UI2.WinForms.Guna2TextBox();
@@ -39,14 +41,12 @@
             this.EmailTxt = new Guna.UI2.WinForms.Guna2TextBox();
             this.OTPTxt = new Guna.UI2.WinForms.Guna2TextBox();
             this.RecoverBtn = new Guna.UI2.WinForms.Guna2Button();
-            this.OTPBtn = new Guna.UI2.WinForms.Guna2Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.guna2CustomGradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2CustomGradientPanel1
             // 
-            this.guna2CustomGradientPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2CustomGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(209)))), ((int)(((byte)(233)))));
             this.guna2CustomGradientPanel1.BorderRadius = 4;
             this.guna2CustomGradientPanel1.Controls.Add(this.label4);
             this.guna2CustomGradientPanel1.Controls.Add(this.OTPBtn);
@@ -69,8 +69,40 @@
             this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(397, 477);
             this.guna2CustomGradientPanel1.TabIndex = 5;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
+            this.label4.Location = new System.Drawing.Point(61, 62);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(288, 36);
+            this.label4.TabIndex = 33;
+            this.label4.Text = "You can reset your password using the \r\nemail address associated with your accoun" +
+    "t";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // OTPBtn
+            // 
+            this.OTPBtn.BorderColor = System.Drawing.Color.Transparent;
+            this.OTPBtn.BorderRadius = 4;
+            this.OTPBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.OTPBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.OTPBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.OTPBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.OTPBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
+            this.OTPBtn.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold);
+            this.OTPBtn.ForeColor = System.Drawing.Color.White;
+            this.OTPBtn.Location = new System.Drawing.Point(223, 181);
+            this.OTPBtn.Name = "OTPBtn";
+            this.OTPBtn.Size = new System.Drawing.Size(141, 43);
+            this.OTPBtn.TabIndex = 32;
+            this.OTPBtn.Text = "Send OTP";
+            this.OTPBtn.Click += new System.EventHandler(this.OTPBtn_Click);
+            // 
             // MaskPassword
             // 
+            this.MaskPassword.BackColor = System.Drawing.Color.Transparent;
             this.MaskPassword.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.MaskPassword.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.MaskPassword.CheckedState.InnerBorderColor = System.Drawing.Color.White;
@@ -157,6 +189,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(209)))), ((int)(((byte)(233)))));
             this.label2.Font = new System.Drawing.Font("Montserrat", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.label2.Location = new System.Drawing.Point(84, 13);
@@ -238,42 +271,11 @@
             this.RecoverBtn.Text = "Recover account";
             this.RecoverBtn.Click += new System.EventHandler(this.RecoverBtn_Click);
             // 
-            // OTPBtn
-            // 
-            this.OTPBtn.BorderColor = System.Drawing.Color.Transparent;
-            this.OTPBtn.BorderRadius = 4;
-            this.OTPBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.OTPBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.OTPBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.OTPBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.OTPBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(88)))), ((int)(((byte)(88)))));
-            this.OTPBtn.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Bold);
-            this.OTPBtn.ForeColor = System.Drawing.Color.White;
-            this.OTPBtn.Location = new System.Drawing.Point(223, 181);
-            this.OTPBtn.Name = "OTPBtn";
-            this.OTPBtn.Size = new System.Drawing.Size(141, 43);
-            this.OTPBtn.TabIndex = 32;
-            this.OTPBtn.Text = "Send OTP";
-            this.OTPBtn.Click += new System.EventHandler(this.OTPBtn_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
-            this.label4.Location = new System.Drawing.Point(61, 62);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(288, 36);
-            this.label4.TabIndex = 33;
-            this.label4.Text = "You can reset your password using the \r\nemail address associated with your accoun" +
-    "t";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // RecoveryUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Transparent;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.Controls.Add(this.guna2CustomGradientPanel1);
             this.DoubleBuffered = true;
             this.Name = "RecoveryUC";

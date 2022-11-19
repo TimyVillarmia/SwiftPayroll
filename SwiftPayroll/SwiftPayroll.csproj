@@ -199,9 +199,6 @@
     <None Include="Resources\Group 2.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\team-5701 1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\OUR TEAM Team of Designers and Developers.png" />
   </ItemGroup>
   <ItemGroup>
@@ -212,6 +209,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ShinleePic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\profile.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -36,14 +36,15 @@
             this.UsernameTxt = new Guna.UI2.WinForms.Guna2TextBox();
             this.ForgotLinkLabel = new System.Windows.Forms.LinkLabel();
             this.PasswordTxt = new Guna.UI2.WinForms.Guna2TextBox();
-            this.SignInBtn = new Guna.UI2.WinForms.Guna2Button();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.SignInBtn = new Guna.UI2.WinForms.Guna2Button();
             this.guna2CustomGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2CustomGradientPanel1
             // 
+            this.guna2CustomGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(209)))), ((int)(((byte)(233)))));
             this.guna2CustomGradientPanel1.BorderRadius = 4;
             this.guna2CustomGradientPanel1.Controls.Add(this.MaskPassword);
             this.guna2CustomGradientPanel1.Controls.Add(this.SignUpLinkLabel);
@@ -65,6 +66,7 @@
             // 
             // MaskPassword
             // 
+            this.MaskPassword.BackColor = System.Drawing.Color.Transparent;
             this.MaskPassword.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.MaskPassword.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.MaskPassword.CheckedState.InnerBorderColor = System.Drawing.Color.White;
@@ -95,6 +97,7 @@
             // 
             // guna2Separator2
             // 
+            this.guna2Separator2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(209)))), ((int)(((byte)(233)))));
             this.guna2Separator2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.guna2Separator2.Location = new System.Drawing.Point(33, 425);
             this.guna2Separator2.Name = "guna2Separator2";
@@ -104,6 +107,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(209)))), ((int)(((byte)(233)))));
             this.label2.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.label2.Location = new System.Drawing.Point(63, 181);
@@ -139,6 +143,7 @@
             // ForgotLinkLabel
             // 
             this.ForgotLinkLabel.AutoSize = true;
+            this.ForgotLinkLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(209)))), ((int)(((byte)(233)))));
             this.ForgotLinkLabel.Font = new System.Drawing.Font("Montserrat", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForgotLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.ForgotLinkLabel.Location = new System.Drawing.Point(245, 331);
@@ -172,6 +177,19 @@
             this.PasswordTxt.Size = new System.Drawing.Size(331, 43);
             this.PasswordTxt.TabIndex = 2;
             // 
+            // guna2PictureBox2
+            // 
+            this.guna2PictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(209)))), ((int)(((byte)(233)))));
+            this.guna2PictureBox2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.guna2PictureBox2.Image = global::SwiftPayroll.Properties.Resources.profile;
+            this.guna2PictureBox2.ImageRotate = 0F;
+            this.guna2PictureBox2.Location = new System.Drawing.Point(116, 20);
+            this.guna2PictureBox2.Name = "guna2PictureBox2";
+            this.guna2PictureBox2.Size = new System.Drawing.Size(161, 162);
+            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.guna2PictureBox2.TabIndex = 13;
+            this.guna2PictureBox2.TabStop = false;
+            // 
             // SignInBtn
             // 
             this.SignInBtn.BorderColor = System.Drawing.Color.Transparent;
@@ -190,22 +208,11 @@
             this.SignInBtn.Text = "SIGN IN";
             this.SignInBtn.Click += new System.EventHandler(this.SignInBtn_Click);
             // 
-            // guna2PictureBox2
-            // 
-            this.guna2PictureBox2.Image = global::SwiftPayroll.Properties.Resources.team_5701_1;
-            this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(116, 20);
-            this.guna2PictureBox2.Name = "guna2PictureBox2";
-            this.guna2PictureBox2.Size = new System.Drawing.Size(161, 162);
-            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.guna2PictureBox2.TabIndex = 13;
-            this.guna2PictureBox2.TabStop = false;
-            // 
             // LoginUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Transparent;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.Controls.Add(this.guna2CustomGradientPanel1);
             this.DoubleBuffered = true;
             this.Name = "LoginUC";

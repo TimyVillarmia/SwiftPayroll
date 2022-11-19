@@ -20,6 +20,7 @@ namespace SwiftPayroll
         public HomeUC homeUC { get; set; }
         public LoginUC loginUC { get; set; }
         public CreateUC createUC { get; set; }
+        public RecoveryUC recoveryUC { get; set; }
         public TeamPageUC teampageUC { get; set; }
         public Guna2Button homeBtn { get; set; }
 
@@ -49,12 +50,14 @@ namespace SwiftPayroll
             homeUC = new HomeUC(this); 
             loginUC = new LoginUC(this);
             createUC = new CreateUC(this);
+            recoveryUC = new RecoveryUC(this);
             teampageUC = new TeamPageUC();
 
             // adding the Usercontrols inside the Panel
             MainPanel.Controls.Add(homeUC);
             MainPanel.Controls.Add(loginUC);
             MainPanel.Controls.Add(createUC);
+            MainPanel.Controls.Add(recoveryUC);
             MainPanel.Controls.Add(teampageUC);
 
 

@@ -26,6 +26,13 @@ namespace SwiftPayroll
         private void SignUpLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MainForm.createUC.BringToFront();
+
+            //disposing unuse usercontrols
+            /*
+            
+                INSERT DISPOSE STATEMENT
+
+             */
         }
 
 
@@ -55,11 +62,16 @@ namespace SwiftPayroll
                 if (count == 1)
                 {
 
+                    //notify
                     MessageBox.Show("Login Successfully");
+                    // hide the MainForm
                     ParentForm.Hide();
+                    // displaying sencond form "Dashboard"
                     Dashboard dashboard = new Dashboard();
                     dashboard.ShowDialog();
+                    //Closing 
                     ParentForm.Close();
+                    //close connection 
                     DBObj.CloseConnection();
 
 
@@ -67,6 +79,7 @@ namespace SwiftPayroll
                 }
                 else
                 {
+                    //notify
                     MessageBox.Show("Wrong username and password combination");
 
                 }
@@ -86,6 +99,11 @@ namespace SwiftPayroll
                 //mask
                 PasswordTxt.PasswordChar = '•';
             }
+        }
+
+        private void ForgotLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MainForm.recoveryUC.BringToFront();
         }
     }
     

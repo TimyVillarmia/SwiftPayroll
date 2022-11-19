@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
-            this.SignInLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.TypeComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.MaskPassword = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.RoleCombo = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.SignInLinkLabel = new System.Windows.Forms.LinkLabel();
             this.TermsCheck = new Guna.UI2.WinForms.Guna2CheckBox();
             this.PasswordTxt = new Guna.UI2.WinForms.Guna2TextBox();
             this.ConfirmPasswordTxt = new Guna.UI2.WinForms.Guna2TextBox();
@@ -41,8 +43,6 @@
             this.EmailTxt = new Guna.UI2.WinForms.Guna2TextBox();
             this.UsernameTxt = new Guna.UI2.WinForms.Guna2TextBox();
             this.CreateAccountBtn = new Guna.UI2.WinForms.Guna2Button();
-            this.MaskPassword = new Guna.UI2.WinForms.Guna2ToggleSwitch();
-            this.TypeComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2CustomGradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,23 +73,46 @@
             this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(397, 477);
             this.guna2CustomGradientPanel1.TabIndex = 4;
             // 
-            // SignInLinkLabel
+            // TypeComboBox
             // 
-            this.SignInLinkLabel.AutoSize = true;
-            this.SignInLinkLabel.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SignInLinkLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
-            this.SignInLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
-            this.SignInLinkLabel.Location = new System.Drawing.Point(87, 436);
-            this.SignInLinkLabel.Name = "SignInLinkLabel";
-            this.SignInLinkLabel.Size = new System.Drawing.Size(223, 18);
-            this.SignInLinkLabel.TabIndex = 30;
-            this.SignInLinkLabel.TabStop = true;
-            this.SignInLinkLabel.Text = "Already have an account? Sign In";
-            this.SignInLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SignInLinkLabel_LinkClicked);
+            this.TypeComboBox.BackColor = System.Drawing.Color.Transparent;
+            this.TypeComboBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
+            this.TypeComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.TypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TypeComboBox.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TypeComboBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TypeComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.TypeComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
+            this.TypeComboBox.ItemHeight = 30;
+            this.TypeComboBox.Items.AddRange(new object[] {
+            "Part-Time",
+            "Full-Time"});
+            this.TypeComboBox.Location = new System.Drawing.Point(210, 307);
+            this.TypeComboBox.Name = "TypeComboBox";
+            this.TypeComboBox.Size = new System.Drawing.Size(154, 36);
+            this.TypeComboBox.TabIndex = 32;
+            // 
+            // MaskPassword
+            // 
+            this.MaskPassword.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.MaskPassword.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.MaskPassword.CheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.MaskPassword.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.MaskPassword.Location = new System.Drawing.Point(317, 218);
+            this.MaskPassword.Name = "MaskPassword";
+            this.MaskPassword.Size = new System.Drawing.Size(35, 20);
+            this.MaskPassword.TabIndex = 31;
+            this.MaskPassword.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.MaskPassword.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.MaskPassword.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
+            this.MaskPassword.UncheckedState.InnerColor = System.Drawing.Color.White;
+            this.MaskPassword.UseTransparentBackground = true;
+            this.MaskPassword.CheckedChanged += new System.EventHandler(this.MaskPassword_CheckedChanged);
             // 
             // RoleCombo
             // 
             this.RoleCombo.BackColor = System.Drawing.Color.Transparent;
+            this.RoleCombo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.RoleCombo.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.RoleCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.RoleCombo.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -104,6 +127,20 @@
             this.RoleCombo.Name = "RoleCombo";
             this.RoleCombo.Size = new System.Drawing.Size(171, 36);
             this.RoleCombo.TabIndex = 29;
+            // 
+            // SignInLinkLabel
+            // 
+            this.SignInLinkLabel.AutoSize = true;
+            this.SignInLinkLabel.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SignInLinkLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
+            this.SignInLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
+            this.SignInLinkLabel.Location = new System.Drawing.Point(87, 436);
+            this.SignInLinkLabel.Name = "SignInLinkLabel";
+            this.SignInLinkLabel.Size = new System.Drawing.Size(223, 18);
+            this.SignInLinkLabel.TabIndex = 30;
+            this.SignInLinkLabel.TabStop = true;
+            this.SignInLinkLabel.Text = "Already have an account? Sign In";
+            this.SignInLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SignInLinkLabel_LinkClicked);
             // 
             // TermsCheck
             // 
@@ -273,47 +310,13 @@
             this.CreateAccountBtn.Text = "Create account";
             this.CreateAccountBtn.Click += new System.EventHandler(this.CreateAccountBtn_Click);
             // 
-            // MaskPassword
-            // 
-            this.MaskPassword.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.MaskPassword.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.MaskPassword.CheckedState.InnerBorderColor = System.Drawing.Color.White;
-            this.MaskPassword.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.MaskPassword.Location = new System.Drawing.Point(317, 218);
-            this.MaskPassword.Name = "MaskPassword";
-            this.MaskPassword.Size = new System.Drawing.Size(35, 20);
-            this.MaskPassword.TabIndex = 31;
-            this.MaskPassword.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.MaskPassword.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.MaskPassword.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
-            this.MaskPassword.UncheckedState.InnerColor = System.Drawing.Color.White;
-            this.MaskPassword.UseTransparentBackground = true;
-            this.MaskPassword.CheckedChanged += new System.EventHandler(this.MaskPassword_CheckedChanged);
-            // 
-            // TypeComboBox
-            // 
-            this.TypeComboBox.BackColor = System.Drawing.Color.Transparent;
-            this.TypeComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.TypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.TypeComboBox.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TypeComboBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TypeComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.TypeComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
-            this.TypeComboBox.ItemHeight = 30;
-            this.TypeComboBox.Items.AddRange(new object[] {
-            "Part-Time",
-            "Full-Time"});
-            this.TypeComboBox.Location = new System.Drawing.Point(210, 307);
-            this.TypeComboBox.Name = "TypeComboBox";
-            this.TypeComboBox.Size = new System.Drawing.Size(154, 36);
-            this.TypeComboBox.TabIndex = 32;
-            // 
             // CreateUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.guna2CustomGradientPanel1);
+            this.DoubleBuffered = true;
             this.Name = "CreateUC";
             this.Size = new System.Drawing.Size(1000, 680);
             this.guna2CustomGradientPanel1.ResumeLayout(false);

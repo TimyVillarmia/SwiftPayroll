@@ -30,6 +30,16 @@ namespace SwiftPayroll
             //Current Usercontrol view
             MainForm.loginUC.BringToFront();
 
+            //disposing unuse usercontrols
+            /*
+            
+                INSERT DISPOSE STATEMENT
+
+             */
+
+
+
+
             // Unactive Button Color
             MainForm.homeBtn.FillColor = Color.Transparent;
             MainForm.homeBtn.ForeColor = Color.FromArgb(43, 44, 52);
@@ -37,7 +47,16 @@ namespace SwiftPayroll
 
         private void SignUpBtn_Click(object sender, EventArgs e)
         {
+            //Current Usercontrol view
             MainForm.createUC.BringToFront();
+
+            //disposing unuse usercontrols
+            /*
+            
+                INSERT DISPOSE STATEMENT
+
+             */
+
             // Unactive Button Color
             MainForm.homeBtn.FillColor = Color.Transparent;
             MainForm.homeBtn.ForeColor = Color.FromArgb(43, 44, 52);

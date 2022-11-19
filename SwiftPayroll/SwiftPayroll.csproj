@@ -163,6 +163,9 @@
     <EmbeddedResource Include="UserControl\HomeUC.resx">
       <DependentUpon>HomeUC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\RecoveryUC.resx">
+      <DependentUpon>RecoveryUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\TeamPageUC.resx">
       <DependentUpon>TeamPageUC.cs</DependentUpon>
     </EmbeddedResource>

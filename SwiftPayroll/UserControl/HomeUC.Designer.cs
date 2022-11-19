@@ -132,6 +132,7 @@ namespace SwiftPayroll
             this.Controls.Add(this.SignInBtn);
             this.Controls.Add(this.guna2PictureBox2);
             this.Controls.Add(this.guna2PictureBox1);
+            this.DoubleBuffered = true;
             this.Name = "HomeUC";
             this.Size = new System.Drawing.Size(1000, 680);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();

@@ -36,8 +36,8 @@
             this.UsernameTxt = new Guna.UI2.WinForms.Guna2TextBox();
             this.ForgotLinkLabel = new System.Windows.Forms.LinkLabel();
             this.PasswordTxt = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.SignInBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2CustomGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -147,6 +147,7 @@
             this.ForgotLinkLabel.TabIndex = 15;
             this.ForgotLinkLabel.TabStop = true;
             this.ForgotLinkLabel.Text = "Forgot Password?";
+            this.ForgotLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ForgotLinkLabel_LinkClicked);
             // 
             // PasswordTxt
             // 
@@ -171,17 +172,6 @@
             this.PasswordTxt.Size = new System.Drawing.Size(331, 43);
             this.PasswordTxt.TabIndex = 2;
             // 
-            // guna2PictureBox2
-            // 
-            this.guna2PictureBox2.Image = global::SwiftPayroll.Properties.Resources.team_5701_1;
-            this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(116, 20);
-            this.guna2PictureBox2.Name = "guna2PictureBox2";
-            this.guna2PictureBox2.Size = new System.Drawing.Size(161, 162);
-            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.guna2PictureBox2.TabIndex = 13;
-            this.guna2PictureBox2.TabStop = false;
-            // 
             // SignInBtn
             // 
             this.SignInBtn.BorderColor = System.Drawing.Color.Transparent;
@@ -200,12 +190,24 @@
             this.SignInBtn.Text = "SIGN IN";
             this.SignInBtn.Click += new System.EventHandler(this.SignInBtn_Click);
             // 
+            // guna2PictureBox2
+            // 
+            this.guna2PictureBox2.Image = global::SwiftPayroll.Properties.Resources.team_5701_1;
+            this.guna2PictureBox2.ImageRotate = 0F;
+            this.guna2PictureBox2.Location = new System.Drawing.Point(116, 20);
+            this.guna2PictureBox2.Name = "guna2PictureBox2";
+            this.guna2PictureBox2.Size = new System.Drawing.Size(161, 162);
+            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.guna2PictureBox2.TabIndex = 13;
+            this.guna2PictureBox2.TabStop = false;
+            // 
             // LoginUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.guna2CustomGradientPanel1);
+            this.DoubleBuffered = true;
             this.Name = "LoginUC";
             this.Size = new System.Drawing.Size(1000, 680);
             this.guna2CustomGradientPanel1.ResumeLayout(false);

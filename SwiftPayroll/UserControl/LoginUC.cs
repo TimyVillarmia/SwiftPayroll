@@ -42,16 +42,16 @@ namespace SwiftPayroll
             else
             {
                
-                string query = "SELECT * FROM Accounts WHERE username = @Username AND password = @Password";
+                string query = "SELECT count(*) FROM Accounts WHERE username = @Username AND password = @Password";
                 DBObj.OpenConnection();
                 SQLiteCommand cmd = new SQLiteCommand(query, DBObj.connection);
                 cmd.Parameters.AddWithValue("@Username", UsernameTxt.Text);
                 cmd.Parameters.AddWithValue("@Password", PasswordTxt.Text);
-                SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
+                //The first column of the first row in the result set.
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+              
 
-                if (dt.Rows.Count > 0)
+                if (count > 0)
                 {
 
                     MessageBox.Show("Login Successfully");
@@ -77,11 +77,12 @@ namespace SwiftPayroll
         {
             if (MaskPassword.Checked)
             {
-                //
+                // default value to unmask
                 PasswordTxt.PasswordChar = '\0';
             }
             else
             {
+                //mask
                 PasswordTxt.PasswordChar = '•';
             }
         }

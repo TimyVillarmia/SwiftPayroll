@@ -107,6 +107,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\RecoveryUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\RecoveryUC.Designer.cs">
+      <DependentUpon>RecoveryUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControl\TeamPageUC.cs">
       <SubType>UserControl</SubType>
     </Compile>

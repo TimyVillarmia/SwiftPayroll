@@ -32,6 +32,7 @@ namespace SwiftPayroll
 
         private void SignInBtn_Click(object sender, EventArgs e)
         {
+
             Database DBObj = new Database();
             //Checking whether textboxes are empty or not
             if (UsernameTxt.Text.Trim() == string.Empty && PasswordTxt.Text.Trim() == string.Empty)
@@ -47,11 +48,11 @@ namespace SwiftPayroll
                 SQLiteCommand cmd = new SQLiteCommand(query, DBObj.connection);
                 cmd.Parameters.AddWithValue("@Username", UsernameTxt.Text);
                 cmd.Parameters.AddWithValue("@Password", PasswordTxt.Text);
-                //The first column of the first row in the result set.
+                //return The first column of the first row in the result set.
                 int count = Convert.ToInt32(cmd.ExecuteScalar());
-              
 
-                if (count > 0)
+                // if count = 1 then the account exist ; else account doesn't exist
+                if (count == 1)
                 {
 
                     MessageBox.Show("Login Successfully");

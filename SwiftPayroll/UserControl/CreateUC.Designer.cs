@@ -75,7 +75,7 @@
             // 
             // TypeComboBox
             // 
-            this.TypeComboBox.BackColor = System.Drawing.Color.Transparent;
+            this.TypeComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(209)))), ((int)(((byte)(233)))));
             this.TypeComboBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.TypeComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.TypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -112,7 +112,7 @@
             // 
             // RoleCombo
             // 
-            this.RoleCombo.BackColor = System.Drawing.Color.Transparent;
+            this.RoleCombo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(209)))), ((int)(((byte)(233)))));
             this.RoleCombo.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.RoleCombo.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.RoleCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;

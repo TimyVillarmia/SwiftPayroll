@@ -56,10 +56,16 @@ namespace SwiftPayroll
             Database DbObj = new Database();
 
             //check if data entries exist
-            if (EmailTxt.Text.Trim() == string.Empty && UsernameTxt.Text.Trim() == string.Empty && PasswordTxt.Text.Trim() == string.Empty && ConfirmPasswordTxt.Text.Trim() == String.Empty && TermsCheck.Checked == false && PasswordTxt.Text == ConfirmPasswordTxt.Text && TypeComboBox.SelectedIndex == -1 && RoleCombo.SelectedIndex == -1)
+            if (EmailTxt.Text.Trim() == string.Empty && UsernameTxt.Text.Trim() == string.Empty && PasswordTxt.Text.Trim() == string.Empty && ConfirmPasswordTxt.Text.Trim() == String.Empty && TermsCheck.Checked == false && TypeComboBox.SelectedIndex == -1 && RoleCombo.SelectedIndex == -1)
             {
                 //notify
                 MessageBox.Show("Make sure you correctly fill up the form");
+            }
+            if (PasswordTxt.Text == ConfirmPasswordTxt.Text) 
+            {
+
+                MessageBox.Show("Password are not identical");
+
             }
             else
             {

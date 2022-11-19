@@ -124,7 +124,7 @@ namespace SwiftPayroll
             }
             if (PasswordTxt.Text != ConfirmPasswordTxt.Text)
             {
-                MessageBox.Show("Password are not identical");
+                MessageBox.Show("Passwords are not identical");
             }
             else
             {

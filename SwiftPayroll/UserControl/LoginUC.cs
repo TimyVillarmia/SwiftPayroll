@@ -44,8 +44,8 @@ namespace SwiftPayroll
 
         private void SignInBtn_Click(object sender, EventArgs e)
         {
+            SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
 
-            Database DBObj = new Database();
             //Checking whether textboxes are empty or not
             if (UsernameTxt.Text.Trim() == string.Empty && PasswordTxt.Text.Trim() == string.Empty)
             {
@@ -54,45 +54,56 @@ namespace SwiftPayroll
             }
             else
             {
-               
-                string query = "SELECT count(*) FROM Accounts WHERE username = @Username AND password = @Password";
-                DBObj.OpenConnection();
-                SQLiteCommand cmd = new SQLiteCommand(query, DBObj.connection);
-                cmd.Parameters.AddWithValue("@Username", UsernameTxt.Text);
-                cmd.Parameters.AddWithValue("@Password", PasswordTxt.Text);
-                //return The first column of the first row in the result set.
-                int count = Convert.ToInt32(cmd.ExecuteScalar());
-
-                // if count = 1 then the account exist ; else account doesn't exist
-                if (count == 1)
+                try
                 {
+                    string query = "SELECT count(*) FROM Accounts WHERE username = @Username AND password = @Password";
+                    connection.Open();
+                    SQLiteCommand cmd = new SQLiteCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@Username", UsernameTxt.Text);
+                    cmd.Parameters.AddWithValue("@Password", PasswordTxt.Text);
+                    //return The first column of the first row in the result set.
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
 
-                    //notify
-                    MessageBox.Show("Login Successfully");
-                    // hide the MainForm
-                    ParentForm.Hide();
-                    // displaying sencond form "Dashboard"
-                    Dashboard dashboard = new Dashboard();
-                    dashboard.ShowDialog();
-                    //Closing 
-                    ParentForm.Close();
-                    //close connection 
-                    DBObj.CloseConnection();
-                    DBObj.connection.Dispose();
+                    // if count = 1 then the account exist ; else account doesn't exist
+                    if (count == 1)
+                    {
 
-                    // Clear all entries
-                    UsernameTxt.Text = "";
-                    PasswordTxt.Text = "";
+                        //notify
+                        MessageBox.Show("Login Successfully");
+                        // hide the MainForm
+                        ParentForm.Hide();
+                        // displaying sencond form "Dashboard"
+                        Dashboard dashboard = new Dashboard();
+                        dashboard.ShowDialog();
+                        //Closing 
+                        ParentForm.Close();
+                        //close connection 
+                
+
+                        // Clear all entries
+                        UsernameTxt.Text = "";
+                        PasswordTxt.Text = "";
 
 
 
+
+                    }
+                    else
+                    {
+                        //notify
+                        MessageBox.Show("Wrong username and password combination");
+
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Unable to login, please try again later");
 
                 }
-                else
+                finally
                 {
-                    //notify
-                    MessageBox.Show("Wrong username and password combination");
-
+                    connection.Close();
+                    connection.Dispose();
                 }
 
             }

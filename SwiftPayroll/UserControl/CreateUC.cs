@@ -29,7 +29,6 @@ namespace SwiftPayroll
             UsernameTxt.Text = "";
             PasswordTxt.Text = "";
             ConfirmPasswordTxt.Text = "";
-            RoleCombo.SelectedItem = null;
             TermsCheck.Checked = false;
 
         }
@@ -53,50 +52,62 @@ namespace SwiftPayroll
 
         private void CreateAccountBtn_Click(object sender, EventArgs e)
         {
-            Database DbObj = new Database();
+            //Instantiate SQLiteConnect object which is used for opening connection to the database
+            SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
+
 
             //check if data entries exist
-            if (EmailTxt.Text.Trim() == string.Empty && UsernameTxt.Text.Trim() == string.Empty && PasswordTxt.Text.Trim() == string.Empty && ConfirmPasswordTxt.Text.Trim() == String.Empty && TermsCheck.Checked == false && TypeComboBox.SelectedIndex == -1 && RoleCombo.SelectedIndex == -1)
+            if (FirstNameTxt.Text== string.Empty && LastNameTxt.Text == string.Empty && EmailTxt.Text == string.Empty && UsernameTxt.Text == string.Empty && PasswordTxt.Text == string.Empty && ConfirmPasswordTxt.Text == string.Empty)
             {
                 //notify
                 MessageBox.Show("Make sure you correctly fill up the form");
             }
-            if (PasswordTxt.Text == ConfirmPasswordTxt.Text) 
+            if (PasswordTxt.Text != ConfirmPasswordTxt.Text)
             {
 
-                MessageBox.Show("Password are not identical");
+                MessageBox.Show("Passwords are not identical");
+            }
+            if(TermsCheck.Checked == false)
+            {
+                MessageBox.Show("Don't forget to check the Terms and Privacy Policy");
 
             }
             else
             {
 
-
                 try
                 {
-                    //Instantiate a UserInto object with the necessary arguments
-                    UserInfo user = new UserInfo(UsernameTxt.Text.Trim(), PasswordTxt.Text.Trim(), EmailTxt.Text, RoleCombo.SelectedItem.ToString().Trim(), TypeComboBox.SelectedItem.ToString());
+
+                    UserInfo user = new UserInfo(FirstNameTxt.Text.Trim(), LastNameTxt.Text.Trim(), "", UsernameTxt.Text.Trim(), PasswordTxt.Text.Trim(), EmailTxt.Text.Trim(), "", "", "");
                     // creating a string variable "query" with a "INSERT" Statement
-                    string query = "INSERT INTO Accounts(username,password,email,role,type) VALUES(@Username,@Password,@Email,@Role,@Type);";
-                    // Calling the OpenConnection method from the Database class to open the connection to a database
-                    DbObj.OpenConnection();
+                    string query = "INSERT INTO Accounts(firstname,lastname,username,password,email) VALUES(@first,@last,@username,@password,@email);";
+
+                    //Accessing the "Open" property of SQLiteConnection to "Open" the connection
+                    connection.Open();
                     //instantiating SQLiteCommand object and accepts 2 arguments
-                    SQLiteCommand cmd = new SQLiteCommand(query, DbObj.connection);
+                    SQLiteCommand cmd = new SQLiteCommand(query, connection);
                     //Set the values for each parameters
-                    //cmd.Parameters.AddWithValue("ParameterName", ActualValue) base on VALUES(@Username,@Password,@Email,@Role)
-                    cmd.Parameters.AddWithValue("@Username", user.UserName);
-                    cmd.Parameters.AddWithValue("@Password", user.Password);
-                    cmd.Parameters.AddWithValue("@Email", user.Email_Address);
-                    cmd.Parameters.AddWithValue("@Role", user.Role);
-                    cmd.Parameters.AddWithValue("@Type", user.Type);
+                    //cmd.Parameters.AddWithValue("ParameterName", ActualValue) base on VALUES(@Username,@Password,@Email)
+                    cmd.Parameters.AddWithValue("@first", user.FirstName);
+                    cmd.Parameters.AddWithValue("@last", user.LastName);
+                    cmd.Parameters.AddWithValue("@username", user.UserName);
+                    cmd.Parameters.AddWithValue("@password", user.Password);
+                    cmd.Parameters.AddWithValue("@email", user.Email_Address);
                     //ExecuteNonQuery - execute The Command
                     cmd.ExecuteNonQuery();
-                    // Calling the CloseConnection method from the Database class to close the connection to a database
-                    DbObj.CloseConnection();
+                    //Accessing the "Close" property of SQLiteConnection to "Close" the connection
 
 
                     // notify
                     MessageBox.Show("Account successfully created, Please Sign In");
 
+                    // Clear all entries
+                    FirstNameTxt.Text = "";
+                    LastNameTxt.Text = "";
+                    EmailTxt.Text = "";
+                    UsernameTxt.Text = "";
+                    PasswordTxt.Text = "";
+                    ConfirmPasswordTxt.Text = "";
 
 
                 }
@@ -104,24 +115,28 @@ namespace SwiftPayroll
                 {
                     //notify
                     MessageBox.Show("Make sure the Username is unique and Email is not currently registed");
-                    return;
+                }
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+
+  
+
                 }
 
-
-                // Clear all entries
-                EmailTxt.Text = "";
-                UsernameTxt.Text = "";
-                PasswordTxt.Text = "";
-                ConfirmPasswordTxt.Text = "";
-                RoleCombo.SelectedItem = null;
-                TermsCheck.Checked = false;
-
-
-
-            
+           
 
 
             }
+
+      
+
+
+
+
+
+
         }
     }
 }

@@ -51,10 +51,11 @@ namespace SwiftPayroll
 
         private void OTPBtn_Click(object sender, EventArgs e)
         {
-            Database DBObj = new Database();
             string query = "SELECT count(*) FROM Accounts WHERE email = @Email";
-            DBObj.OpenConnection();
-            SQLiteCommand cmd = new SQLiteCommand(query, DBObj.connection);
+            //Instantiate SQLiteConnect object which is used for opening connection to the database
+            SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
+            //Accessing the "Open" property of SQLiteConnection to "Open" the connection
+            connection.Open(); SQLiteCommand cmd = new SQLiteCommand(query, connection);
             cmd.Parameters.AddWithValue("@Email", EmailTxt.Text);
             //return The first column of the first row in the result set.
             int count = Convert.ToInt32(cmd.ExecuteScalar());
@@ -97,6 +98,7 @@ namespace SwiftPayroll
                 {
                     client.Disconnect(true); // always Disconnect the service.
                     client.Dispose(); //Releases all resource used by the MailService object.
+                    connection.Dispose();
                 }
             }
             else
@@ -109,7 +111,8 @@ namespace SwiftPayroll
 
         private void RecoverBtn_Click(object sender, EventArgs e)
         {
-            Database DBObj = new Database();
+            //Instantiate SQLiteConnect object which is used for opening connection to the database
+            SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
 
             //Guard Clause Technique
 
@@ -128,17 +131,18 @@ namespace SwiftPayroll
             }
             else
             {
+
                 try
                 {
                     // To update existing data in a table, you use SQLite UPDATE statement. 
-                    string query = "UPDATE Accounts SET password=@Password WHERE email = @Email";
-                    DBObj.OpenConnection();
-                    SQLiteCommand cmd = new SQLiteCommand(query, DBObj.connection);
+                    string query = "UPDATE Accounts SET password=@Password WHERE email = @Email;";
+
+                    //Accessing the "Open" property of SQLiteConnection to "Open" the connection
+                    connection.Open();
+                    SQLiteCommand cmd = new SQLiteCommand(query, connection);
                     cmd.Parameters.AddWithValue("@Email", EmailTxt.Text);
                     cmd.Parameters.AddWithValue("@Password", PasswordTxt.Text);
                     cmd.ExecuteNonQuery();
-                    DBObj.CloseConnection();
-                    DBObj.connection.Dispose();
                     MessageBox.Show("Account successfully reset, Please Sign In");
 
                     // Clear all entries
@@ -154,7 +158,11 @@ namespace SwiftPayroll
                     MessageBox.Show("Unable to reset your password, please try again");
                     return;
                 }
-
+                finally
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
             }
 
         }

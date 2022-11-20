@@ -103,6 +103,16 @@ namespace SwiftPayroll.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap locked {
+            get {
+                object obj = ResourceManager.GetObject("locked", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap OUR_TEAM_Team_of_Designers_and_Developers {
             get {
                 object obj = ResourceManager.GetObject("OUR TEAM Team of Designers and Developers", resourceCulture);

@@ -148,6 +148,9 @@
       <DependentUpon>HomeUC.cs</DependentUpon>
     </Compile>
     <Compile Include="UserInfo.cs" />
+    <EmbeddedResource Include="Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControl\CreateUC.resx">
       <DependentUpon>CreateUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -214,6 +217,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\locked.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -36,16 +36,18 @@
             this.UsernameTxt = new Guna.UI2.WinForms.Guna2TextBox();
             this.ForgotLinkLabel = new System.Windows.Forms.LinkLabel();
             this.PasswordTxt = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.loginPicBox = new Guna.UI2.WinForms.Guna2PictureBox();
             this.SignInBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.guna2CustomGradientPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loginPicBox)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2CustomGradientPanel1
             // 
             this.guna2CustomGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(209)))), ((int)(((byte)(233)))));
             this.guna2CustomGradientPanel1.BorderRadius = 4;
+            this.guna2CustomGradientPanel1.Controls.Add(this.label1);
             this.guna2CustomGradientPanel1.Controls.Add(this.MaskPassword);
             this.guna2CustomGradientPanel1.Controls.Add(this.SignUpLinkLabel);
             this.guna2CustomGradientPanel1.Controls.Add(this.guna2Separator2);
@@ -53,7 +55,7 @@
             this.guna2CustomGradientPanel1.Controls.Add(this.UsernameTxt);
             this.guna2CustomGradientPanel1.Controls.Add(this.ForgotLinkLabel);
             this.guna2CustomGradientPanel1.Controls.Add(this.PasswordTxt);
-            this.guna2CustomGradientPanel1.Controls.Add(this.guna2PictureBox2);
+            this.guna2CustomGradientPanel1.Controls.Add(this.loginPicBox);
             this.guna2CustomGradientPanel1.Controls.Add(this.SignInBtn);
             this.guna2CustomGradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(209)))), ((int)(((byte)(233)))));
             this.guna2CustomGradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(209)))), ((int)(((byte)(233)))));
@@ -177,18 +179,18 @@
             this.PasswordTxt.Size = new System.Drawing.Size(331, 43);
             this.PasswordTxt.TabIndex = 2;
             // 
-            // guna2PictureBox2
+            // loginPicBox
             // 
-            this.guna2PictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(209)))), ((int)(((byte)(233)))));
-            this.guna2PictureBox2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
-            this.guna2PictureBox2.Image = global::SwiftPayroll.Properties.Resources.profile;
-            this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(116, 20);
-            this.guna2PictureBox2.Name = "guna2PictureBox2";
-            this.guna2PictureBox2.Size = new System.Drawing.Size(161, 162);
-            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.guna2PictureBox2.TabIndex = 13;
-            this.guna2PictureBox2.TabStop = false;
+            this.loginPicBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(209)))), ((int)(((byte)(233)))));
+            this.loginPicBox.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.loginPicBox.Image = global::SwiftPayroll.Properties.Resources.profile;
+            this.loginPicBox.ImageRotate = 0F;
+            this.loginPicBox.Location = new System.Drawing.Point(116, 20);
+            this.loginPicBox.Name = "loginPicBox";
+            this.loginPicBox.Size = new System.Drawing.Size(161, 162);
+            this.loginPicBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.loginPicBox.TabIndex = 13;
+            this.loginPicBox.TabStop = false;
             // 
             // SignInBtn
             // 
@@ -208,6 +210,19 @@
             this.SignInBtn.Text = "SIGN IN";
             this.SignInBtn.Click += new System.EventHandler(this.SignInBtn_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(209)))), ((int)(((byte)(233)))));
+            this.label1.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
+            this.label1.Location = new System.Drawing.Point(98, 183);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(207, 36);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Too many failed login attempts\r\nPlease try again after 60";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // LoginUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -217,9 +232,10 @@
             this.DoubleBuffered = true;
             this.Name = "LoginUC";
             this.Size = new System.Drawing.Size(1000, 680);
+            this.Load += new System.EventHandler(this.LoginUC_Load);
             this.guna2CustomGradientPanel1.ResumeLayout(false);
             this.guna2CustomGradientPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.loginPicBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -233,8 +249,9 @@
         private Guna.UI2.WinForms.Guna2TextBox UsernameTxt;
         private System.Windows.Forms.LinkLabel ForgotLinkLabel;
         private Guna.UI2.WinForms.Guna2TextBox PasswordTxt;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
+        private Guna.UI2.WinForms.Guna2PictureBox loginPicBox;
         private Guna.UI2.WinForms.Guna2Button SignInBtn;
         private Guna.UI2.WinForms.Guna2ToggleSwitch MaskPassword;
+        private System.Windows.Forms.Label label1;
     }
 }

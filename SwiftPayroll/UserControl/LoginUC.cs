@@ -10,13 +10,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace SwiftPayroll
 {
     public partial class LoginUC : UserControl
     {
+        //declare variables
         public MainForm MainForm;
+        System.Timers.Timer TimerCount;
+        int seconds = 60; 
+        int attempt = 3;
         public LoginUC(MainForm form1)
         {
             InitializeComponent();
@@ -42,72 +47,94 @@ namespace SwiftPayroll
 
 
 
+
+
+
         private void SignInBtn_Click(object sender, EventArgs e)
         {
+
             SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
-
             //Checking whether textboxes are empty or not
-            if (UsernameTxt.Text.Trim() == string.Empty && PasswordTxt.Text.Trim() == string.Empty)
+            if (attempt != 0)
             {
-                MessageBox.Show("Make sure you correctly fill up the form");
+                if (UsernameTxt.Text.Trim() == string.Empty && PasswordTxt.Text.Trim() == string.Empty)
+                {
+                    MessageBox.Show("Make sure you correctly fill up the form");
 
+                }
+                else
+                {
+                    try
+                    {
+                        string query = "SELECT count(*) FROM Accounts WHERE username = @Username AND password = @Password";
+                        connection.Open();
+                        SQLiteCommand cmd = new SQLiteCommand(query, connection);
+                        cmd.Parameters.AddWithValue("@Username", UsernameTxt.Text);
+                        cmd.Parameters.AddWithValue("@Password", PasswordTxt.Text);
+                        //return The first column of the first row in the result set.
+                        int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                        // if count = 1 then the account exist ; else account doesn't exist
+                        if (count == 1)
+                        {
+
+                            //notify
+                            MessageBox.Show("Login Successfully");
+                            // hide the MainForm
+                            ParentForm.Hide();
+                            // displaying sencond form "Dashboard"
+                            Dashboard dashboard = new Dashboard();
+                            dashboard.ShowDialog();
+                            //Closing 
+                            ParentForm.Close();
+                            //close connection 
+
+
+                            // Clear all entries
+                            UsernameTxt.Text = "";
+                            PasswordTxt.Text = "";
+
+
+
+
+                        }
+                        else
+                        {
+                            //notify
+                            attempt -= 1;
+                            MessageBox.Show($"Wrong username and password combination. {attempt} Attempts left");
+                          
+                            //Disable();
+
+
+
+
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Unable to login, please try again later");
+
+                    }
+                    finally
+                    {
+                        connection.Close();
+                        connection.Dispose();
+                    }
+
+                }
             }
             else
             {
-                try
-                {
-                    string query = "SELECT count(*) FROM Accounts WHERE username = @Username AND password = @Password";
-                    connection.Open();
-                    SQLiteCommand cmd = new SQLiteCommand(query, connection);
-                    cmd.Parameters.AddWithValue("@Username", UsernameTxt.Text);
-                    cmd.Parameters.AddWithValue("@Password", PasswordTxt.Text);
-                    //return The first column of the first row in the result set.
-                    int count = Convert.ToInt32(cmd.ExecuteScalar());
-
-                    // if count = 1 then the account exist ; else account doesn't exist
-                    if (count == 1)
-                    {
-
-                        //notify
-                        MessageBox.Show("Login Successfully");
-                        // hide the MainForm
-                        ParentForm.Hide();
-                        // displaying sencond form "Dashboard"
-                        Dashboard dashboard = new Dashboard();
-                        dashboard.ShowDialog();
-                        //Closing 
-                        ParentForm.Close();
-                        //close connection 
-                
-
-                        // Clear all entries
-                        UsernameTxt.Text = "";
-                        PasswordTxt.Text = "";
-
-
-
-
-                    }
-                    else
-                    {
-                        //notify
-                        MessageBox.Show("Wrong username and password combination");
-
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Unable to login, please try again later");
-
-                }
-                finally
-                {
-                    connection.Close();
-                    connection.Dispose();
-                }
-
+                TimerCount.Start();
             }
+
+
         }
+
+     
+    
+  
 
         private void MaskPassword_CheckedChanged(object sender, EventArgs e)
         {
@@ -131,6 +158,61 @@ namespace SwiftPayroll
             UsernameTxt.Text = "";
             PasswordTxt.Text = "";
         }
+
+
+        
+
+
+        private void LoginUC_Load(object sender, EventArgs e)
+        {
+
+            label1.Visible = false;
+
+ 
+            TimerCount = new System.Timers.Timer();
+            TimerCount.Interval = 1000; // 1000 = 1 second interval
+            TimerCount.Elapsed += OnTimeEvent;
+
+        }
+
+        private void OnTimeEvent(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            //lambda fuction
+            Invoke(new Action(() =>
+            {
+                seconds -= 1; // decrement by 1
+                if(seconds != 0)
+                {
+                    label1.Visible = true; // show timer text
+                    label2.Visible = false; // hide default text
+                    SignInBtn.Enabled = false; //unclickable button
+                    loginPicBox.Image = SwiftPayroll.Properties.Resources.locked; // change photo to lock
+                    label1.Text = $"Too many failed login attempts\r\n Please try again after {seconds}"; // timer text
+                    label1.ForeColor = Color.Red; // change to red forecolor
+                }
+                else
+                {
+
+                    label1.Visible = true; //hide timer text
+                    label2.Visible = true; // show default text
+                    SignInBtn.Enabled = true; //clickable button
+                    loginPicBox.Image = SwiftPayroll.Properties.Resources.profile; // change to default photo
+                    TimerCount.Stop(); //stop timer if it reaches to 0
+                    seconds = 60; // reset to 60 seconds
+                    attempt = 3; // reset to 3 attempts
+                }
+
+          
+
+         
+
+            }));
+         
+        }
+
+       
     }
+
+  
     
 }

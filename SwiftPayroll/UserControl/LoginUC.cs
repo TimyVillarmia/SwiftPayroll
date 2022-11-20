@@ -1,16 +1,8 @@
 ﻿using Guna.UI2.WinForms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace SwiftPayroll
@@ -168,16 +160,18 @@ namespace SwiftPayroll
 
             label1.Visible = false;
 
- 
-            TimerCount = new System.Timers.Timer();
+            // Create a timer and set a 1 second interval.
+            System.Timers.Timer timer = new System.Timers.Timer();
+            TimerCount = timer;
             TimerCount.Interval = 1000; // 1000 = 1 second interval
-            TimerCount.Elapsed += OnTimeEvent;
+            TimerCount.Elapsed += OnTimeEvent; //Hook up the Elapsed event for the timer.
+
 
         }
 
         private void OnTimeEvent(object sender, System.Timers.ElapsedEventArgs e)
         {
-            //lambda fuction
+            //lambda expression
             Invoke(new Action(() =>
             {
                 seconds -= 1; // decrement by 1
@@ -193,7 +187,7 @@ namespace SwiftPayroll
                 else
                 {
 
-                    label1.Visible = true; //hide timer text
+                    label1.Visible = false; //hide timer text
                     label2.Visible = true; // show default text
                     SignInBtn.Enabled = true; //clickable button
                     loginPicBox.Image = SwiftPayroll.Properties.Resources.profile; // change to default photo
@@ -201,10 +195,6 @@ namespace SwiftPayroll
                     seconds = 60; // reset to 60 seconds
                     attempt = 3; // reset to 3 attempts
                 }
-
-          
-
-         
 
             }));
          

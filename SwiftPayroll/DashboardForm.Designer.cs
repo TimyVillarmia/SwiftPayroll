@@ -49,6 +49,7 @@
             // 
             // DashboardFormPanel
             // 
+            this.DashboardFormPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.DashboardFormPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DashboardFormPanel.Location = new System.Drawing.Point(0, 0);
             this.DashboardFormPanel.Name = "DashboardFormPanel";

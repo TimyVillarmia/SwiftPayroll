@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.label1 = new System.Windows.Forms.Label();
             this.MaskPassword = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.SignUpLinkLabel = new System.Windows.Forms.LinkLabel();
             this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
@@ -38,7 +40,7 @@
             this.PasswordTxt = new Guna.UI2.WinForms.Guna2TextBox();
             this.loginPicBox = new Guna.UI2.WinForms.Guna2PictureBox();
             this.SignInBtn = new Guna.UI2.WinForms.Guna2Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.guna2CustomGradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.loginPicBox)).BeginInit();
             this.SuspendLayout();
@@ -65,6 +67,19 @@
             this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
             this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(397, 477);
             this.guna2CustomGradientPanel1.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(209)))), ((int)(((byte)(233)))));
+            this.label1.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
+            this.label1.Location = new System.Drawing.Point(98, 183);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(207, 36);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Too many failed login attempts\r\nPlease try again after 60";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MaskPassword
             // 
@@ -210,18 +225,10 @@
             this.SignInBtn.Text = "SIGN IN";
             this.SignInBtn.Click += new System.EventHandler(this.SignInBtn_Click);
             // 
-            // label1
+            // timer1
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(209)))), ((int)(((byte)(233)))));
-            this.label1.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
-            this.label1.Location = new System.Drawing.Point(98, 183);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(207, 36);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Too many failed login attempts\r\nPlease try again after 60";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // LoginUC
             // 
@@ -253,5 +260,6 @@
         private Guna.UI2.WinForms.Guna2Button SignInBtn;
         private Guna.UI2.WinForms.Guna2ToggleSwitch MaskPassword;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer timer1;
     }
 }

@@ -11,7 +11,6 @@ namespace SwiftPayroll
     {
         //declare variables
         public MainForm MainForm;
-        System.Timers.Timer TimerCount;
         int seconds = 60; 
         int attempt = 3;
         public LoginUC(MainForm form1)
@@ -49,6 +48,7 @@ namespace SwiftPayroll
             //Checking whether textboxes are empty or not
             if (attempt != 0)
             {
+
                 if (UsernameTxt.Text.Trim() == string.Empty && PasswordTxt.Text.Trim() == string.Empty)
                 {
                     MessageBox.Show("Make sure you correctly fill up the form");
@@ -70,13 +70,14 @@ namespace SwiftPayroll
                         if (count == 1)
                         {
 
+
                             //notify
                             MessageBox.Show("Login Successfully");
                             // hide the MainForm
                             ParentForm.Hide();
-                            // displaying sencond form "Dashboard"
-                            Dashboard dashboard = new Dashboard();
-                            dashboard.ShowDialog();
+                            // displaying sencond form "loading screen form"
+                            LoadingScreenForm loading = new LoadingScreenForm();
+                            loading.ShowDialog();
                             //Closing 
                             ParentForm.Close();
                             //close connection 
@@ -118,7 +119,9 @@ namespace SwiftPayroll
             }
             else
             {
-                TimerCount.Start();
+                //Start timer if attempts = 0
+                timer1.Start();
+   
             }
 
 
@@ -160,47 +163,34 @@ namespace SwiftPayroll
 
             label1.Visible = false;
 
-            // Create a timer and set a 1 second interval.
-            System.Timers.Timer timer = new System.Timers.Timer();
-            TimerCount = timer;
-            TimerCount.Interval = 1000; // 1000 = 1 second interval
-            TimerCount.Elapsed += OnTimeEvent; //Hook up the Elapsed event for the timer.
-
 
         }
 
-        private void OnTimeEvent(object sender, System.Timers.ElapsedEventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
-            //lambda expression
-            Invoke(new Action(() =>
+            seconds -= 1; // decrement by 1
+            if (seconds != 0)
             {
-                seconds -= 1; // decrement by 1
-                if(seconds != 0)
-                {
-                    label1.Visible = true; // show timer text
-                    label2.Visible = false; // hide default text
-                    SignInBtn.Enabled = false; //unclickable button
-                    loginPicBox.Image = SwiftPayroll.Properties.Resources.locked; // change photo to lock
-                    label1.Text = $"Too many failed login attempts\r\n Please try again after {seconds}"; // timer text
-                    label1.ForeColor = Color.Red; // change to red forecolor
-                }
-                else
-                {
+                label1.Visible = true; // show timer text
+                label2.Visible = false; // hide default text
+                SignInBtn.Enabled = false; //unclickable button
+                loginPicBox.Image = SwiftPayroll.Properties.Resources.locked; // change photo to lock
+                label1.Text = $"Too many failed login attempts\r\n Please try again after {seconds}"; // timer text
+                label1.ForeColor = Color.Red; // change to red forecolor
 
-                    label1.Visible = false; //hide timer text
-                    label2.Visible = true; // show default text
-                    SignInBtn.Enabled = true; //clickable button
-                    loginPicBox.Image = SwiftPayroll.Properties.Resources.profile; // change to default photo
-                    TimerCount.Stop(); //stop timer if it reaches to 0
-                    seconds = 60; // reset to 60 seconds
-                    attempt = 3; // reset to 3 attempts
-                }
+            }
+            else
+            {
 
-            }));
-         
+                label1.Visible = false; //hide timer text
+                label2.Visible = true; // show default text
+                SignInBtn.Enabled = true; //clickable button
+                loginPicBox.Image = SwiftPayroll.Properties.Resources.profile; // change to default photo
+                timer1.Stop(); //stop timer if it reaches to 0
+                seconds = 60; // reset to 60 seconds
+                attempt = 3; // reset to 3 attempts
+            }
         }
-
-       
     }
 
   

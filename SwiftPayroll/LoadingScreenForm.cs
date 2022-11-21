@@ -36,7 +36,7 @@ namespace SwiftPayroll
                 timer1.Stop();
                 Hide();
                 // displaying sencond form "Dashboard"
-                Dashboard dashboard = new Dashboard();
+                DashboardForm dashboard = new DashboardForm();
                 dashboard.ShowDialog();
                 //Closing 
                 Close();

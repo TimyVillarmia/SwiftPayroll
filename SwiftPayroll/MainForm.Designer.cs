@@ -80,7 +80,7 @@ namespace SwiftPayroll
             this.HomeBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.HomeBtn.FillColor = System.Drawing.Color.Transparent;
             this.HomeBtn.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Bold);
-            this.HomeBtn.ForeColor = System.Drawing.Color.Black;
+            this.HomeBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.HomeBtn.Location = new System.Drawing.Point(481, 49);
             this.HomeBtn.Name = "HomeBtn";
             this.HomeBtn.Size = new System.Drawing.Size(148, 45);
@@ -97,7 +97,7 @@ namespace SwiftPayroll
             this.AboutBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.AboutBtn.FillColor = System.Drawing.Color.Transparent;
             this.AboutBtn.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Bold);
-            this.AboutBtn.ForeColor = System.Drawing.Color.Black;
+            this.AboutBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.AboutBtn.Location = new System.Drawing.Point(635, 49);
             this.AboutBtn.Name = "AboutBtn";
             this.AboutBtn.Size = new System.Drawing.Size(148, 45);
@@ -114,7 +114,7 @@ namespace SwiftPayroll
             this.TeamBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.TeamBtn.FillColor = System.Drawing.Color.Transparent;
             this.TeamBtn.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Bold);
-            this.TeamBtn.ForeColor = System.Drawing.Color.Black;
+            this.TeamBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.TeamBtn.Location = new System.Drawing.Point(789, 49);
             this.TeamBtn.Name = "TeamBtn";
             this.TeamBtn.Size = new System.Drawing.Size(148, 45);

@@ -11,12 +11,24 @@ namespace SwiftPayroll
     {
         //declare variables
         public MainForm MainForm;
+        private static string currentuser;
+        public string CurrentUser
+        {
+            get { return currentuser; }
+            set { currentuser = value; }
+        }
+
         int seconds = 60; 
         int attempt = 3;
         public LoginUC(MainForm form1)
         {
             InitializeComponent();
             MainForm = form1;
+        }
+
+        public LoginUC()
+        {
+
         }
 
         private void SignUpLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -65,12 +77,12 @@ namespace SwiftPayroll
                         cmd.Parameters.AddWithValue("@Password", PasswordTxt.Text);
                         //return The first column of the first row in the result set.
                         int count = Convert.ToInt32(cmd.ExecuteScalar());
+               
 
-                        // if count = 1 then the account exist ; else account doesn't exist
+                        //if count = 1 then the account exist; else account doesn't exist
                         if (count == 1)
                         {
-
-
+                            currentuser = PasswordTxt.Text;
                             //notify
                             MessageBox.Show("Login Successfully");
                             // hide the MainForm
@@ -83,9 +95,10 @@ namespace SwiftPayroll
                             //close connection 
 
 
-                            // Clear all entries
-                            UsernameTxt.Text = "";
-                            PasswordTxt.Text = "";
+
+                            //// Clear all entries
+                            //UsernameTxt.Text = "";
+                            //PasswordTxt.Text = "";
 
 
 
@@ -96,7 +109,7 @@ namespace SwiftPayroll
                             //notify
                             attempt -= 1;
                             MessageBox.Show($"Wrong username and password combination. {attempt} Attempts left");
-                          
+
                             //Disable();
 
 
@@ -191,6 +204,8 @@ namespace SwiftPayroll
                 attempt = 3; // reset to 3 attempts
             }
         }
+
+
     }
 
   

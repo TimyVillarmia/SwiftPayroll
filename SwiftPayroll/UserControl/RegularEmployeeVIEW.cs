@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -10,11 +11,16 @@ using System.Windows.Forms;
 
 namespace SwiftPayroll
 {
-    public partial class Dashboard : Form
+    public partial class RegularEmployeeVIEW : UserControl
     {
-        public Dashboard()
+        public RegularEmployeeVIEW()
         {
             InitializeComponent();
+        }
+
+        private void RegularEmployeeVIEW_Load(object sender, EventArgs e)
+        {
+     
         }
     }
 }

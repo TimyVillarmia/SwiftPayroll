@@ -98,11 +98,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dashboard.cs">
+    <Compile Include="DashboardForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dashboard.Designer.cs">
-      <DependentUpon>Dashboard.cs</DependentUpon>
+    <Compile Include="DashboardForm.Designer.cs">
+      <DependentUpon>DashboardForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoadingScreenForm.cs">
       <SubType>Form</SubType>
@@ -114,6 +114,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\RegularEmployeeVIEW.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\RegularEmployeeVIEW.Designer.cs">
+      <DependentUpon>RegularEmployeeVIEW.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl\RecoveryUC.cs">
       <SubType>UserControl</SubType>
@@ -154,11 +160,14 @@
       <DependentUpon>HomeUC.cs</DependentUpon>
     </Compile>
     <Compile Include="UserInfo.cs" />
-    <EmbeddedResource Include="Dashboard.resx">
-      <DependentUpon>Dashboard.cs</DependentUpon>
+    <EmbeddedResource Include="DashboardForm.resx">
+      <DependentUpon>DashboardForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoadingScreenForm.resx">
       <DependentUpon>LoadingScreenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\RegularEmployeeVIEW.resx">
+      <DependentUpon>RegularEmployeeVIEW.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\CreateUC.resx">
       <DependentUpon>CreateUC.cs</DependentUpon>
@@ -232,6 +241,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SWIFTPayroll Large.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dashboard - Default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Dashboard - Active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Employee - Active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Employees  - Default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Payroll - Active.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Profile - Default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Payroll - Default.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

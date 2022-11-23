@@ -192,6 +192,10 @@
     <EmbeddedResource Include="UserControl\TeamPageUC.resx">
       <DependentUpon>TeamPageUC.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Accounts.db" />
+    <None Include="bin\Debug\Accounts.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -233,9 +237,7 @@
   <ItemGroup>
     <None Include="Resources\profile.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Debug\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\locked.png" />
   </ItemGroup>

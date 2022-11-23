@@ -98,11 +98,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminDatabase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminDatabase.Designer.cs">
+      <DependentUpon>AdminDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminVIEW.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AdminVIEW.Designer.cs">
+      <DependentUpon>AdminVIEW.cs</DependentUpon>
+    </Compile>
     <Compile Include="DashboardForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DashboardForm.Designer.cs">
       <DependentUpon>DashboardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\HumanResourceVIEW.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\HumanResourceVIEW.Designer.cs">
+      <DependentUpon>HumanResourceVIEW.cs</DependentUpon>
     </Compile>
     <Compile Include="LoadingScreenForm.cs">
       <SubType>Form</SubType>
@@ -160,11 +178,20 @@
       <DependentUpon>HomeUC.cs</DependentUpon>
     </Compile>
     <Compile Include="UserInfo.cs" />
+    <EmbeddedResource Include="AdminDatabase.resx">
+      <DependentUpon>AdminDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminVIEW.resx">
+      <DependentUpon>AdminVIEW.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DashboardForm.resx">
       <DependentUpon>DashboardForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoadingScreenForm.resx">
       <DependentUpon>LoadingScreenForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\HumanResourceVIEW.resx">
+      <DependentUpon>HumanResourceVIEW.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\RegularEmployeeVIEW.resx">
       <DependentUpon>RegularEmployeeVIEW.cs</DependentUpon>
@@ -192,7 +219,6 @@
     <EmbeddedResource Include="UserControl\TeamPageUC.resx">
       <DependentUpon>TeamPageUC.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Accounts.db" />
     <None Include="bin\Debug\Accounts.db" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -235,7 +261,9 @@
   <ItemGroup>
     <None Include="Resources\profile.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Profile - Active.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\locked.png" />
   </ItemGroup>
@@ -262,6 +290,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Payroll - Default.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Database.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Database-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SignOut.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

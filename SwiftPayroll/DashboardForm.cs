@@ -43,11 +43,15 @@ namespace SwiftPayroll
 
             if (title == "admin")
             {
-                MessageBox.Show("You're an Admin");
+                AdminVIEW AdminVIEW = new AdminVIEW();
+                DashboardFormPanel.Controls.Add(AdminVIEW);
+                AdminVIEW.BringToFront();
             }
             else if (title == "HR")
             {
-                MessageBox.Show("You're a HR");
+                HumanResourceVIEW HrView = new HumanResourceVIEW();
+                DashboardFormPanel.Controls.Add(HrView);
+                HrView.BringToFront();
 
             }
             else

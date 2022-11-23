@@ -83,6 +83,26 @@ namespace SwiftPayroll.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Database {
+            get {
+                object obj = ResourceManager.GetObject("Database", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Database_1 {
+            get {
+                object obj = ResourceManager.GetObject("Database-1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Employee___Active {
             get {
                 object obj = ResourceManager.GetObject("Employee - Active", resourceCulture);
@@ -193,6 +213,16 @@ namespace SwiftPayroll.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Profile___Active {
+            get {
+                object obj = ResourceManager.GetObject("Profile - Active", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Profile___Default {
             get {
                 object obj = ResourceManager.GetObject("Profile - Default", resourceCulture);
@@ -206,6 +236,16 @@ namespace SwiftPayroll.Properties {
         internal static System.Drawing.Bitmap ShinleePic {
             get {
                 object obj = ResourceManager.GetObject("ShinleePic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SignOut {
+            get {
+                object obj = ResourceManager.GetObject("SignOut", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

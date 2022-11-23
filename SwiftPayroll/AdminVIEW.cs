@@ -11,16 +11,11 @@ using System.Windows.Forms;
 
 namespace SwiftPayroll
 {
-    public partial class RegularEmployeeVIEW : UserControl
+    public partial class AdminVIEW : UserControl
     {
-        public RegularEmployeeVIEW()
+        public AdminVIEW()
         {
             InitializeComponent();
-        }
-
-        private void RegularEmployeeVIEW_Load(object sender, EventArgs e)
-        {
-     
         }
 
         private void SignOutBtn_Click(object sender, EventArgs e)
@@ -29,6 +24,14 @@ namespace SwiftPayroll
             MainForm mainForm = new MainForm();
             mainForm.ShowDialog();
             ParentForm.Close();
+        }
+
+        private void AdminVIEW_Load(object sender, EventArgs e)
+        {
+            AdminDatabase database = new AdminDatabase();
+            DashBoardPanel.Controls.Add(database);
+            database.BringToFront();
+
         }
     }
 }

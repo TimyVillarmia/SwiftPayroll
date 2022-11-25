@@ -53,7 +53,8 @@ namespace SwiftPayroll
         private void CreateAccountBtn_Click(object sender, EventArgs e)
         {
             //Instantiate SQLiteConnect object which is used for opening connection to the database
-            SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
+            DatabaseClass db = new DatabaseClass();
+            //SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
 
 
             //check if data entries exist
@@ -81,11 +82,11 @@ namespace SwiftPayroll
                     UserInfo user = new UserInfo(FirstNameTxt.Text.Trim(), LastNameTxt.Text.Trim(), "", UsernameTxt.Text.Trim(), PasswordTxt.Text.Trim(), EmailTxt.Text.Trim(), "", "", "");
                     // creating a string variable "query" with a "INSERT" Statement
                     string query = "INSERT INTO Accounts(firstname,lastname,username,password,email) VALUES(@first,@last,@username,@password,@email);";
-
+                    
                     //Accessing the "Open" property of SQLiteConnection to "Open" the connection
-                    connection.Open();
+                    db.connect.Open();
                     //instantiating SQLiteCommand object and accepts 2 arguments
-                    SQLiteCommand cmd = new SQLiteCommand(query, connection);
+                    SQLiteCommand cmd = new SQLiteCommand(query, db.connect);
                     //Set the values for each parameters
                     //cmd.Parameters.AddWithValue("ParameterName", ActualValue) base on VALUES(@Username,@Password,@Email)
                     cmd.Parameters.AddWithValue("@first", user.FirstName);
@@ -118,8 +119,8 @@ namespace SwiftPayroll
                 }
                 finally
                 {
-                    connection.Close();
-                    connection.Dispose();
+                    db.connect.Close();
+                    db.connect.Dispose();
 
   
 

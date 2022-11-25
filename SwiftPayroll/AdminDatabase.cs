@@ -20,14 +20,15 @@ namespace SwiftPayroll
 
         private void AdminDatabase_Load(object sender, EventArgs e)
         {
-            SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
-            connection.Open();
-            SQLiteDataAdapter adapter = new SQLiteDataAdapter("SELECT * FROM Accounts", connection);
+            DatabaseClass db = new DatabaseClass();
+            //SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
+            db.connect.Open();
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter("SELECT * FROM Accounts", db.connect);
             DataSet dset = new DataSet();
             adapter.Fill(dset);
             DataGridView.DataSource = dset.Tables[0];
-            connection.Close();
-            connection.Dispose();
+            db.connect.Close();
+            db.connect.Dispose();
         }
     }
 }

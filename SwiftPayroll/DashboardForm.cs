@@ -24,10 +24,11 @@ namespace SwiftPayroll
         {
             LoginUC user = new LoginUC();
             string title ="";
-            SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
+            DatabaseClass db = new DatabaseClass();
+            //SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
             string query = "SELECT title FROM Accounts WHERE username=@Username";
-            connection.Open();
-            SQLiteCommand cmd = new SQLiteCommand(query, connection);
+            db.connect.Open();
+            SQLiteCommand cmd = new SQLiteCommand(query, db.connect);
             cmd.Parameters.AddWithValue("@Username", user.CurrentUser);
             //return The first column of the first row in the result set.
             SQLiteDataReader data = cmd.ExecuteReader();
@@ -60,6 +61,9 @@ namespace SwiftPayroll
                 DashboardFormPanel.Controls.Add(employeeVIEW);
                 employeeVIEW.BringToFront();
             }
+
+            db.connect.Close();
+            db.connect.Dispose();
 
 
 

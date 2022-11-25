@@ -55,8 +55,8 @@ namespace SwiftPayroll
 
         private void SignInBtn_Click(object sender, EventArgs e)
         {
-
-            SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
+            DatabaseClass db = new DatabaseClass();
+            //SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
             //Checking whether textboxes are empty or not
             if (attempt != 0)
             {
@@ -71,8 +71,8 @@ namespace SwiftPayroll
                     try
                     {
                         string query = "SELECT count(*) FROM Accounts WHERE username = @Username AND password = @Password";
-                        connection.Open();
-                        SQLiteCommand cmd = new SQLiteCommand(query, connection);
+                        db.connect.Open();
+                        SQLiteCommand cmd = new SQLiteCommand(query, db.connect);
                         cmd.Parameters.AddWithValue("@Username", UsernameTxt.Text);
                         cmd.Parameters.AddWithValue("@Password", PasswordTxt.Text);
                         //return The first column of the first row in the result set.
@@ -124,8 +124,8 @@ namespace SwiftPayroll
                     }
                     finally
                     {
-                        connection.Close();
-                        connection.Dispose();
+                        db.connect.Close();
+                        db.connect.Dispose();
                     }
 
                 }

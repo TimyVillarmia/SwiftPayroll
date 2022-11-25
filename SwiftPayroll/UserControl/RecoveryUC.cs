@@ -112,7 +112,8 @@ namespace SwiftPayroll
         private void RecoverBtn_Click(object sender, EventArgs e)
         {
             //Instantiate SQLiteConnect object which is used for opening connection to the database
-            SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
+            DatabaseClass db = new DatabaseClass();
+            //SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
 
             //Guard Clause Technique
 
@@ -138,8 +139,8 @@ namespace SwiftPayroll
                     string query = "UPDATE Accounts SET password=@Password WHERE email = @Email;";
 
                     //Accessing the "Open" property of SQLiteConnection to "Open" the connection
-                    connection.Open();
-                    SQLiteCommand cmd = new SQLiteCommand(query, connection);
+                    db.connect.Open();
+                    SQLiteCommand cmd = new SQLiteCommand(query, db.connect);
                     cmd.Parameters.AddWithValue("@Email", EmailTxt.Text);
                     cmd.Parameters.AddWithValue("@Password", PasswordTxt.Text);
                     cmd.ExecuteNonQuery();
@@ -160,8 +161,8 @@ namespace SwiftPayroll
                 }
                 finally
                 {
-                    connection.Close();
-                    connection.Dispose();
+                    db.connect.Close();
+                    db.connect.Dispose();
                 }
             }
 

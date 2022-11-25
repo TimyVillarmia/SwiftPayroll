@@ -246,7 +246,7 @@ namespace SwiftPayroll
             TimerCount.Stop();
             Document doc = new Document();
             //string file_name = $"{GenerateFileName()}_PayslipReport.pdf";
-            PdfWriter.GetInstance(doc, new FileStream("/test.pdf", FileMode.Create));
+            PdfWriter.GetInstance(doc, new FileStream("test.pdf", FileMode.Create));
             doc.Open();
             Paragraph pl = new Paragraph("Hello");
             doc.Add(pl);

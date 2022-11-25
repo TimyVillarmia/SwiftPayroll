@@ -28,7 +28,7 @@ namespace SwiftPayroll
 
         private void AdminVIEW_Load(object sender, EventArgs e)
         {
-            AdminDatabase database = new AdminDatabase();
+            AdminDatabaseTAB database = new AdminDatabaseTAB();
             DashBoardPanel.Controls.Add(database);
             database.BringToFront();
 

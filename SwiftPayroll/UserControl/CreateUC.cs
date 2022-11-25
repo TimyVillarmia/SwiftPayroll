@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.WebRequestMethods;
 
 namespace SwiftPayroll
 {
@@ -50,6 +51,20 @@ namespace SwiftPayroll
             }
         }
 
+        public string GenerateEmployeeID()
+        {
+           
+            string month, year, EmployeeID;
+            string min, sec;
+            month = DateTime.Now.Month.ToString();
+            year = DateTime.Now.Year.ToString();
+
+            min = DateTime.Now.Minute.ToString();
+            sec = DateTime.Now.Second.ToString();
+
+            return EmployeeID = year + "-" + month + min + sec;
+        }
+
         private void CreateAccountBtn_Click(object sender, EventArgs e)
         {
             //Instantiate SQLiteConnect object which is used for opening connection to the database
@@ -79,9 +94,10 @@ namespace SwiftPayroll
                 try
                 {
 
-                    UserInfo user = new UserInfo(FirstNameTxt.Text.Trim(), LastNameTxt.Text.Trim(), "", UsernameTxt.Text.Trim(), PasswordTxt.Text.Trim(), EmailTxt.Text.Trim(), "", "", "");
+
+                    UserInfo user = new UserInfo(GenerateEmployeeID(), FirstNameTxt.Text.Trim(), LastNameTxt.Text.Trim(), "", UsernameTxt.Text.Trim(), PasswordTxt.Text.Trim(), EmailTxt.Text.Trim(), "", "", "");
                     // creating a string variable "query" with a "INSERT" Statement
-                    string query = "INSERT INTO Accounts(firstname,lastname,username,password,email) VALUES(@first,@last,@username,@password,@email);";
+                    string query = "INSERT INTO Accounts(employeeID,firstname,lastname,username,password,email) VALUES(@employeeid,@first,@last,@username,@password,@email);";
                     
                     //Accessing the "Open" property of SQLiteConnection to "Open" the connection
                     db.connect.Open();
@@ -89,6 +105,7 @@ namespace SwiftPayroll
                     SQLiteCommand cmd = new SQLiteCommand(query, db.connect);
                     //Set the values for each parameters
                     //cmd.Parameters.AddWithValue("ParameterName", ActualValue) base on VALUES(@Username,@Password,@Email)
+                    cmd.Parameters.AddWithValue("@employeeid", user.EmployeeID);
                     cmd.Parameters.AddWithValue("@first", user.FirstName);
                     cmd.Parameters.AddWithValue("@last", user.LastName);
                     cmd.Parameters.AddWithValue("@username", user.UserName);

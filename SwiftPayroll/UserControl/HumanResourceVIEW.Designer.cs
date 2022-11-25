@@ -31,25 +31,25 @@
             this.DashBoardPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.SideBarPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.PayrollBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.SignOutBtn = new Guna.UI2.WinForms.Guna2Button();
             this.ProfileBtn = new Guna.UI2.WinForms.Guna2Button();
             this.DashboardBtn = new Guna.UI2.WinForms.Guna2Button();
             this.label3 = new System.Windows.Forms.Label();
             this.JobTitleLbl = new System.Windows.Forms.Label();
             this.UsernameLbl = new System.Windows.Forms.Label();
-            this.EmployeeBtn = new Guna.UI2.WinForms.Guna2Button();
-            this.UserProfilePic = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.SignOutBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.PayrollBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.EmployeeBtn = new Guna.UI2.WinForms.Guna2Button();
             this.SideBarPanel.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UserProfilePic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // DashBoardPanel
             // 
-            this.DashBoardPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.DashBoardPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
             this.DashBoardPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DashBoardPanel.Location = new System.Drawing.Point(216, 0);
             this.DashBoardPanel.Name = "DashBoardPanel";
@@ -59,11 +59,11 @@
             // SideBarPanel
             // 
             this.SideBarPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
+            this.SideBarPanel.Controls.Add(this.guna2CirclePictureBox1);
             this.SideBarPanel.Controls.Add(this.guna2Panel1);
             this.SideBarPanel.Controls.Add(this.label3);
             this.SideBarPanel.Controls.Add(this.JobTitleLbl);
             this.SideBarPanel.Controls.Add(this.UsernameLbl);
-            this.SideBarPanel.Controls.Add(this.UserProfilePic);
             this.SideBarPanel.Controls.Add(this.guna2PictureBox1);
             this.SideBarPanel.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.SideBarPanel.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 1, 0);
@@ -76,9 +76,9 @@
             // guna2Panel1
             // 
             this.guna2Panel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
-            this.guna2Panel1.Controls.Add(this.SignOutBtn);
             this.guna2Panel1.Controls.Add(this.EmployeeBtn);
             this.guna2Panel1.Controls.Add(this.PayrollBtn);
+            this.guna2Panel1.Controls.Add(this.SignOutBtn);
             this.guna2Panel1.Controls.Add(this.ProfileBtn);
             this.guna2Panel1.Controls.Add(this.DashboardBtn);
             this.guna2Panel1.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
@@ -89,32 +89,32 @@
             this.guna2Panel1.Size = new System.Drawing.Size(216, 453);
             this.guna2Panel1.TabIndex = 13;
             // 
-            // PayrollBtn
+            // SignOutBtn
             // 
-            this.PayrollBtn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.PayrollBtn.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(70)))), ((int)(((byte)(234)))));
-            this.PayrollBtn.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
-            this.PayrollBtn.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
-            this.PayrollBtn.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.PayrollBtn.CustomImages.CheckedImage = global::SwiftPayroll.Properties.Resources.Payroll___Active;
-            this.PayrollBtn.CustomImages.Image = global::SwiftPayroll.Properties.Resources.Payroll___Default;
-            this.PayrollBtn.CustomImages.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.PayrollBtn.CustomImages.ImageOffset = new System.Drawing.Point(15, 0);
-            this.PayrollBtn.CustomImages.ImageSize = new System.Drawing.Size(35, 35);
-            this.PayrollBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.PayrollBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.PayrollBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.PayrollBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.PayrollBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PayrollBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
-            this.PayrollBtn.Font = new System.Drawing.Font("Montserrat SemiBold", 14.25F, System.Drawing.FontStyle.Bold);
-            this.PayrollBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
-            this.PayrollBtn.Location = new System.Drawing.Point(0, 90);
-            this.PayrollBtn.Name = "PayrollBtn";
-            this.PayrollBtn.Size = new System.Drawing.Size(216, 45);
-            this.PayrollBtn.TabIndex = 4;
-            this.PayrollBtn.Text = "Payroll";
-            this.PayrollBtn.TextOffset = new System.Drawing.Point(-5, 0);
+            this.SignOutBtn.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(70)))), ((int)(((byte)(234)))));
+            this.SignOutBtn.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.SignOutBtn.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
+            this.SignOutBtn.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.SignOutBtn.CustomImages.CheckedImage = global::SwiftPayroll.Properties.Resources.Payroll___Active;
+            this.SignOutBtn.CustomImages.Image = global::SwiftPayroll.Properties.Resources.SignOut;
+            this.SignOutBtn.CustomImages.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.SignOutBtn.CustomImages.ImageOffset = new System.Drawing.Point(15, 0);
+            this.SignOutBtn.CustomImages.ImageSize = new System.Drawing.Size(30, 30);
+            this.SignOutBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.SignOutBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.SignOutBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.SignOutBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.SignOutBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.SignOutBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.SignOutBtn.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SignOutBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
+            this.SignOutBtn.Location = new System.Drawing.Point(0, 408);
+            this.SignOutBtn.Name = "SignOutBtn";
+            this.SignOutBtn.Size = new System.Drawing.Size(216, 45);
+            this.SignOutBtn.TabIndex = 6;
+            this.SignOutBtn.Text = "Sign Out";
+            this.SignOutBtn.TextOffset = new System.Drawing.Point(-5, 0);
+            this.SignOutBtn.Click += new System.EventHandler(this.SignOutBtn_Click);
             // 
             // ProfileBtn
             // 
@@ -142,6 +142,7 @@
             this.ProfileBtn.TabIndex = 3;
             this.ProfileBtn.Text = "Profile";
             this.ProfileBtn.TextOffset = new System.Drawing.Point(-8, 0);
+            this.ProfileBtn.Click += new System.EventHandler(this.ProfileBtn_Click);
             // 
             // DashboardBtn
             // 
@@ -203,6 +204,56 @@
             this.UsernameLbl.TabIndex = 9;
             this.UsernameLbl.Text = "John Doe";
             // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.Image = global::SwiftPayroll.Properties.Resources.SWIFTPayroll;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(22, 57);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(173, 24);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.guna2PictureBox1.TabIndex = 7;
+            this.guna2PictureBox1.TabStop = false;
+            // 
+            // guna2CirclePictureBox1
+            // 
+            this.guna2CirclePictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.guna2CirclePictureBox1.ImageRotate = 0F;
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(46, 127);
+            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
+            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(120, 120);
+            this.guna2CirclePictureBox1.TabIndex = 26;
+            this.guna2CirclePictureBox1.TabStop = false;
+            // 
+            // PayrollBtn
+            // 
+            this.PayrollBtn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.PayrollBtn.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(70)))), ((int)(((byte)(234)))));
+            this.PayrollBtn.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.PayrollBtn.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
+            this.PayrollBtn.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.PayrollBtn.CustomImages.CheckedImage = global::SwiftPayroll.Properties.Resources.Payroll___Active;
+            this.PayrollBtn.CustomImages.Image = global::SwiftPayroll.Properties.Resources.Payroll___Default;
+            this.PayrollBtn.CustomImages.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.PayrollBtn.CustomImages.ImageOffset = new System.Drawing.Point(15, 0);
+            this.PayrollBtn.CustomImages.ImageSize = new System.Drawing.Size(35, 35);
+            this.PayrollBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.PayrollBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.PayrollBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.PayrollBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.PayrollBtn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PayrollBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.PayrollBtn.Font = new System.Drawing.Font("Montserrat SemiBold", 14.25F, System.Drawing.FontStyle.Bold);
+            this.PayrollBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
+            this.PayrollBtn.Location = new System.Drawing.Point(0, 90);
+            this.PayrollBtn.Name = "PayrollBtn";
+            this.PayrollBtn.Size = new System.Drawing.Size(216, 45);
+            this.PayrollBtn.TabIndex = 8;
+            this.PayrollBtn.Text = "Payroll";
+            this.PayrollBtn.TextOffset = new System.Drawing.Point(-5, 0);
+            this.PayrollBtn.Click += new System.EventHandler(this.PayrollBtn_Click);
+            // 
             // EmployeeBtn
             // 
             this.EmployeeBtn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
@@ -226,58 +277,9 @@
             this.EmployeeBtn.Location = new System.Drawing.Point(0, 135);
             this.EmployeeBtn.Name = "EmployeeBtn";
             this.EmployeeBtn.Size = new System.Drawing.Size(216, 45);
-            this.EmployeeBtn.TabIndex = 5;
+            this.EmployeeBtn.TabIndex = 9;
             this.EmployeeBtn.Text = "Employees";
             this.EmployeeBtn.TextOffset = new System.Drawing.Point(15, 0);
-            // 
-            // UserProfilePic
-            // 
-            this.UserProfilePic.BackColor = System.Drawing.Color.DimGray;
-            this.UserProfilePic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.UserProfilePic.ImageRotate = 0F;
-            this.UserProfilePic.Location = new System.Drawing.Point(46, 127);
-            this.UserProfilePic.Name = "UserProfilePic";
-            this.UserProfilePic.Size = new System.Drawing.Size(120, 120);
-            this.UserProfilePic.TabIndex = 8;
-            this.UserProfilePic.TabStop = false;
-            // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.Image = global::SwiftPayroll.Properties.Resources.SWIFTPayroll;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(22, 57);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(173, 24);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.guna2PictureBox1.TabIndex = 7;
-            this.guna2PictureBox1.TabStop = false;
-            // 
-            // SignOutBtn
-            // 
-            this.SignOutBtn.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(70)))), ((int)(((byte)(234)))));
-            this.SignOutBtn.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
-            this.SignOutBtn.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
-            this.SignOutBtn.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.SignOutBtn.CustomImages.CheckedImage = global::SwiftPayroll.Properties.Resources.Payroll___Active;
-            this.SignOutBtn.CustomImages.Image = global::SwiftPayroll.Properties.Resources.SignOut;
-            this.SignOutBtn.CustomImages.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.SignOutBtn.CustomImages.ImageOffset = new System.Drawing.Point(15, 0);
-            this.SignOutBtn.CustomImages.ImageSize = new System.Drawing.Size(30, 30);
-            this.SignOutBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.SignOutBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.SignOutBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.SignOutBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.SignOutBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SignOutBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
-            this.SignOutBtn.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SignOutBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
-            this.SignOutBtn.Location = new System.Drawing.Point(0, 408);
-            this.SignOutBtn.Name = "SignOutBtn";
-            this.SignOutBtn.Size = new System.Drawing.Size(216, 45);
-            this.SignOutBtn.TabIndex = 6;
-            this.SignOutBtn.Text = "Sign Out";
-            this.SignOutBtn.TextOffset = new System.Drawing.Point(-5, 0);
-            this.SignOutBtn.Click += new System.EventHandler(this.SignOutBtn_Click);
             // 
             // HumanResourceVIEW
             // 
@@ -291,8 +293,8 @@
             this.SideBarPanel.ResumeLayout(false);
             this.SideBarPanel.PerformLayout();
             this.guna2Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.UserProfilePic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -302,15 +304,15 @@
         private Guna.UI2.WinForms.Guna2Panel DashBoardPanel;
         private Guna.UI2.WinForms.Guna2Panel SideBarPanel;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2Button PayrollBtn;
         private Guna.UI2.WinForms.Guna2Button ProfileBtn;
         private Guna.UI2.WinForms.Guna2Button DashboardBtn;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label JobTitleLbl;
         private System.Windows.Forms.Label UsernameLbl;
-        private Guna.UI2.WinForms.Guna2PictureBox UserProfilePic;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private Guna.UI2.WinForms.Guna2Button EmployeeBtn;
         private Guna.UI2.WinForms.Guna2Button SignOutBtn;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
+        private Guna.UI2.WinForms.Guna2Button EmployeeBtn;
+        private Guna.UI2.WinForms.Guna2Button PayrollBtn;
     }
 }

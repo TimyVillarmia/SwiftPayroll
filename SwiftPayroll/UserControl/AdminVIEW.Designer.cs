@@ -31,13 +31,13 @@
             this.DashBoardPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.SideBarPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.SignOutBtn = new Guna.UI2.WinForms.Guna2Button();
             this.EmployeeBtn = new Guna.UI2.WinForms.Guna2Button();
             this.label3 = new System.Windows.Forms.Label();
             this.JobTitleLbl = new System.Windows.Forms.Label();
             this.UsernameLbl = new System.Windows.Forms.Label();
             this.UserProfilePic = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.SignOutBtn = new Guna.UI2.WinForms.Guna2Button();
             this.SideBarPanel.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UserProfilePic)).BeginInit();
@@ -82,6 +82,33 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(216, 453);
             this.guna2Panel1.TabIndex = 13;
+            // 
+            // SignOutBtn
+            // 
+            this.SignOutBtn.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(70)))), ((int)(((byte)(234)))));
+            this.SignOutBtn.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.SignOutBtn.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
+            this.SignOutBtn.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            this.SignOutBtn.CustomImages.CheckedImage = global::SwiftPayroll.Properties.Resources.Payroll___Active;
+            this.SignOutBtn.CustomImages.Image = global::SwiftPayroll.Properties.Resources.SignOut;
+            this.SignOutBtn.CustomImages.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.SignOutBtn.CustomImages.ImageOffset = new System.Drawing.Point(15, 0);
+            this.SignOutBtn.CustomImages.ImageSize = new System.Drawing.Size(30, 30);
+            this.SignOutBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.SignOutBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.SignOutBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.SignOutBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.SignOutBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.SignOutBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
+            this.SignOutBtn.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SignOutBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
+            this.SignOutBtn.Location = new System.Drawing.Point(0, 408);
+            this.SignOutBtn.Name = "SignOutBtn";
+            this.SignOutBtn.Size = new System.Drawing.Size(216, 45);
+            this.SignOutBtn.TabIndex = 6;
+            this.SignOutBtn.Text = "Sign Out";
+            this.SignOutBtn.TextOffset = new System.Drawing.Point(-5, 0);
+            this.SignOutBtn.Click += new System.EventHandler(this.SignOutBtn_Click);
             // 
             // EmployeeBtn
             // 
@@ -165,33 +192,6 @@
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2PictureBox1.TabIndex = 7;
             this.guna2PictureBox1.TabStop = false;
-            // 
-            // SignOutBtn
-            // 
-            this.SignOutBtn.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(70)))), ((int)(((byte)(234)))));
-            this.SignOutBtn.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
-            this.SignOutBtn.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
-            this.SignOutBtn.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.SignOutBtn.CustomImages.CheckedImage = global::SwiftPayroll.Properties.Resources.Payroll___Active;
-            this.SignOutBtn.CustomImages.Image = global::SwiftPayroll.Properties.Resources.SignOut;
-            this.SignOutBtn.CustomImages.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.SignOutBtn.CustomImages.ImageOffset = new System.Drawing.Point(15, 0);
-            this.SignOutBtn.CustomImages.ImageSize = new System.Drawing.Size(30, 30);
-            this.SignOutBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.SignOutBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.SignOutBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.SignOutBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.SignOutBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.SignOutBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
-            this.SignOutBtn.Font = new System.Drawing.Font("Montserrat", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SignOutBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
-            this.SignOutBtn.Location = new System.Drawing.Point(0, 408);
-            this.SignOutBtn.Name = "SignOutBtn";
-            this.SignOutBtn.Size = new System.Drawing.Size(216, 45);
-            this.SignOutBtn.TabIndex = 6;
-            this.SignOutBtn.Text = "Sign Out";
-            this.SignOutBtn.TextOffset = new System.Drawing.Point(-5, 0);
-            this.SignOutBtn.Click += new System.EventHandler(this.SignOutBtn_Click);
             // 
             // AdminVIEW
             // 

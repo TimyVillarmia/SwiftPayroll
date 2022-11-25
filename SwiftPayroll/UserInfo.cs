@@ -15,6 +15,7 @@ namespace SwiftPayroll
         // necessary entries for user
 
         
+        public string EmployeeID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Sex { get; set; }
@@ -28,8 +29,9 @@ namespace SwiftPayroll
 
 
 
-        public UserInfo(string first,string last, string sex,string username, string password, string email_Address,string address, string title,string type)
+        public UserInfo(string employeeid,string first,string last, string sex,string username, string password, string email_Address,string address, string title,string type)
         {
+            EmployeeID = employeeid;
             FirstName = first;
             LastName = last;
             Sex = sex;

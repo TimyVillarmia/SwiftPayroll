@@ -32,15 +32,13 @@ namespace SwiftPayroll
             cmd.Parameters.AddWithValue("@Username", user.CurrentUser);
             //return The first column of the first row in the result set.
             SQLiteDataReader data = cmd.ExecuteReader();
+            data.Read();
+            title = $"{data["title"]}";
 
 
-            if (data.HasRows)
-            {
-                while (data.Read())
-                {
-                    title = $"{data["title"]}";
-                }
-            }
+
+
+
 
             if (title == "admin")
             {

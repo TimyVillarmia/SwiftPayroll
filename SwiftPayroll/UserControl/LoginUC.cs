@@ -68,6 +68,9 @@ namespace SwiftPayroll
                 }
                 else
                 {
+
+
+
                     try
                     {
                         string query = "SELECT count(*) FROM Accounts WHERE username = @Username AND password = @Password";
@@ -77,12 +80,12 @@ namespace SwiftPayroll
                         cmd.Parameters.AddWithValue("@Password", PasswordTxt.Text);
                         //return The first column of the first row in the result set.
                         int count = Convert.ToInt32(cmd.ExecuteScalar());
-               
+
 
                         //if count = 1 then the account exist; else account doesn't exist
                         if (count == 1)
                         {
-                            currentuser = PasswordTxt.Text;
+                            currentuser = UsernameTxt.Text;
                             //notify
                             MessageBox.Show("Login Successfully");
                             // hide the MainForm
@@ -117,7 +120,7 @@ namespace SwiftPayroll
 
                         }
                     }
-                    catch
+                    catch (Exception)
                     {
                         MessageBox.Show("Unable to login, please try again later");
 

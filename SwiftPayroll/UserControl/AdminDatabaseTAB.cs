@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace SwiftPayroll
 {
-    public partial class AdminDatabase : UserControl
+    public partial class AdminDatabaseTAB : UserControl
     {
-        public AdminDatabase()
+        public AdminDatabaseTAB()
         {
             InitializeComponent();
         }

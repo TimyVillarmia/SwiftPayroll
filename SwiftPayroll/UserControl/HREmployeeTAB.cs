@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.OleDb;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
@@ -12,26 +11,26 @@ using System.Windows.Forms;
 
 namespace SwiftPayroll
 {
-    public partial class AdminDatabaseTAB : UserControl
+    public partial class HREmployeeTAB : UserControl
     {
         private static string employee;
         public string SelectedEmployee
         {
             get { return employee; }
-            set { employee = value;}
+            set { employee = value; }
         }
-        public AdminDatabaseTAB()
+
+        public HREmployeeTAB()
         {
             InitializeComponent();
         }
 
-        private void AdminDatabase_Load(object sender, EventArgs e)
+        private void HREmployeeTAB_Load(object sender, EventArgs e)
         {
-
             DatabaseClass db = new DatabaseClass();
             //SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
             db.connect.Open();
-            SQLiteDataAdapter adapter = new SQLiteDataAdapter("SELECT employeeID, firstname, lastname, username, password, email FROM Accounts", db.connect);
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter("SELECT employeeID, firstname, lastname, sex, status, title, type, department FROM Accounts", db.connect);
             DataSet dset = new DataSet();
             adapter.Fill(dset);
             DataGridView.DataSource = dset.Tables[0];
@@ -55,13 +54,11 @@ namespace SwiftPayroll
             db.connect.Close();
             db.connect.Dispose();
         }
-       
 
         private void DataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DatabaseClass db = new DatabaseClass();
-            AccountInfo_AdminForm info_form = new AccountInfo_AdminForm();
-
+            AccountInfo_HRForm info_form = new AccountInfo_HRForm();
 
 
 
@@ -74,9 +71,10 @@ namespace SwiftPayroll
                     string Selected_EmployeeID = DataGridView.Rows[e.RowIndex].Cells["EmployeeID"].Value.ToString();
                     SelectedEmployee = Selected_EmployeeID;
                     info_form.ShowDialog();
+
                 }
-                else if (DataGridView.Columns[e.ColumnIndex].Name == "Delete") 
-                {
+                else if (DataGridView.Columns[e.ColumnIndex].Name == "Delete")
+                { 
                     // get user's dialog result ? Yes or NO
                     DialogResult dialogResult = MessageBox.Show("Are you sure to delete", "", MessageBoxButtons.YesNo);
 
@@ -94,17 +92,18 @@ namespace SwiftPayroll
                         cmd.Parameters.AddWithValue("@Selected_employee", Selected_EmployeeID);
                         cmd.ExecuteNonQuery();
                     }
-                
-              
+
+
                 }
             }
             catch
             {
                 MessageBox.Show("Unable to delete/edit, please connect the admins");
+
             }
             finally
             {
-                db.connect.Close(); 
+                db.connect.Close();
                 db.connect.Dispose();
 
 

@@ -58,6 +58,7 @@ namespace SwiftPayroll
                 FullnameLbl.Text = $"{data["firstname"]} {data["lastname"]}";
                 EmployeeIDLbl.Text = $"{data["employeeID"]}";
                 TitleLbl.Text = $"{data["title"]}";
+                TypeLbl.Text = $"{data["type"]}";
                 DepartmentLbl.Text = $"{data["department"]}";
                 EmailLbl.Text = $"{data["email"]}";
                 ContactLbl.Text = $"{data["contactnumber"]}";
@@ -126,60 +127,67 @@ namespace SwiftPayroll
 
             DatabaseClass db = new DatabaseClass();
             LoginUC CurrentUser = new LoginUC();
-            try
+
+            if (FirstnameTxt.Text != string.Empty && LastnameTxt.Text != string.Empty && PasswordTxt.Text != string.Empty && ContactTxt.Text != string.Empty && EmailTxt.Text != string.Empty && AddressTxt.Text != string.Empty)
             {
-                string query = "UPDATE Accounts SET sex=@sex,firstname=@first,lastname=@last,password=@password,email=@email,contactnumber=@contact,address=@address WHERE username=@currentuser;";
+                try
+                {
+                    string query = "UPDATE Accounts SET sex=@sex,firstname=@first,lastname=@last,password=@password,email=@email,contactnumber=@contact,address=@address WHERE username=@currentuser;";
 
-                //Accessing the "Open" property of SQLiteConnection to "Open" the connection
-                db.connect.Open();
-                //instantiating SQLiteCommand object and accepts 2 arguments
-                SQLiteCommand cmd = new SQLiteCommand(query, db.connect);
-                //Set the values for each parameters
-                //cmd.Parameters.AddWithValue("ParameterName", ActualValue) base on VALUES(@Username,@Password,@Email)
-                cmd.Parameters.AddWithValue("@sex", SexComboBox.SelectedItem);
-                cmd.Parameters.AddWithValue("@first", FirstnameTxt.Text);
-                cmd.Parameters.AddWithValue("@last", LastnameTxt.Text);
-                cmd.Parameters.AddWithValue("@currentuser", CurrentUser.CurrentUser);
-                cmd.Parameters.AddWithValue("@password", PasswordTxt.Text);
-                cmd.Parameters.AddWithValue("@email", EmailTxt.Text);
-                cmd.Parameters.AddWithValue("@contact", ContactTxt.Text);
-                cmd.Parameters.AddWithValue("@address", AddressTxt.Text);
-                //ExecuteNonQuery - execute The Command
-                cmd.ExecuteNonQuery();
+                    //Accessing the "Open" property of SQLiteConnection to "Open" the connection
+                    db.connect.Open();
+                    //instantiating SQLiteCommand object and accepts 2 arguments
+                    SQLiteCommand cmd = new SQLiteCommand(query, db.connect);
+                    //Set the values for each parameters
+                    //cmd.Parameters.AddWithValue("ParameterName", ActualValue) base on VALUES(@Username,@Password,@Email)
+                    cmd.Parameters.AddWithValue("@sex", SexComboBox.SelectedItem);
+                    cmd.Parameters.AddWithValue("@first", FirstnameTxt.Text);
+                    cmd.Parameters.AddWithValue("@last", LastnameTxt.Text);
+                    cmd.Parameters.AddWithValue("@currentuser", CurrentUser.CurrentUser);
+                    cmd.Parameters.AddWithValue("@password", PasswordTxt.Text);
+                    cmd.Parameters.AddWithValue("@email", EmailTxt.Text);
+                    cmd.Parameters.AddWithValue("@contact", ContactTxt.Text);
+                    cmd.Parameters.AddWithValue("@address", AddressTxt.Text);
+                    //ExecuteNonQuery - execute The Command
+                    cmd.ExecuteNonQuery();
 
 
 
+
+                    //lock textbox
+                    FirstnameTxt.Enabled = false;
+                    LastnameTxt.Enabled = false;
+                    UsernameTxt.Enabled = false;
+                    PasswordTxt.Enabled = false;
+                    SexComboBox.Enabled = false;
+                    ContactTxt.Enabled = false;
+                    EmailTxt.Enabled = false;
+                    AddressTxt.Enabled = false;
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Unable to update your information");
+
+
+                }
+                finally
+                {
+
+                    db.connect.Close();
+                    db.connect.Dispose();
+
+
+
+                }
 
             }
-            catch (Exception)
+            else
             {
-
                 MessageBox.Show("Kindly complete the form");
 
             }
-            finally
-            {
 
-                db.connect.Close();
-                db.connect.Dispose();
-
-
-
-            }
-
-
-
-            //lock textbox
-            FirstnameTxt.Enabled = false;
-            LastnameTxt.Enabled = false;
-            UsernameTxt.Enabled = false;
-            PasswordTxt.Enabled = false;
-            SexComboBox.Enabled = false;
-            ContactTxt.Enabled = false;
-            EmailTxt.Enabled = false;
-            AddressTxt.Enabled = false;
-
-          
 
 
 

@@ -25,43 +25,62 @@ namespace SwiftPayroll
             LoginUC user = new LoginUC();
             string title ="";
             DatabaseClass db = new DatabaseClass();
-            //SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
-            string query = "SELECT title FROM Accounts WHERE username=@Username";
-            db.connect.Open();
-            SQLiteCommand cmd = new SQLiteCommand(query, db.connect);
-            cmd.Parameters.AddWithValue("@Username", user.CurrentUser);
-            //return The first column of the first row in the result set.
-            SQLiteDataReader data = cmd.ExecuteReader();
-            data.Read();
-            title = $"{data["title"]}";
 
-
-
-
-
-
-            if (title == "admin")
+            if (user.CurrentUser == "ADMIN")
             {
                 AdminVIEW AdminVIEW = new AdminVIEW();
                 DashboardFormPanel.Controls.Add(AdminVIEW);
                 AdminVIEW.BringToFront();
             }
-            else if (title == "HR")
-            {
-                HumanResourceVIEW HrView = new HumanResourceVIEW();
-                DashboardFormPanel.Controls.Add(HrView);
-                HrView.BringToFront();
-
-            }
             else
             {
-                RegularEmployeeVIEW employeeVIEW = new RegularEmployeeVIEW();
-                DashboardFormPanel.Controls.Add(employeeVIEW);
-                employeeVIEW.BringToFront();
-            }
+                try
+                {
+                    //SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
+                    string query = "SELECT title FROM Accounts WHERE username=@Username";
+                    db.connect.Open();
+                    SQLiteCommand cmd = new SQLiteCommand(query, db.connect);
+                    cmd.Parameters.AddWithValue("@Username", user.CurrentUser);
+                    //return The first column of the first row in the result set.
+                    SQLiteDataReader data = cmd.ExecuteReader();
+                    data.Read();
+                    title = $"{data["title"]}";
 
-            db.connect.Close();
-            db.connect.Dispose();
+                    if (title == "Human Resources Manager")
+                    {
+                        HumanResourceVIEW HrView = new HumanResourceVIEW();
+                        DashboardFormPanel.Controls.Add(HrView);
+                        HrView.BringToFront();
+
+                    }
+                    else
+                    {
+                        RegularEmployeeVIEW employeeVIEW = new RegularEmployeeVIEW();
+                        DashboardFormPanel.Controls.Add(employeeVIEW);
+                        employeeVIEW.BringToFront();
+                    }
+                }
+                catch
+                {
+
+                }
+                finally
+                {
+                    db.connect.Close();
+                    db.connect.Dispose();
+                }
+
+               
+            }
+          
+
+
+
+
+
+
+            
+            
 
 
 

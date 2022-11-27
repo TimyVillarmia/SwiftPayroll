@@ -53,21 +53,18 @@ namespace SwiftPayroll
                 FullnameLbl.Text = $"{data["firstname"]} {data["lastname"]}";
                 EmployeeIDLbl.Text = $"{data["employeeID"]}";
                 TitleLbl.Text = $"{data["title"]}";
-                TypeLbl.Text = $"{data["type"]}";
+                JobType = $"{data["type"]}";
+                TypeLbl.Text = JobType;
                 DepartmentLbl.Text = $"{data["department"]}";
                 EmailLbl.Text = $"{data["email"]}";
                 ContactLbl.Text = $"{data["contactnumber"]}";
-                JobType = $"{data["type"]}";
+                
 
-                string isSSS = "";
-                string isPagIbig = "";
-                string isPhilHealth = "";
+              
 
 
 
-                isSSS = $"{data["sss"]}";
-                isPagIbig = $"{data["pagibig"]}";
-                isPhilHealth = $"{data["philhealth"]}";
+        
                
 
                 //placeholders
@@ -83,42 +80,8 @@ namespace SwiftPayroll
                     HourLbl.Text = "4 hrs";
                 }
 
-                if (isSSS == "yes")
-                {
-                    SSS = 100;
-                    SSSLbl.Text = $"₱{SSS}";
-                    SSSLbl1.Text = $"₱{SSS}";
-                }
-                if (isPagIbig == "yes")
-                {
-                    PAGIBIG = 200;
-                    PagibigLbl.Text = $"₱{PAGIBIG}";
-                    PagibigLbl1.Text = $"₱{PAGIBIG}";
-                }
-                if (isPhilHealth == "yes")
-                {
-                    PHILHEALTH = 300;
-                    PhilHealthLbl.Text = $"₱{PHILHEALTH}";
-                    PhilHealthLbl1.Text = $"₱{PHILHEALTH}";
-                }
-                else
-                {
-                    SSS = 0;
-                    PAGIBIG = 0;
-                    PHILHEALTH = 0;
-
-                    SSSLbl.Text = "-";
-                    PagibigLbl.Text = "-";
-                    PhilHealthLbl.Text = "-";
-                    SSSLbl.Text = $"₱{SSS}";
-                    PagibigLbl.Text = $"₱{PAGIBIG}";
-                    PhilHealthLbl.Text = $"₱{PHILHEALTH}";
-                }
-
-
-
             }
-            catch
+            catch(Exception ex)
             {
                 MessageBox.Show("Unexpected error occured!");
             }
@@ -217,13 +180,12 @@ namespace SwiftPayroll
             double TotalAbsent = ABSENT_RATE * NumofAbsent;
             double TotalDeduction = SSS+ PAGIBIG + PHILHEALTH + TotalAbsent + TaxTotal;
             double NetIncome = GrossIncome - TotalDeduction;
-            
+
             //displaying
             GrossIncomeLbl.Text = String.Format("{0:n}", GrossIncome);
             TaxLbl.Text = String.Format("{0:n}", TaxTotal);
             DeductionsLBL.Text = String.Format("{0:n}", TotalDeduction);
             NetIncomeLbl.Text = String.Format("{0:n}", NetIncome);
-
 
         }
 
@@ -277,6 +239,53 @@ namespace SwiftPayroll
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void SSSBox_Click(object sender, EventArgs e)
+        {
+            if (SSSBox.Checked == true)
+            {
+                SSS = 100;
+                SSSLbl1.Text = $"₱{SSS}";
+            }
+            else
+            {
+                SSS = 0;
+                SSSLbl1.Text = $"₱{SSS}";
+
+            }
+        }
+
+        private void PagIbigBox_Click(object sender, EventArgs e)
+        {
+            if (PagIbigBox.Checked == true)
+            {
+                PAGIBIG = 200;
+                PagibigLbl1.Text = $"₱{PAGIBIG}";
+            }
+            else
+            {
+                PAGIBIG = 0;
+                PagibigLbl1.Text = $"₱{PAGIBIG}";
+
+
+            }
+        }
+
+        private void PhilHealthBox_Click(object sender, EventArgs e)
+        {
+            if (PhilHealthBox.Checked == true)
+            {
+                PHILHEALTH = 300;
+                PhilHealthLbl1.Text = $"₱{PHILHEALTH}";
+            }
+            else
+            {
+
+                PHILHEALTH = 0;
+                PhilHealthLbl1.Text = $"₱{PHILHEALTH}";
+
             }
         }
     }

@@ -35,6 +35,7 @@ namespace SwiftPayroll
 
 
             UsernameLbl.Text = $"{data["firstname"]} {data["lastname"]}";
+            JobTitleLbl.Text = $"{data["title"]}";
         }
 
         private void SignOutBtn_Click(object sender, EventArgs e)

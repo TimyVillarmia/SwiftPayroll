@@ -36,17 +36,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.JobTitleLbl = new System.Windows.Forms.Label();
             this.UsernameLbl = new System.Windows.Forms.Label();
-            this.UserProfilePic = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.SideBarPanel.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.UserProfilePic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // DashBoardPanel
             // 
-            this.DashBoardPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.DashBoardPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
             this.DashBoardPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DashBoardPanel.Location = new System.Drawing.Point(216, 0);
             this.DashBoardPanel.Name = "DashBoardPanel";
@@ -56,11 +56,11 @@
             // SideBarPanel
             // 
             this.SideBarPanel.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
+            this.SideBarPanel.Controls.Add(this.guna2CirclePictureBox1);
             this.SideBarPanel.Controls.Add(this.guna2Panel1);
             this.SideBarPanel.Controls.Add(this.label3);
             this.SideBarPanel.Controls.Add(this.JobTitleLbl);
             this.SideBarPanel.Controls.Add(this.UsernameLbl);
-            this.SideBarPanel.Controls.Add(this.UserProfilePic);
             this.SideBarPanel.Controls.Add(this.guna2PictureBox1);
             this.SideBarPanel.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.SideBarPanel.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 1, 0);
@@ -151,36 +151,25 @@
             // 
             // JobTitleLbl
             // 
-            this.JobTitleLbl.AutoSize = true;
             this.JobTitleLbl.Font = new System.Drawing.Font("Montserrat", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.JobTitleLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(122)))), ((int)(((byte)(138)))));
-            this.JobTitleLbl.Location = new System.Drawing.Point(50, 276);
+            this.JobTitleLbl.Location = new System.Drawing.Point(7, 276);
             this.JobTitleLbl.Name = "JobTitleLbl";
-            this.JobTitleLbl.Size = new System.Drawing.Size(109, 15);
+            this.JobTitleLbl.Size = new System.Drawing.Size(206, 15);
             this.JobTitleLbl.TabIndex = 10;
-            this.JobTitleLbl.Text = "Software Engineer";
+            this.JobTitleLbl.Text = "Administrator";
+            this.JobTitleLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // UsernameLbl
             // 
-            this.UsernameLbl.AutoSize = true;
             this.UsernameLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UsernameLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
-            this.UsernameLbl.Location = new System.Drawing.Point(62, 256);
+            this.UsernameLbl.Location = new System.Drawing.Point(3, 256);
             this.UsernameLbl.Name = "UsernameLbl";
-            this.UsernameLbl.Size = new System.Drawing.Size(86, 20);
+            this.UsernameLbl.Size = new System.Drawing.Size(210, 20);
             this.UsernameLbl.TabIndex = 9;
-            this.UsernameLbl.Text = "John Doe";
-            // 
-            // UserProfilePic
-            // 
-            this.UserProfilePic.BackColor = System.Drawing.Color.DimGray;
-            this.UserProfilePic.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.UserProfilePic.ImageRotate = 0F;
-            this.UserProfilePic.Location = new System.Drawing.Point(46, 127);
-            this.UserProfilePic.Name = "UserProfilePic";
-            this.UserProfilePic.Size = new System.Drawing.Size(120, 120);
-            this.UserProfilePic.TabIndex = 8;
-            this.UserProfilePic.TabStop = false;
+            this.UsernameLbl.Text = "ADMIN";
+            this.UsernameLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // guna2PictureBox1
             // 
@@ -192,6 +181,20 @@
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2PictureBox1.TabIndex = 7;
             this.guna2PictureBox1.TabStop = false;
+            // 
+            // guna2CirclePictureBox1
+            // 
+            this.guna2CirclePictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2CirclePictureBox1.Image = global::SwiftPayroll.Properties.Resources.profile;
+            this.guna2CirclePictureBox1.ImageRotate = 0F;
+            this.guna2CirclePictureBox1.InitialImage = global::SwiftPayroll.Properties.Resources.profile;
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(46, 127);
+            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
+            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(120, 120);
+            this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.guna2CirclePictureBox1.TabIndex = 29;
+            this.guna2CirclePictureBox1.TabStop = false;
             // 
             // AdminVIEW
             // 
@@ -206,8 +209,8 @@
             this.SideBarPanel.ResumeLayout(false);
             this.SideBarPanel.PerformLayout();
             this.guna2Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.UserProfilePic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -221,8 +224,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label JobTitleLbl;
         private System.Windows.Forms.Label UsernameLbl;
-        private Guna.UI2.WinForms.Guna2PictureBox UserProfilePic;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2Button SignOutBtn;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
@@ -30,12 +31,15 @@ namespace SwiftPayroll
             DatabaseClass db = new DatabaseClass();
             //SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
             db.connect.Open();
-            SQLiteDataAdapter adapter = new SQLiteDataAdapter("SELECT * FROM Accounts", db.connect);
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter("SELECT employeeID, firstname, lastname, status, title, type FROM Accounts", db.connect);
             DataSet dset = new DataSet();
             adapter.Fill(dset);
             DataGridView.DataSource = dset.Tables[0];
             db.connect.Close();
             db.connect.Dispose();
+
+
+
         }
 
         private void ViewBtn_Click(object sender, EventArgs e)
@@ -61,7 +65,6 @@ namespace SwiftPayroll
                     UserInfoView payslip = new UserInfoView();
                     payslip.ShowDialog();
 
-
                 }
                 
 
@@ -77,6 +80,25 @@ namespace SwiftPayroll
                 db.connect.Dispose();
             }
 
+
+        }
+
+        private void EmployeeIDTxt_TextChanged(object sender, EventArgs e)
+        {
+            DatabaseClass db = new DatabaseClass();
+            //SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
+
+            db.connect.Open();
+
+            string query = "SELECT employeeID, firstname, lastname, status, title, type FROM Accounts WHERE employeeID LIKE @EmployeeID || '%'";
+            SQLiteCommand command = new SQLiteCommand(query, db.connect);
+            SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
+            command.Parameters.AddWithValue("@EmployeeID", EmployeeIDTxt.Text);
+            DataTable dset = new DataTable();
+            adapter.Fill(dset);
+            DataGridView.DataSource = dset;
+            db.connect.Close();
+            db.connect.Dispose();
 
         }
     }

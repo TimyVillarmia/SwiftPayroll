@@ -94,8 +94,7 @@ namespace SwiftPayroll
                 try
                 {
 
-
-                    UserInfo user = new UserInfo(GenerateEmployeeID(), FirstNameTxt.Text.Trim(), LastNameTxt.Text.Trim(), "", UsernameTxt.Text.Trim(), PasswordTxt.Text.Trim(), EmailTxt.Text.Trim(), "", "", "");
+               
                     // creating a string variable "query" with a "INSERT" Statement
                     string query = "INSERT INTO Accounts(employeeID,firstname,lastname,username,password,email) VALUES(@employeeid,@first,@last,@username,@password,@email);";
                     
@@ -105,12 +104,12 @@ namespace SwiftPayroll
                     SQLiteCommand cmd = new SQLiteCommand(query, db.connect);
                     //Set the values for each parameters
                     //cmd.Parameters.AddWithValue("ParameterName", ActualValue) base on VALUES(@Username,@Password,@Email)
-                    cmd.Parameters.AddWithValue("@employeeid", user.EmployeeID);
-                    cmd.Parameters.AddWithValue("@first", user.FirstName);
-                    cmd.Parameters.AddWithValue("@last", user.LastName);
-                    cmd.Parameters.AddWithValue("@username", user.UserName);
-                    cmd.Parameters.AddWithValue("@password", user.Password);
-                    cmd.Parameters.AddWithValue("@email", user.Email_Address);
+                    cmd.Parameters.AddWithValue("@employeeid", GenerateEmployeeID());
+                    cmd.Parameters.AddWithValue("@first", FirstNameTxt.Text.Trim());
+                    cmd.Parameters.AddWithValue("@last", LastNameTxt.Text.Trim());
+                    cmd.Parameters.AddWithValue("@username", UsernameTxt.Text.Trim());
+                    cmd.Parameters.AddWithValue("@password", PasswordTxt.Text.Trim());
+                    cmd.Parameters.AddWithValue("@email", EmailTxt.Text.Trim());
                     //ExecuteNonQuery - execute The Command
                     cmd.ExecuteNonQuery();
                     //Accessing the "Close" property of SQLiteConnection to "Close" the connection

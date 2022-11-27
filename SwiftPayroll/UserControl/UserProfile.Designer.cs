@@ -30,6 +30,9 @@
         {
             this.FullnameLbl = new System.Windows.Forms.Label();
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.EmployeeIDLbl = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.ContactLbl = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.EmailLbl = new System.Windows.Forms.Label();
@@ -59,22 +62,19 @@
             this.label2 = new System.Windows.Forms.Label();
             this.UsernameTxt = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
-            this.EmployeeIDLbl = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
+            this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2CustomGradientPanel1.SuspendLayout();
-            this.guna2CustomGradientPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
+            this.guna2CustomGradientPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // FullnameLbl
             // 
-            this.FullnameLbl.AutoSize = true;
             this.FullnameLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FullnameLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.FullnameLbl.Location = new System.Drawing.Point(270, 24);
             this.FullnameLbl.Name = "FullnameLbl";
-            this.FullnameLbl.Size = new System.Drawing.Size(187, 42);
+            this.FullnameLbl.Size = new System.Drawing.Size(406, 42);
             this.FullnameLbl.TabIndex = 11;
             this.FullnameLbl.Text = "John Doe";
             // 
@@ -105,16 +105,48 @@
             this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(698, 288);
             this.guna2CustomGradientPanel1.TabIndex = 18;
             // 
+            // EmployeeIDLbl
+            // 
+            this.EmployeeIDLbl.Font = new System.Drawing.Font("Montserrat SemiBold", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmployeeIDLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(122)))), ((int)(((byte)(138)))));
+            this.EmployeeIDLbl.Location = new System.Drawing.Point(462, 77);
+            this.EmployeeIDLbl.Name = "EmployeeIDLbl";
+            this.EmployeeIDLbl.Size = new System.Drawing.Size(214, 18);
+            this.EmployeeIDLbl.TabIndex = 26;
+            this.EmployeeIDLbl.Text = "-";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
+            this.label15.Location = new System.Drawing.Point(273, 76);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(111, 20);
+            this.label15.TabIndex = 27;
+            this.label15.Text = "Employee ID";
+            // 
+            // guna2CirclePictureBox1
+            // 
+            this.guna2CirclePictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2CirclePictureBox1.ImageRotate = 0F;
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(10, 14);
+            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
+            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(250, 250);
+            this.guna2CirclePictureBox1.TabIndex = 25;
+            this.guna2CirclePictureBox1.TabStop = false;
+            this.guna2CirclePictureBox1.UseTransparentBackground = true;
+            // 
             // ContactLbl
             // 
-            this.ContactLbl.AutoSize = true;
             this.ContactLbl.Font = new System.Drawing.Font("Montserrat SemiBold", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ContactLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(122)))), ((int)(((byte)(138)))));
             this.ContactLbl.Location = new System.Drawing.Point(462, 228);
             this.ContactLbl.Name = "ContactLbl";
-            this.ContactLbl.Size = new System.Drawing.Size(88, 18);
+            this.ContactLbl.Size = new System.Drawing.Size(214, 18);
             this.ContactLbl.TabIndex = 24;
-            this.ContactLbl.Text = "Placeholder";
+            this.ContactLbl.Text = "-";
             // 
             // label10
             // 
@@ -129,14 +161,13 @@
             // 
             // EmailLbl
             // 
-            this.EmailLbl.AutoSize = true;
             this.EmailLbl.Font = new System.Drawing.Font("Montserrat SemiBold", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EmailLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(122)))), ((int)(((byte)(138)))));
             this.EmailLbl.Location = new System.Drawing.Point(462, 198);
             this.EmailLbl.Name = "EmailLbl";
-            this.EmailLbl.Size = new System.Drawing.Size(88, 18);
+            this.EmailLbl.Size = new System.Drawing.Size(214, 18);
             this.EmailLbl.TabIndex = 22;
-            this.EmailLbl.Text = "Placeholder";
+            this.EmailLbl.Text = "-";
             // 
             // label9
             // 
@@ -151,14 +182,13 @@
             // 
             // DepartmentLbl
             // 
-            this.DepartmentLbl.AutoSize = true;
             this.DepartmentLbl.Font = new System.Drawing.Font("Montserrat SemiBold", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DepartmentLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(122)))), ((int)(((byte)(138)))));
             this.DepartmentLbl.Location = new System.Drawing.Point(462, 166);
             this.DepartmentLbl.Name = "DepartmentLbl";
-            this.DepartmentLbl.Size = new System.Drawing.Size(88, 18);
+            this.DepartmentLbl.Size = new System.Drawing.Size(214, 18);
             this.DepartmentLbl.TabIndex = 19;
-            this.DepartmentLbl.Text = "Placeholder";
+            this.DepartmentLbl.Text = "-";
             // 
             // label8
             // 
@@ -173,14 +203,13 @@
             // 
             // TypeLbl
             // 
-            this.TypeLbl.AutoSize = true;
             this.TypeLbl.Font = new System.Drawing.Font("Montserrat SemiBold", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TypeLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(122)))), ((int)(((byte)(138)))));
             this.TypeLbl.Location = new System.Drawing.Point(462, 135);
             this.TypeLbl.Name = "TypeLbl";
-            this.TypeLbl.Size = new System.Drawing.Size(88, 18);
+            this.TypeLbl.Size = new System.Drawing.Size(214, 18);
             this.TypeLbl.TabIndex = 17;
-            this.TypeLbl.Text = "Placeholder";
+            this.TypeLbl.Text = "-";
             // 
             // label6
             // 
@@ -196,14 +225,13 @@
             // 
             // TitleLbl
             // 
-            this.TitleLbl.AutoSize = true;
             this.TitleLbl.Font = new System.Drawing.Font("Montserrat SemiBold", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TitleLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(122)))), ((int)(((byte)(138)))));
             this.TitleLbl.Location = new System.Drawing.Point(462, 106);
             this.TitleLbl.Name = "TitleLbl";
-            this.TitleLbl.Size = new System.Drawing.Size(88, 18);
+            this.TitleLbl.Size = new System.Drawing.Size(214, 18);
             this.TitleLbl.TabIndex = 15;
-            this.TitleLbl.Text = "Placeholder";
+            this.TitleLbl.Text = "-";
             // 
             // label4
             // 
@@ -522,44 +550,22 @@
             this.label1.TabIndex = 17;
             this.label1.Text = "Username:";
             // 
-            // guna2CirclePictureBox1
+            // guna2ControlBox1
             // 
-            this.guna2CirclePictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.guna2CirclePictureBox1.ImageRotate = 0F;
-            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(10, 14);
-            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
-            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(250, 250);
-            this.guna2CirclePictureBox1.TabIndex = 25;
-            this.guna2CirclePictureBox1.TabStop = false;
-            // 
-            // EmployeeIDLbl
-            // 
-            this.EmployeeIDLbl.AutoSize = true;
-            this.EmployeeIDLbl.Font = new System.Drawing.Font("Montserrat SemiBold", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EmployeeIDLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(122)))), ((int)(((byte)(138)))));
-            this.EmployeeIDLbl.Location = new System.Drawing.Point(462, 77);
-            this.EmployeeIDLbl.Name = "EmployeeIDLbl";
-            this.EmployeeIDLbl.Size = new System.Drawing.Size(88, 18);
-            this.EmployeeIDLbl.TabIndex = 26;
-            this.EmployeeIDLbl.Text = "Placeholder";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
-            this.label15.Location = new System.Drawing.Point(273, 77);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(111, 20);
-            this.label15.TabIndex = 27;
-            this.label15.Text = "Employee ID";
+            this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2ControlBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
+            this.guna2ControlBox1.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
+            this.guna2ControlBox1.Location = new System.Drawing.Point(736, 3);
+            this.guna2ControlBox1.Name = "guna2ControlBox1";
+            this.guna2ControlBox1.Size = new System.Drawing.Size(45, 29);
+            this.guna2ControlBox1.TabIndex = 48;
             // 
             // UserProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
+            this.Controls.Add(this.guna2ControlBox1);
             this.Controls.Add(this.guna2CustomGradientPanel2);
             this.Controls.Add(this.guna2CustomGradientPanel1);
             this.Name = "UserProfile";
@@ -567,9 +573,9 @@
             this.Load += new System.EventHandler(this.UserProfile_Load);
             this.guna2CustomGradientPanel1.ResumeLayout(false);
             this.guna2CustomGradientPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.guna2CustomGradientPanel2.ResumeLayout(false);
             this.guna2CustomGradientPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -609,5 +615,6 @@
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private System.Windows.Forms.Label EmployeeIDLbl;
         private System.Windows.Forms.Label label15;
+        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
     }
 }

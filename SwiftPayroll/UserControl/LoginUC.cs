@@ -81,7 +81,21 @@ namespace SwiftPayroll
                         //return The first column of the first row in the result set.
                         int count = Convert.ToInt32(cmd.ExecuteScalar());
 
+                        if (UsernameTxt.Text == "ADMIN" && PasswordTxt.Text == "ADMIN")
+                        {
+                            currentuser = UsernameTxt.Text;
+                            //notify
+                            MessageBox.Show("Login Successfully");
+                            // hide the MainForm
+                            ParentForm.Hide();
+                            // displaying sencond form "loading screen form"
+                            LoadingScreenForm loading = new LoadingScreenForm();
+                            loading.ShowDialog();
+                            //Closing 
+                            ParentForm.Close();
+                            //close connection 
 
+                        }
                         //if count = 1 then the account exist; else account doesn't exist
                         if (count == 1)
                         {

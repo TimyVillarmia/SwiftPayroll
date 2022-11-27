@@ -22,6 +22,7 @@ namespace SwiftPayroll
         public CreateUC createUC { get; set; }
         public RecoveryUC recoveryUC { get; set; }
         public TeamPageUC teampageUC { get; set; }
+        public ABoutPageUC aboutpageUC { get; set; }
         public Guna2Button homeBtn { get; set; }
 
         public MainForm()
@@ -52,6 +53,7 @@ namespace SwiftPayroll
             createUC = new CreateUC(this);
             recoveryUC = new RecoveryUC(this);
             teampageUC = new TeamPageUC();
+            aboutpageUC = new ABoutPageUC();
 
             // adding the Usercontrols inside the Panel
             MainPanel.Controls.Add(homeUC);
@@ -59,6 +61,7 @@ namespace SwiftPayroll
             MainPanel.Controls.Add(createUC);
             MainPanel.Controls.Add(recoveryUC);
             MainPanel.Controls.Add(teampageUC);
+            MainPanel.Controls.Add(aboutpageUC);
 
 
         }
@@ -89,6 +92,8 @@ namespace SwiftPayroll
             HomeBtn.ForeColor = Color.FromArgb(43, 44, 52);
             TeamBtn.FillColor = Color.Transparent;
             TeamBtn.ForeColor = Color.FromArgb(43, 44, 52);
+
+            aboutpageUC.BringToFront();
         }
 
         private void TeamBtn_Click(object sender, EventArgs e)

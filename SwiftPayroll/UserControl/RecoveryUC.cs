@@ -51,69 +51,75 @@ namespace SwiftPayroll
 
         private void OTPBtn_Click(object sender, EventArgs e)
         {
-            string query = "SELECT count(*) FROM Accounts WHERE email = @Email";
-            //Instantiate SQLiteConnect object which is used for opening connection to the database
-            SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
-            //Accessing the "Open" property of SQLiteConnection to "Open" the connection
-            connection.Open(); SQLiteCommand cmd = new SQLiteCommand(query, connection);
-            cmd.Parameters.AddWithValue("@Email", EmailTxt.Text);
+            using (var connection = new SQLiteConnection(@"Data Source=Database\Accounts.db"))
+            {
+                connection.Open();
+                string query = "SELECT count(*) FROM Accounts WHERE email = @Email";
+                using (var commmand = new SQLiteCommand(query, connection))
+                {
+                    commmand.Parameters.AddWithValue("@Email", EmailTxt.Text);
+                    int count = Convert.ToInt32(commmand.ExecuteScalar());
+
+                    if (count == 1)
+                    {
+                        string msg = GenerateOTP();
+                        string senderEmail, senderPass, receiverEmail;
+                        receiverEmail = EmailTxt.Text;
+                        senderEmail = "timyvillarmia10@gmail.com";
+                        senderPass = "pyuzbklnkwwwwozg";  //Gmail's App Password Change this to your Gmail's App Password
+
+                        MimeMessage message = new MimeMessage(); // Creating object for Message
+                        message.From.Add(new MailboxAddress("SwiftPayroll - OTP", senderEmail)); //Sender's information
+                        message.To.Add(MailboxAddress.Parse(receiverEmail)); //Receiver's Information
+
+                        message.Subject = "One-Time-Password"; //Email's Subject
+
+                        //Email's Body
+                        message.Body = new TextPart("plain") //Plain text
+                        {
+                            Text = msg  //MSG = OTP
+                        };
+
+                        SmtpClient client = new SmtpClient(); // allows sending of e-mail notifications using a SMTP server
+
+                        try
+                        {
+                            client.Connect("smtp.gmail.com", 465, true); //Gmail's smtp server, PORT: 465
+                            client.Authenticate(senderEmail, senderPass); //Login sender's email and password
+                            client.Send(message); //
+                            MessageBox.Show("Kindly check your email and don't forget to check your SPAM folders");
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Unable to generate OTP, please try again");
+                            return;
+                        }
+                        finally
+                        {
+                            client.Disconnect(true); // always Disconnect the service.
+                            client.Dispose(); //Releases all resource used by the MailService object.
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Email is not registered");
+
+                    }
+
+                }
+
+            }
+
+
             //return The first column of the first row in the result set.
-            int count = Convert.ToInt32(cmd.ExecuteScalar());
             
-            if (count == 1)
-            {
-                string msg = GenerateOTP();
-                string senderEmail, senderPass, receiverEmail;
-                receiverEmail = EmailTxt.Text;
-                senderEmail = "timyvillarmia10@gmail.com";
-                senderPass = "pyuzbklnkwwwwozg";  //Gmail's App Password Change this to your Gmail's App Password
-
-                MimeMessage message = new MimeMessage(); // Creating object for Message
-                message.From.Add(new MailboxAddress("SwiftPayroll - OTP", senderEmail)); //Sender's information
-                message.To.Add(MailboxAddress.Parse(receiverEmail)); //Receiver's Information
-
-                message.Subject = "One-Time-Password"; //Email's Subject
-
-                //Email's Body
-                message.Body = new TextPart("plain") //Plain text
-                {
-                    Text = msg  //MSG = OTP
-                };
-
-                SmtpClient client = new SmtpClient(); // allows sending of e-mail notifications using a SMTP server
-
-                try
-                {
-                    client.Connect("smtp.gmail.com", 465, true); //Gmail's smtp server, PORT: 465
-                    client.Authenticate(senderEmail, senderPass); //Login sender's email and password
-                    client.Send(message); //
-                    MessageBox.Show("Kindly check your email and don't forget to check your SPAM folders");
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Unable to generate OTP, please try again");
-                    return;
-                }
-                finally
-                {
-                    client.Disconnect(true); // always Disconnect the service.
-                    client.Dispose(); //Releases all resource used by the MailService object.
-                    connection.Dispose();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Email is not registered");
-
-            }
+           
 
         }
 
         private void RecoverBtn_Click(object sender, EventArgs e)
         {
-            //Instantiate SQLiteConnect object which is used for opening connection to the database
-            DatabaseClass db = new DatabaseClass();
-            //SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
+          
 
             //Guard Clause Technique
 
@@ -135,35 +141,36 @@ namespace SwiftPayroll
 
                 try
                 {
-                    // To update existing data in a table, you use SQLite UPDATE statement. 
-                    string query = "UPDATE Accounts SET password=@Password WHERE email = @Email;";
 
-                    //Accessing the "Open" property of SQLiteConnection to "Open" the connection
-                    db.connect.Open();
-                    SQLiteCommand cmd = new SQLiteCommand(query, db.connect);
-                    cmd.Parameters.AddWithValue("@Email", EmailTxt.Text);
-                    cmd.Parameters.AddWithValue("@Password", PasswordTxt.Text);
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Account successfully reset, Please Sign In");
+                    using (var connection = new SQLiteConnection(@"Data Source=Database\Accounts.db"))
+                    {
+                        connection.Open();
+                        // To update existing data in a table, you use SQLite UPDATE statement. 
+                        string query = "UPDATE Accounts SET password=@Password WHERE email = @Email;";
 
-                    // Clear all entries
-                    EmailTxt.Text = "";
-                    OTPTxt.Text = "";
-                    PasswordTxt.Text = "";
-                    ConfirmPasswordTxt.Text = "";
+                        using (var command = new SQLiteCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@Email", EmailTxt.Text);
+                            command.Parameters.AddWithValue("@Password", PasswordTxt.Text);
+                            command.ExecuteNonQuery();
+                            MessageBox.Show("Account successfully reset, Please Sign In");
+
+                            // Clear all entries
+                            EmailTxt.Text = "";
+                            OTPTxt.Text = "";
+                            PasswordTxt.Text = "";
+                            ConfirmPasswordTxt.Text = "";
+
+                        }
+                    }
 
                 }
                 catch (Exception)
                 {
                     //notify
                     MessageBox.Show("Unable to reset your password, please try again");
-                    return;
                 }
-                finally
-                {
-                    db.connect.Close();
-                    db.connect.Dispose();
-                }
+        
             }
 
         }

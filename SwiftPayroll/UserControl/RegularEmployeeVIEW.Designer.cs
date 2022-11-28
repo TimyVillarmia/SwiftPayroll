@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.SideBarPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.SignOutBtn = new Guna.UI2.WinForms.Guna2Button();
             this.PayrollBtn = new Guna.UI2.WinForms.Guna2Button();
@@ -42,11 +43,11 @@
             this.DashBoardPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.SideBarPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // SideBarPanel
@@ -65,6 +66,20 @@
             this.SideBarPanel.Name = "SideBarPanel";
             this.SideBarPanel.Size = new System.Drawing.Size(216, 800);
             this.SideBarPanel.TabIndex = 2;
+            // 
+            // guna2CirclePictureBox1
+            // 
+            this.guna2CirclePictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2CirclePictureBox1.Image = global::SwiftPayroll.Properties.Resources.profile;
+            this.guna2CirclePictureBox1.ImageRotate = 0F;
+            this.guna2CirclePictureBox1.InitialImage = global::SwiftPayroll.Properties.Resources.profile;
+            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(46, 127);
+            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
+            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(120, 120);
+            this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.guna2CirclePictureBox1.TabIndex = 27;
+            this.guna2CirclePictureBox1.TabStop = false;
             // 
             // guna2Panel1
             // 
@@ -134,6 +149,7 @@
             this.PayrollBtn.TabIndex = 4;
             this.PayrollBtn.Text = "Payroll";
             this.PayrollBtn.TextOffset = new System.Drawing.Point(-5, 0);
+            this.PayrollBtn.Click += new System.EventHandler(this.PayrollBtn_Click);
             // 
             // ProfileBtn
             // 
@@ -255,19 +271,9 @@
             this.guna2DragControl2.TargetControl = this.SideBarPanel;
             this.guna2DragControl2.UseTransparentDrag = true;
             // 
-            // guna2CirclePictureBox1
+            // printDialog1
             // 
-            this.guna2CirclePictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2CirclePictureBox1.Image = global::SwiftPayroll.Properties.Resources.profile;
-            this.guna2CirclePictureBox1.ImageRotate = 0F;
-            this.guna2CirclePictureBox1.InitialImage = global::SwiftPayroll.Properties.Resources.profile;
-            this.guna2CirclePictureBox1.Location = new System.Drawing.Point(46, 127);
-            this.guna2CirclePictureBox1.Name = "guna2CirclePictureBox1";
-            this.guna2CirclePictureBox1.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox1.Size = new System.Drawing.Size(120, 120);
-            this.guna2CirclePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.guna2CirclePictureBox1.TabIndex = 27;
-            this.guna2CirclePictureBox1.TabStop = false;
+            this.printDialog1.UseEXDialog = true;
             // 
             // RegularEmployeeVIEW
             // 
@@ -281,9 +287,9 @@
             this.Load += new System.EventHandler(this.RegularEmployeeVIEW_Load);
             this.SideBarPanel.ResumeLayout(false);
             this.SideBarPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.guna2Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -304,5 +310,6 @@
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl2;
         private Guna.UI2.WinForms.Guna2Button SignOutBtn;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
+        private System.Windows.Forms.PrintDialog printDialog1;
     }
 }

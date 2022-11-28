@@ -45,6 +45,7 @@
             this.TitleLbl = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.FullnameLbl = new System.Windows.Forms.Label();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.AbsentTxt = new Guna.UI2.WinForms.Guna2TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.NetIncomeLbl = new System.Windows.Forms.Label();
@@ -94,11 +95,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.TimerCount = new System.Windows.Forms.Timer(this.components);
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.PayslipPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2BorderlessForm1
@@ -298,6 +298,17 @@
             this.FullnameLbl.Size = new System.Drawing.Size(136, 33);
             this.FullnameLbl.TabIndex = 64;
             this.FullnameLbl.Text = "John Doe";
+            // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.Image = global::SwiftPayroll.Properties.Resources.SWIFTPayroll;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(21, 28);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(224, 32);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.guna2PictureBox1.TabIndex = 63;
+            this.guna2PictureBox1.TabStop = false;
             // 
             // AbsentTxt
             // 
@@ -985,9 +996,9 @@
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.label13.Location = new System.Drawing.Point(272, 230);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(129, 22);
+            this.label13.Size = new System.Drawing.Size(123, 22);
             this.label13.TabIndex = 50;
-            this.label13.Text = "Working Days:";
+            this.label13.Text = "Worked Days:";
             // 
             // PayDate
             // 
@@ -1067,17 +1078,6 @@
             this.guna2DragControl1.TargetControl = this.PayslipPanel;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.Image = global::SwiftPayroll.Properties.Resources.SWIFTPayroll;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(21, 28);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(224, 32);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.guna2PictureBox1.TabIndex = 63;
-            this.guna2PictureBox1.TabStop = false;
-            // 
             // UserInfoView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1088,15 +1088,15 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "UserInfoView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "w";
+            this.Text = "Payslip";
             this.Load += new System.EventHandler(this.UserInfoView_Load);
             this.PayslipPanel.ResumeLayout(false);
             this.PayslipPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

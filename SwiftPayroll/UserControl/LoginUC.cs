@@ -55,7 +55,6 @@ namespace SwiftPayroll
 
         private void SignInBtn_Click(object sender, EventArgs e)
         {
-            DatabaseClass db = new DatabaseClass();
             //SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
             //Checking whether textboxes are empty or not
             if (attempt != 0)
@@ -66,84 +65,94 @@ namespace SwiftPayroll
                     MessageBox.Show("Make sure you correctly fill up the form");
 
                 }
+                if (UsernameTxt.Text == "ADMIN" && PasswordTxt.Text == "ADMIN")
+                {
+                    currentuser = UsernameTxt.Text;
+                    //notify
+                    MessageBox.Show("Login Successfully");
+                    // hide the MainForm
+                    ParentForm.Hide();
+                    // displaying sencond form "loading screen form"
+                    LoadingScreenForm loading = new LoadingScreenForm();
+                    loading.ShowDialog();
+                    //Closing 
+                    ParentForm.Close();
+                    //close connection 
+
+                }
                 else
                 {
 
-
-
                     try
                     {
-                        string query = "SELECT count(*) FROM Accounts WHERE username = @Username AND password = @Password";
-                        db.connect.Open();
-                        SQLiteCommand cmd = new SQLiteCommand(query, db.connect);
-                        cmd.Parameters.AddWithValue("@Username", UsernameTxt.Text);
-                        cmd.Parameters.AddWithValue("@Password", PasswordTxt.Text);
-                        //return The first column of the first row in the result set.
-                        int count = Convert.ToInt32(cmd.ExecuteScalar());
-
-                        if (UsernameTxt.Text == "ADMIN" && PasswordTxt.Text == "ADMIN")
+                        using (var connection = new SQLiteConnection(@"Data Source=Database\Accounts.db"))
                         {
-                            currentuser = UsernameTxt.Text;
-                            //notify
-                            MessageBox.Show("Login Successfully");
-                            // hide the MainForm
-                            ParentForm.Hide();
-                            // displaying sencond form "loading screen form"
-                            LoadingScreenForm loading = new LoadingScreenForm();
-                            loading.ShowDialog();
-                            //Closing 
-                            ParentForm.Close();
-                            //close connection 
+                            connection.Open();
+                            string query = "SELECT count(*) FROM Accounts WHERE username = @Username AND password = @Password";
 
-                        }
-                        //if count = 1 then the account exist; else account doesn't exist
-                        if (count == 1)
-                        {
-                            currentuser = UsernameTxt.Text;
-                            //notify
-                            MessageBox.Show("Login Successfully");
-                            // hide the MainForm
-                            ParentForm.Hide();
-                            // displaying sencond form "loading screen form"
-                            LoadingScreenForm loading = new LoadingScreenForm();
-                            loading.ShowDialog();
-                            //Closing 
-                            ParentForm.Close();
-                            //close connection 
+                            using (var command = new SQLiteCommand(query, connection))
+                            {
 
+                                command.Parameters.AddWithValue("@Username", UsernameTxt.Text);
+                                command.Parameters.AddWithValue("@Password", PasswordTxt.Text);
 
+                                using (var reader = command.ExecuteReader())
+                                {
+                                    var count = 0;
+                                    while (reader.Read())
+                                    {
+                                        count = count + 1;
+                                    }
 
-                            //// Clear all entries
-                            //UsernameTxt.Text = "";
-                            //PasswordTxt.Text = "";
+                                   
+                                    //if count = 1 then the account exist; else account doesn't exist
+                                    if (count == 1)
+                                    {
+                                        currentuser = UsernameTxt.Text;
+                                        //notify
+                                        MessageBox.Show("Login Successfully");
+                                        // hide the MainForm
+                                        ParentForm.Hide();
 
+                                        // displaying sencond form "loading screen form"
+                                        LoadingScreenForm loading = new LoadingScreenForm();
+                                        loading.ShowDialog();
+                                        //Closing 
+                                        ParentForm.Close();
 
 
 
-                        }
-                        else
-                        {
-                            //notify
-                            attempt -= 1;
-                            MessageBox.Show($"Wrong username and password combination. {attempt} Attempts left");
+                                        //// Clear all entries
+                                        //UsernameTxt.Text = "";
+                                        //PasswordTxt.Text = "";
 
-                            //Disable();
 
+                                    }
+                                    else
+                                    {
+                                        //notify
+                                        attempt -= 1;
+                                        MessageBox.Show($"Wrong username and password combination. {attempt} Attempts left");
+
+
+
+
+
+                                    }
+                                }
+                            }
 
 
 
                         }
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Unable to login, please try again later");
+                        MessageBox.Show(ex.Message);
 
                     }
-                    finally
-                    {
-                        db.connect.Close();
-                        db.connect.Dispose();
-                    }
+
+                
 
                 }
             }

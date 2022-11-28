@@ -24,7 +24,6 @@ namespace SwiftPayroll
         {
             LoginUC user = new LoginUC();
             string title ="";
-            DatabaseClass db = new DatabaseClass();
 
             if (user.CurrentUser == "ADMIN")
             {
@@ -37,38 +36,45 @@ namespace SwiftPayroll
                 try
                 {
                     //SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
-                    string query = "SELECT title FROM Accounts WHERE username=@Username";
-                    db.connect.Open();
-                    SQLiteCommand cmd = new SQLiteCommand(query, db.connect);
-                    cmd.Parameters.AddWithValue("@Username", user.CurrentUser);
-                    //return The first column of the first row in the result set.
-                    SQLiteDataReader data = cmd.ExecuteReader();
-                    data.Read();
-                    title = $"{data["title"]}";
-
-                    if (title == "Human Resources Manager")
+                    using (var connection = new SQLiteConnection(@"Data Source=Database\Accounts.db"))
                     {
-                        HumanResourceVIEW HrView = new HumanResourceVIEW();
-                        DashboardFormPanel.Controls.Add(HrView);
-                        HrView.BringToFront();
+                        connection.Open();
+                        string query = "SELECT title FROM Accounts WHERE username=@Username";
+
+                        using (var command = new SQLiteCommand(query, connection))
+                        {
+                            command.Parameters.AddWithValue("@Username", user.CurrentUser);
+                            //return The first column of the first row in the result set.
+
+                            SQLiteDataReader data = command.ExecuteReader();
+                            data.Read();
+                            title = $"{data["title"]}";
+
+                            if (title == "Human Resources Manager")
+                            {
+                                HumanResourceVIEW HrView = new HumanResourceVIEW();
+                                DashboardFormPanel.Controls.Add(HrView);
+                                HrView.BringToFront();
+
+                            }
+                            else
+                            {
+                                RegularEmployeeVIEW employeeVIEW = new RegularEmployeeVIEW();
+                                DashboardFormPanel.Controls.Add(employeeVIEW);
+                                employeeVIEW.BringToFront();
+                            }
+                        }
 
                     }
-                    else
-                    {
-                        RegularEmployeeVIEW employeeVIEW = new RegularEmployeeVIEW();
-                        DashboardFormPanel.Controls.Add(employeeVIEW);
-                        employeeVIEW.BringToFront();
-                    }
+                 
+                   
                 }
-                catch
+                catch(Exception ex)
                 {
+                    MessageBox.Show(ex.Message);
 
                 }
-                finally
-                {
-                    db.connect.Close();
-                    db.connect.Dispose();
-                }
+          
 
                
             }

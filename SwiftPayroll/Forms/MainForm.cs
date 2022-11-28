@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using Guna.UI2.WinForms;
+using System.Reflection;
+using System.IO;
 
 namespace SwiftPayroll
 {
@@ -34,7 +36,8 @@ namespace SwiftPayroll
 
         private void Form1_Load(object sender, EventArgs e)
         {
- 
+
+
             homeBtn = HomeBtn;
             
             // Active Button Colors

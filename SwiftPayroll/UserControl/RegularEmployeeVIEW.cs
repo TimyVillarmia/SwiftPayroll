@@ -23,19 +23,28 @@ namespace SwiftPayroll
         private void RegularEmployeeVIEW_Load(object sender, EventArgs e)
         {
             LoginUC user = new LoginUC();
-            DatabaseClass db = new DatabaseClass();
 
-            string query = "SELECT * FROM Accounts WHERE username=@Username";
-            db.connect.Open();
-            SQLiteCommand cmd = new SQLiteCommand(query, db.connect);
-            cmd.Parameters.AddWithValue("@Username", user.CurrentUser);
-            //return The first column of the first row in the result set.
-            SQLiteDataReader data = cmd.ExecuteReader();
-            data.Read();
+            using (var connection = new SQLiteConnection(@"Data Source=Database\Accounts.db"))
+            {
+                connection.Open();
+                string query = "SELECT * FROM Accounts WHERE username=@Username";
+
+                using (var command = new SQLiteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Username", user.CurrentUser);
+                    //return The first column of the first row in the result set.
+                    SQLiteDataReader data = command.ExecuteReader();
+                    data.Read();
 
 
-            UsernameLbl.Text = $"{data["firstname"]} {data["lastname"]}";
-            JobTitleLbl.Text = $"{data["title"]}";
+                    UsernameLbl.Text = $"{data["firstname"]} {data["lastname"]}";
+                    JobTitleLbl.Text = $"{data["title"]}";
+                }
+
+            }
+
+   
+
         }
 
         private void SignOutBtn_Click(object sender, EventArgs e)
@@ -54,6 +63,16 @@ namespace SwiftPayroll
                 DashBoardPanel.Controls.Add(profile);
             }
             profile.BringToFront();
+        }
+
+        private void PayrollBtn_Click(object sender, EventArgs e)
+        {
+            EmployeePayrollTAB employeePayroll = new EmployeePayrollTAB();
+            if (!DashBoardPanel.Controls.Contains(employeePayroll))
+            {
+                DashBoardPanel.Controls.Add(employeePayroll);
+            }
+            employeePayroll.BringToFront();
         }
     }
 }

@@ -28,38 +28,47 @@ namespace SwiftPayroll
         private void AdminDatabase_Load(object sender, EventArgs e)
         {
 
-            DatabaseClass db = new DatabaseClass();
-            //SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
-            db.connect.Open();
-            SQLiteDataAdapter adapter = new SQLiteDataAdapter("SELECT employeeID, firstname, lastname, username, password, email FROM Accounts", db.connect);
-            DataSet dset = new DataSet();
-            adapter.Fill(dset);
-            DataGridView.DataSource = dset.Tables[0];
+            try
+            {
+                using (var connection = new SQLiteConnection(@"Data Source=Database\Accounts.db"))
+                {
+                    connection.Open();
+                    string query = "SELECT employeeID, firstname, lastname, username, password, email FROM Accounts";
+                    using (var adapter = new SQLiteDataAdapter(query, connection))
+                    {
+                        DataSet dset = new DataSet();
+                        adapter.Fill(dset);
+                        DataGridView.DataSource = dset.Tables[0];
+                    }
+                }
+              
 
 
-            //adding the Edit button
-            DataGridViewButtonColumn EditBtn = new DataGridViewButtonColumn();
-            EditBtn.Name = "Edit";
-            EditBtn.Text = "Edit";
-            EditBtn.UseColumnTextForButtonValue = true;
-            DataGridView.Columns.Add(EditBtn);
+                //adding the Edit button
+                DataGridViewButtonColumn EditBtn = new DataGridViewButtonColumn();
+                EditBtn.Name = "Edit";
+                EditBtn.Text = "Edit";
+                EditBtn.UseColumnTextForButtonValue = true;
+                DataGridView.Columns.Add(EditBtn);
 
-            //adding the Delete button
-            DataGridViewButtonColumn DeleteBtn = new DataGridViewButtonColumn();
-            DeleteBtn.Name = "Delete";
-            DeleteBtn.Text = "Delete";
-            DeleteBtn.UseColumnTextForButtonValue = true;
-            DataGridView.Columns.Add(DeleteBtn);
-
-
-            db.connect.Close();
-            db.connect.Dispose();
+                //adding the Delete button
+                DataGridViewButtonColumn DeleteBtn = new DataGridViewButtonColumn();
+                DeleteBtn.Name = "Delete";
+                DeleteBtn.Text = "Delete";
+                DeleteBtn.UseColumnTextForButtonValue = true;
+                DataGridView.Columns.Add(DeleteBtn);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+          
+        
         }
        
 
         private void DataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            DatabaseClass db = new DatabaseClass();
             AccountInfo_AdminForm info_form = new AccountInfo_AdminForm();
 
 
@@ -67,7 +76,8 @@ namespace SwiftPayroll
 
             try
             {
-                db.connect.Open();
+               
+
                 //check user's choice Edit or Delete
                 if (DataGridView.Columns[e.ColumnIndex].Name == "Edit")
                 {
@@ -83,16 +93,27 @@ namespace SwiftPayroll
                     // if User chooses YES
                     if (dialogResult == DialogResult.Yes)
                     {
-                        //sqlite command DELETE 
-                        string query = "DELETE FROM Accounts WHERE employeeID=@Selected_employee";
-                        //get the value of first cell(in the Column Employee ID) of the selected row 
-                        string Selected_EmployeeID = DataGridView.Rows[e.RowIndex].Cells["EmployeeID"].Value.ToString();
-                        //remove the selected row from the datagrid view
-                        DataGridView.Rows.Remove(DataGridView.Rows[e.RowIndex]);
-                        //then remove the selected row from the database file
-                        SQLiteCommand cmd = new SQLiteCommand(query, db.connect);
-                        cmd.Parameters.AddWithValue("@Selected_employee", Selected_EmployeeID);
-                        cmd.ExecuteNonQuery();
+                        using (var connection = new SQLiteConnection(@"Data Source=Database\Accounts.db"))
+                        {
+                            connection.Open();
+                            //sqlite command DELETE 
+                            string query = "DELETE FROM Accounts WHERE employeeID=@Selected_employee";
+
+                            //get the value of first cell(in the Column Employee ID) of the selected row 
+                            string Selected_EmployeeID = DataGridView.Rows[e.RowIndex].Cells["EmployeeID"].Value.ToString();
+                            //remove the selected row from the datagrid view
+                            DataGridView.Rows.Remove(DataGridView.Rows[e.RowIndex]);
+
+                            using (var command = new SQLiteCommand(query, connection))
+                            {
+                                //then remove the selected row from the database file
+                                command.Parameters.AddWithValue("@Selected_employee", Selected_EmployeeID);
+                                command.ExecuteNonQuery();
+
+
+                            }
+                        }
+                     
                     }
                 
               
@@ -102,13 +123,7 @@ namespace SwiftPayroll
             {
                 MessageBox.Show("Unable to delete/edit, please connect the admins");
             }
-            finally
-            {
-                db.connect.Close(); 
-                db.connect.Dispose();
-
-
-            }
+      
         }
     }
 }

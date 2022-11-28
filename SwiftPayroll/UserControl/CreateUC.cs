@@ -68,7 +68,6 @@ namespace SwiftPayroll
         private void CreateAccountBtn_Click(object sender, EventArgs e)
         {
             //Instantiate SQLiteConnect object which is used for opening connection to the database
-            DatabaseClass db = new DatabaseClass();
             //SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
 
 
@@ -94,29 +93,31 @@ namespace SwiftPayroll
                 try
                 {
 
-               
-                    // creating a string variable "query" with a "INSERT" Statement
-                    string query = "INSERT INTO Accounts(employeeID,firstname,lastname,username,password,email) VALUES(@employeeid,@first,@last,@username,@password,@email);";
-                    
-                    //Accessing the "Open" property of SQLiteConnection to "Open" the connection
-                    db.connect.Open();
-                    //instantiating SQLiteCommand object and accepts 2 arguments
-                    SQLiteCommand cmd = new SQLiteCommand(query, db.connect);
-                    //Set the values for each parameters
-                    //cmd.Parameters.AddWithValue("ParameterName", ActualValue) base on VALUES(@Username,@Password,@Email)
-                    cmd.Parameters.AddWithValue("@employeeid", GenerateEmployeeID());
-                    cmd.Parameters.AddWithValue("@first", FirstNameTxt.Text.Trim());
-                    cmd.Parameters.AddWithValue("@last", LastNameTxt.Text.Trim());
-                    cmd.Parameters.AddWithValue("@username", UsernameTxt.Text.Trim());
-                    cmd.Parameters.AddWithValue("@password", PasswordTxt.Text.Trim());
-                    cmd.Parameters.AddWithValue("@email", EmailTxt.Text.Trim());
-                    //ExecuteNonQuery - execute The Command
-                    cmd.ExecuteNonQuery();
-                    //Accessing the "Close" property of SQLiteConnection to "Close" the connection
 
+                    using (var connection = new SQLiteConnection(@"Data Source=Database\Accounts.db"))
+                    {
+                        connection.Open();
+                        // creating a string variable "query" with a "INSERT" Statement
+
+                        string query = "INSERT INTO Accounts(employeeID,firstname,lastname,username,password,email) VALUES(@employeeid,@first,@last,@username,@password,@email);";
+
+                        using (var command = new SQLiteCommand(query, connection))
+                        {
+                            //cmd.Parameters.AddWithValue("ParameterName", ActualValue) base on VALUES(@Username,@Password,@Email)
+                            command.Parameters.AddWithValue("@employeeid", GenerateEmployeeID());
+                            command.Parameters.AddWithValue("@first", FirstNameTxt.Text.Trim());
+                            command.Parameters.AddWithValue("@last", LastNameTxt.Text.Trim());
+                            command.Parameters.AddWithValue("@username", UsernameTxt.Text.Trim());
+                            command.Parameters.AddWithValue("@password", PasswordTxt.Text.Trim());
+                            command.Parameters.AddWithValue("@email", EmailTxt.Text.Trim());
+                            //ExecuteNonQuery - execute The Command
+                            command.ExecuteNonQuery();
+                            MessageBox.Show("Account successfully created, Please Sign In");
+
+                        }
+                    }
 
                     // notify
-                    MessageBox.Show("Account successfully created, Please Sign In");
 
                     // Clear all entries
                     FirstNameTxt.Text = "";
@@ -128,20 +129,13 @@ namespace SwiftPayroll
 
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    MessageBox.Show(ex.Message);
                     //notify
                     MessageBox.Show("Make sure the Username is unique and Email is not currently registed");
                 }
-                finally
-                {
-                    db.connect.Close();
-                    db.connect.Dispose();
-
-  
-
-                }
-
+             
            
 
 

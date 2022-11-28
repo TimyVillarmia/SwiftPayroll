@@ -95,51 +95,42 @@ namespace SwiftPayroll
 
                                 command.Parameters.AddWithValue("@Username", UsernameTxt.Text);
                                 command.Parameters.AddWithValue("@Password", PasswordTxt.Text);
-
-                                using (var reader = command.ExecuteReader())
+                                int count = Convert.ToInt32(command.ExecuteScalar());
+                                //if count = 1 then the account exist; else account doesn't exist
+                                if (count == 1)
                                 {
-                                    var count = 0;
-                                    while (reader.Read())
-                                    {
-                                        count = count + 1;
-                                    }
+                                    currentuser = UsernameTxt.Text;
+                                    //notify
+                                    MessageBox.Show("Login Successfully");
+                                    // hide the MainForm
+                                    ParentForm.Hide();
 
-                                   
-                                    //if count = 1 then the account exist; else account doesn't exist
-                                    if (count == 1)
-                                    {
-                                        currentuser = UsernameTxt.Text;
-                                        //notify
-                                        MessageBox.Show("Login Successfully");
-                                        // hide the MainForm
-                                        ParentForm.Hide();
+                                    // displaying sencond form "loading screen form"
+                                    LoadingScreenForm loading = new LoadingScreenForm();
+                                    loading.ShowDialog();
+                                    //Closing 
+                                    ParentForm.Close();
 
-                                        // displaying sencond form "loading screen form"
-                                        LoadingScreenForm loading = new LoadingScreenForm();
-                                        loading.ShowDialog();
-                                        //Closing 
-                                        ParentForm.Close();
+                                    
 
 
-
-                                        //// Clear all entries
-                                        //UsernameTxt.Text = "";
-                                        //PasswordTxt.Text = "";
-
-
-                                    }
-                                    else
-                                    {
-                                        //notify
-                                        attempt -= 1;
-                                        MessageBox.Show($"Wrong username and password combination. {attempt} Attempts left");
+                                    //// Clear all entries
+                                    //UsernameTxt.Text = "";
+                                    //PasswordTxt.Text = "";
 
 
-
-
-
-                                    }
                                 }
+                                else
+                                {
+                                    //notify
+                                    attempt -= 1;
+                                    MessageBox.Show($"Wrong username and password combination. {attempt} Attempts left");
+
+
+                                }
+
+                              
+
                             }
 
 

@@ -9,6 +9,7 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.Drawing;
 using System.Reflection;
+using System.Data;
 
 namespace SwiftPayroll
 {
@@ -50,31 +51,34 @@ namespace SwiftPayroll
                     using (var command = new SQLiteCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@EmployeeID", employee.SelectedEmployeID);
-                        //return The first column of the first row in the result set.
-                        SQLiteDataReader data = command.ExecuteReader();
-                        data.Read();
-
-                        FullnameLbl.Text = $"{data["firstname"]} {data["lastname"]}";
-                        EmployeeIDLbl.Text = $"{data["employeeID"]}";
-                        TitleLbl.Text = $"{data["title"]}";
-                        JobType = $"{data["type"]}";
-                        TypeLbl.Text = JobType;
-                        DepartmentLbl.Text = $"{data["department"]}";
-                        EmailLbl.Text = $"{data["email"]}";
-                        ContactLbl.Text = $"{data["contactnumber"]}";
-
-                        //placeholders
-                        if (JobType == "Full-Time")
+                        //returns an object that can iterate over the entire result set.
+                        using (SQLiteDataReader data = command.ExecuteReader())
                         {
-                            HourlyRateLbl.Text = "₱150";
-                            HourLbl.Text = "8 hrs";
+                            data.Read();
 
+                            FullnameLbl.Text = $"{data["firstname"]} {data["lastname"]}";
+                            EmployeeIDLbl.Text = $"{data["employeeID"]}";
+                            TitleLbl.Text = $"{data["title"]}";
+                            JobType = $"{data["type"]}";
+                            TypeLbl.Text = JobType;
+                            DepartmentLbl.Text = $"{data["department"]}";
+                            EmailLbl.Text = $"{data["email"]}";
+                            ContactLbl.Text = $"{data["contactnumber"]}";
+
+                            //placeholders
+                            if (JobType == "Full-Time")
+                            {
+                                HourlyRateLbl.Text = "₱150";
+                                HourLbl.Text = "8 hrs";
+
+                            }
+                            else
+                            {
+                                HourlyRateLbl.Text = "₱80";
+                                HourLbl.Text = "4 hrs";
+                            }
                         }
-                        else
-                        {
-                            HourlyRateLbl.Text = "₱80";
-                            HourLbl.Text = "4 hrs";
-                        }
+                            
                     }
 
                 }
@@ -469,8 +473,10 @@ namespace SwiftPayroll
 
                 try
                 {
-                    using (var connection = new SQLiteConnection(@"Data Source=Database\Accounts.db"))
+                    
+                    using (var connection = new SQLiteConnection(@"Data Source=Database\PaySlip.db"))
                     {
+                     
                         connection.Open();
                         string query = "INSERT INTO EmployeePaySlip(EmployeeID,PayDate,WorkedDay, AbsencesDay, StandardPay, OvertimeHours, OvertimePay, GrossIncome, SSS, PagIbig, PhilHealth, AbsencesDeduction, Tax, NetIncome) VALUES(@employeeid, @date, @workedday, @absencesday, @standardpay, @overtimehours, @overtimepay, @grossincome, @sss, @pagibig, @philhealth, @absencesdeduction, @tax, @netincome);";
 
@@ -506,7 +512,7 @@ namespace SwiftPayroll
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Unable to generate payslip, please try again " +ex.Message);
+                    MessageBox.Show("Unable to generate payslip, please try again " + ex.Message);
                 }
        
 
@@ -593,6 +599,11 @@ namespace SwiftPayroll
         }
 
         private void PayDate_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PayslipPanel_Paint(object sender, PaintEventArgs e)
         {
 
         }

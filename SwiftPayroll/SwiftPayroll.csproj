@@ -222,7 +222,6 @@
     <Compile Include="Forms\DashboardForm.Designer.cs">
       <DependentUpon>DashboardForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseClass.cs" />
     <Compile Include="UserControl\HumanResourceVIEW.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -362,6 +361,9 @@
       <DependentUpon>UserProfile.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Database\Accounts.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Database\PaySlip.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />

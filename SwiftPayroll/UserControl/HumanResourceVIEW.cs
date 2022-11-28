@@ -76,12 +76,15 @@ namespace SwiftPayroll
                     {
                         command.Parameters.AddWithValue("@Username", user.CurrentUser);
                         //return The first column of the first row in the result set.
-                        SQLiteDataReader data = command.ExecuteReader();
-                        data.Read();
+                        using (SQLiteDataReader data = command.ExecuteReader())
+                        {
+                            data.Read();
 
 
-                        UsernameLbl.Text = $"{data["firstname"]} {data["lastname"]}";
-                        JobTitleLbl.Text = $"{data["title"]}";
+                            UsernameLbl.Text = $"{data["firstname"]} {data["lastname"]}";
+                            JobTitleLbl.Text = $"{data["title"]}";
+                        }
+                            
                     }
 
                 }

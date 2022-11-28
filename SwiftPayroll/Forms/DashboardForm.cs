@@ -46,23 +46,26 @@ namespace SwiftPayroll
                             command.Parameters.AddWithValue("@Username", user.CurrentUser);
                             //return The first column of the first row in the result set.
 
-                            SQLiteDataReader data = command.ExecuteReader();
-                            data.Read();
-                            title = $"{data["title"]}";
-
-                            if (title == "Human Resources Manager")
+                            using (SQLiteDataReader data = command.ExecuteReader())
                             {
-                                HumanResourceVIEW HrView = new HumanResourceVIEW();
-                                DashboardFormPanel.Controls.Add(HrView);
-                                HrView.BringToFront();
+                                data.Read();
+                                title = $"{data["title"]}";
 
+                                if (title == "Human Resources Manager")
+                                {
+                                    HumanResourceVIEW HrView = new HumanResourceVIEW();
+                                    DashboardFormPanel.Controls.Add(HrView);
+                                    HrView.BringToFront();
+
+                                }
+                                else
+                                {
+                                    RegularEmployeeVIEW employeeVIEW = new RegularEmployeeVIEW();
+                                    DashboardFormPanel.Controls.Add(employeeVIEW);
+                                    employeeVIEW.BringToFront();
+                                }
                             }
-                            else
-                            {
-                                RegularEmployeeVIEW employeeVIEW = new RegularEmployeeVIEW();
-                                DashboardFormPanel.Controls.Add(employeeVIEW);
-                                employeeVIEW.BringToFront();
-                            }
+                                
                         }
 
                     }

@@ -64,16 +64,20 @@ namespace SwiftPayroll
                     {
                         command.Parameters.AddWithValue("@EmployeeID", EmployeeIDTxt.Text);
                         //return The first column of the first row in the result set.
-                        SQLiteDataReader data = command.ExecuteReader();
-                        data.Read();
-                        employee = EmployeeIDTxt.Text;
-
-                        if (EmployeeIDTxt.Text == $"{data["employeeID"]}")
+                        using (SQLiteDataReader data = command.ExecuteReader())
                         {
 
-                            UserInfoView payslip = new UserInfoView();
-                            payslip.ShowDialog();
+                            data.Read();
+                            employee = EmployeeIDTxt.Text;
 
+                            if (EmployeeIDTxt.Text == $"{data["employeeID"]}")
+                            {
+                          
+                                UserInfoView payslip = new UserInfoView();
+                                payslip.ShowDialog();
+                           
+
+                            }
                         }
                     }
                 }
@@ -90,6 +94,7 @@ namespace SwiftPayroll
          
 
 
+
         }
 
         private void EmployeeIDTxt_TextChanged(object sender, EventArgs e)
@@ -102,10 +107,14 @@ namespace SwiftPayroll
                 using (var command = new SQLiteCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@EmployeeID", EmployeeIDTxt.Text);
-                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
-                    DataTable dset = new DataTable();
-                    adapter.Fill(dset);
-                    DataGridView.DataSource = dset;
+                    using (var adapter = new SQLiteDataAdapter(command))
+                    {
+                        DataTable dset = new DataTable();
+                        adapter.Fill(dset);
+                        DataGridView.DataSource = dset;
+
+                    }
+                  
 
                 }
             }

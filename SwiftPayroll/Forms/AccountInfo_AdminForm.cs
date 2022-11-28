@@ -38,10 +38,10 @@ namespace SwiftPayroll
                         command.ExecuteNonQuery();
                         MessageBox.Show("Username and Password sucessfully changed");
                         this.Close();
+                       
                     }
                 }
 
-                //Accessing the "Open" property of SQLiteConnection to "Open" the connection
         
             }
             catch(Exception ex)
@@ -66,17 +66,21 @@ namespace SwiftPayroll
                     {
                         command.Parameters.AddWithValue("@EmployeeID", selectedEmployee.SelectedEmployee);
                         //return The first column of the first row in the result set.
-                        SQLiteDataReader data = command.ExecuteReader();
-                        data.Read();
+                        using (SQLiteDataReader data = command.ExecuteReader())
+                        {
+                            data.Read();
 
-                        FullnameLbl.Text = $"{data["firstname"]} {data["lastname"]}";
-                        EmployeeIDLbl.Text = $"{data["employeeID"]}";
-                        TitleLbl.Text = $"{data["title"]}";
-                        TypeLbl.Text = $"{data["type"]}";
-                        DepartmentLbl.Text = $"{data["department"]}";
-                        EmailLbl.Text = $"{data["email"]}";
-                        ContactLbl.Text = $"{data["contactnumber"]}";
-                    }
+                            FullnameLbl.Text = $"{data["firstname"]} {data["lastname"]}";
+                            EmployeeIDLbl.Text = $"{data["employeeID"]}";
+                            TitleLbl.Text = $"{data["title"]}";
+                            TypeLbl.Text = $"{data["type"]}";
+                            DepartmentLbl.Text = $"{data["department"]}";
+                            EmailLbl.Text = $"{data["email"]}";
+                            ContactLbl.Text = $"{data["contactnumber"]}";
+                        }
+
+                    } 
+                      
 
                 }
 

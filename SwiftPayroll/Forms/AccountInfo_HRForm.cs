@@ -50,6 +50,8 @@ namespace SwiftPayroll
             {
                 MessageBox.Show("Unable to update information"+ ex.Message);
             } 
+
+
          
         }
 
@@ -68,16 +70,19 @@ namespace SwiftPayroll
                     {
                         command.Parameters.AddWithValue("@EmployeeID", selectedEmployee.SelectedEmployee);
                         //return The first column of the first row in the result set.
-                        SQLiteDataReader data = command.ExecuteReader();
-                        data.Read();
+                        using (SQLiteDataReader data = command.ExecuteReader())
+                        {
+                            data.Read();
 
-                        FullnameLbl.Text = $"{data["firstname"]} {data["lastname"]}";
-                        EmployeeIDLbl.Text = $"{data["employeeID"]}";
-                        TitleComboBox.Text = $"{data["title"]}";
-                        TypeComboBox.Text = $"{data["type"]}";
-                        DepartmentComboBox.Text = $"{data["department"]}";
-                        EmailLbl.Text = $"{data["email"]}";
-                        ContactLbl.Text = $"{data["contactnumber"]}";
+                            FullnameLbl.Text = $"{data["firstname"]} {data["lastname"]}";
+                            EmployeeIDLbl.Text = $"{data["employeeID"]}";
+                            TitleComboBox.Text = $"{data["title"]}";
+                            TypeComboBox.Text = $"{data["type"]}";
+                            DepartmentComboBox.Text = $"{data["department"]}";
+                            EmailLbl.Text = $"{data["email"]}";
+                            ContactLbl.Text = $"{data["contactnumber"]}";
+                        }
+                       
                     }
 
                 }

@@ -54,30 +54,33 @@ namespace SwiftPayroll
                     {
                         command.Parameters.AddWithValue("@Username", CurrentUser.CurrentUser);
                         //return The first column of the first row in the result set.
-                        SQLiteDataReader data = command.ExecuteReader();
-                        data.Read();
+                        using (SQLiteDataReader data = command.ExecuteReader())
+                        {
+                            data.Read();
 
-                        FullnameLbl.Text = $"{data["firstname"]} {data["lastname"]}";
-                        EmployeeIDLbl.Text = $"{data["employeeID"]}";
-                        TitleLbl.Text = $"{data["title"]}";
-                        TypeLbl.Text = $"{data["type"]}";
-                        DepartmentLbl.Text = $"{data["department"]}";
-                        EmailLbl.Text = $"{data["email"]}";
-                        ContactLbl.Text = $"{data["contactnumber"]}";
+                            FullnameLbl.Text = $"{data["firstname"]} {data["lastname"]}";
+                            EmployeeIDLbl.Text = $"{data["employeeID"]}";
+                            TitleLbl.Text = $"{data["title"]}";
+                            TypeLbl.Text = $"{data["type"]}";
+                            DepartmentLbl.Text = $"{data["department"]}";
+                            EmailLbl.Text = $"{data["email"]}";
+                            ContactLbl.Text = $"{data["contactnumber"]}";
 
 
 
 
-                        //placeholders
-                        FirstnameTxt.PlaceholderText = $"{data["firstname"]}";
-                        LastnameTxt.PlaceholderText = $"{data["lastname"]}";
-                        UsernameTxt.PlaceholderText = $"{data["username"]}";
-                        PasswordTxt.PlaceholderText = $"{data["password"]}";
-                        PasswordTxt.PasswordChar = '•';
-                        SexComboBox.SelectedItem = $"{data["sex"]}";
-                        ContactTxt.PlaceholderText = $"{data["contactnumber"]}";
-                        EmailTxt.PlaceholderText = $"{data["email"]}";
-                        AddressTxt.PlaceholderText = $"{data["address"]}";
+                            //placeholders
+                            FirstnameTxt.PlaceholderText = $"{data["firstname"]}";
+                            LastnameTxt.PlaceholderText = $"{data["lastname"]}";
+                            UsernameTxt.PlaceholderText = $"{data["username"]}";
+                            PasswordTxt.PlaceholderText = $"{data["password"]}";
+                            PasswordTxt.PasswordChar = '•';
+                            SexComboBox.SelectedItem = $"{data["sex"]}";
+                            ContactTxt.PlaceholderText = $"{data["contactnumber"]}";
+                            EmailTxt.PlaceholderText = $"{data["email"]}";
+                            AddressTxt.PlaceholderText = $"{data["address"]}";
+                        }
+                           
                     }
 
                 }

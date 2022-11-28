@@ -150,6 +150,7 @@
             this.PayslipPanel.Name = "PayslipPanel";
             this.PayslipPanel.Size = new System.Drawing.Size(547, 726);
             this.PayslipPanel.TabIndex = 1;
+            this.PayslipPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.PayslipPanel_Paint);
             // 
             // guna2ControlBox1
             // 

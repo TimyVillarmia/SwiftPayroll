@@ -16,7 +16,7 @@ namespace SwiftPayroll
     {
         private static string employee;
 
-        public string SelectedEmployeID
+        public string SelectedEmployeeID
         {
             get { return employee; }
             set { employee = value; }
@@ -31,7 +31,7 @@ namespace SwiftPayroll
             using (var connection = new SQLiteConnection(@"Data Source=Database\Accounts.db"))
             {
                 connection.Open();
-                string query = "SELECT employeeID, firstname, lastname, status, title, type FROM Accounts";
+                string query = "SELECT employeeID, firstname, lastname, status, title, type, department FROM Accounts";
 
                 using (var adapter = new SQLiteDataAdapter(query, connection))
                 {
@@ -69,6 +69,7 @@ namespace SwiftPayroll
 
                             data.Read();
                             employee = EmployeeIDTxt.Text;
+                            
 
                             if (EmployeeIDTxt.Text == $"{data["employeeID"]}")
                             {
@@ -121,6 +122,11 @@ namespace SwiftPayroll
 
           
          
+
+        }
+
+        private void DataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

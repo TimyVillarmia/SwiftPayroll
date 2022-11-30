@@ -168,10 +168,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmployeePayrollTAB.cs">
+    <Compile Include="UserControl\EmployeePayrollTAB.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="EmployeePayrollTAB.Designer.cs">
+    <Compile Include="UserControl\EmployeePayrollTAB.Designer.cs">
       <DependentUpon>EmployeePayrollTAB.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControl\ABoutPageUC.cs">
@@ -295,7 +295,7 @@
     <Compile Include="UserControl\UserProfile.Designer.cs">
       <DependentUpon>UserProfile.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="EmployeePayrollTAB.resx">
+    <EmbeddedResource Include="UserControl\EmployeePayrollTAB.resx">
       <DependentUpon>EmployeePayrollTAB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\ABoutPageUC.resx">

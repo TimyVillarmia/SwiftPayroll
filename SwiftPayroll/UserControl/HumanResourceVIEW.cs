@@ -63,40 +63,57 @@ namespace SwiftPayroll
 
         private void HumanResourceVIEW_Load(object sender, EventArgs e)
         {
+
             LoginUC user = new LoginUC();
+
 
             try
             {
-                using (var connection = new SQLiteConnection(@"Data Source=Database\Accounts.db"))
+
+                DashboardHomeUC dashboard = new DashboardHomeUC();
+                if (!DashBoardPanel.Controls.Contains(dashboard))
                 {
-                    connection.Open();
-                    string query = "SELECT * FROM Accounts WHERE username=@Username";
-
-                    using (var command = new SQLiteCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@Username", user.CurrentUser);
-                        //return The first column of the first row in the result set.
-                        using (SQLiteDataReader data = command.ExecuteReader())
-                        {
-                            data.Read();
-
-
-                            UsernameLbl.Text = $"{data["firstname"]} {data["lastname"]}";
-                            JobTitleLbl.Text = $"{data["title"]}";
-                        }
-                            
-                    }
-
+                    DashBoardPanel.Controls.Add(dashboard);
                 }
+                dashboard.BringToFront();
 
+                EmployeeInfo employee = new EmployeeInfo(user.CurrentUser);
+                employee.GetInformation();
+                UsernameLbl.Text = employee.Username;
+                JobTitleLbl.Text = employee.Title;
 
-     
+              
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
 
+        }
+
+        private void DashBoardPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void SideBarPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void DashboardBtn_Click(object sender, EventArgs e)
+        {
+            DashboardHomeUC dashboard = new DashboardHomeUC();
+            if (!DashBoardPanel.Controls.Contains(dashboard))
+            {
+                DashBoardPanel.Controls.Add(dashboard);
+            }
+            dashboard.BringToFront();
+        }
+
+        private void DashboardBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

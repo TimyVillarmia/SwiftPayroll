@@ -41,7 +41,26 @@ namespace SwiftPayroll
                 }
             }
 
- 
+            using (var connection = new SQLiteConnection(@"Data Source=Database\PaySlip.db"))
+            {
+                connection.Open();
+                string query = "SELECT EmployeeID, PayDate, GrossIncome, NetIncome FROM EmployeePaySlip";
+
+                using (var command = new SQLiteCommand(query, connection))
+                {
+
+                    using (var adapter = new SQLiteDataAdapter(command))
+                    {
+                        DataSet dset = new DataSet();
+                        adapter.Fill(dset);
+                        HistoryDataGridView.DataSource = dset.Tables[0];
+                    }
+
+                }
+
+            }
+
+
 
 
 
@@ -50,7 +69,7 @@ namespace SwiftPayroll
 
         private void ViewBtn_Click(object sender, EventArgs e)
         {
-            
+
 
 
             try
@@ -126,6 +145,11 @@ namespace SwiftPayroll
         }
 
         private void DataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void HistoryDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

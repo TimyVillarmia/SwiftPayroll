@@ -171,6 +171,7 @@
             this.ContactLbl.Size = new System.Drawing.Size(125, 18);
             this.ContactLbl.TabIndex = 76;
             this.ContactLbl.Text = "-";
+            this.ContactLbl.Click += new System.EventHandler(this.ContactLbl_Click);
             // 
             // label10
             // 

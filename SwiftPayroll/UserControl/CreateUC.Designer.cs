@@ -43,6 +43,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.PasswordTxt = new Guna.UI2.WinForms.Guna2TextBox();
             this.CreateAccountBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.TitleComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2CustomGradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,6 +51,7 @@
             // 
             this.guna2CustomGradientPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(209)))), ((int)(((byte)(233)))));
             this.guna2CustomGradientPanel1.BorderRadius = 4;
+            this.guna2CustomGradientPanel1.Controls.Add(this.TitleComboBox);
             this.guna2CustomGradientPanel1.Controls.Add(this.LastNameTxt);
             this.guna2CustomGradientPanel1.Controls.Add(this.SignInLinkLabel);
             this.guna2CustomGradientPanel1.Controls.Add(this.TermsCheck);
@@ -68,9 +70,9 @@
             this.guna2CustomGradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(209)))), ((int)(((byte)(233)))));
             this.guna2CustomGradientPanel1.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(209)))), ((int)(((byte)(233)))));
             this.guna2CustomGradientPanel1.FillColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(209)))), ((int)(((byte)(233)))));
-            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(288, 70);
+            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(288, 38);
             this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
-            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(397, 519);
+            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(397, 561);
             this.guna2CustomGradientPanel1.TabIndex = 4;
             // 
             // LastNameTxt
@@ -87,7 +89,7 @@
             this.LastNameTxt.Font = new System.Drawing.Font("Montserrat", 9.749999F);
             this.LastNameTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.LastNameTxt.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.LastNameTxt.Location = new System.Drawing.Point(33, 149);
+            this.LastNameTxt.Location = new System.Drawing.Point(33, 154);
             this.LastNameTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.LastNameTxt.Name = "LastNameTxt";
             this.LastNameTxt.PasswordChar = '\0';
@@ -102,7 +104,7 @@
             this.SignInLinkLabel.Font = new System.Drawing.Font("Montserrat", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SignInLinkLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.SignInLinkLabel.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
-            this.SignInLinkLabel.Location = new System.Drawing.Point(87, 480);
+            this.SignInLinkLabel.Location = new System.Drawing.Point(87, 531);
             this.SignInLinkLabel.Name = "SignInLinkLabel";
             this.SignInLinkLabel.Size = new System.Drawing.Size(223, 18);
             this.SignInLinkLabel.TabIndex = 30;
@@ -118,7 +120,7 @@
             this.TermsCheck.CheckedState.BorderThickness = 0;
             this.TermsCheck.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.TermsCheck.Font = new System.Drawing.Font("Montserrat", 8.249999F);
-            this.TermsCheck.Location = new System.Drawing.Point(33, 399);
+            this.TermsCheck.Location = new System.Drawing.Point(33, 450);
             this.TermsCheck.Name = "TermsCheck";
             this.TermsCheck.Size = new System.Drawing.Size(247, 19);
             this.TermsCheck.TabIndex = 28;
@@ -142,7 +144,7 @@
             this.FirstNameTxt.Font = new System.Drawing.Font("Montserrat", 9.749999F);
             this.FirstNameTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.FirstNameTxt.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.FirstNameTxt.Location = new System.Drawing.Point(33, 98);
+            this.FirstNameTxt.Location = new System.Drawing.Point(33, 103);
             this.FirstNameTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.FirstNameTxt.Name = "FirstNameTxt";
             this.FirstNameTxt.PasswordChar = '\0';
@@ -158,7 +160,7 @@
             this.MaskPassword.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.MaskPassword.CheckedState.InnerBorderColor = System.Drawing.Color.White;
             this.MaskPassword.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.MaskPassword.Location = new System.Drawing.Point(317, 313);
+            this.MaskPassword.Location = new System.Drawing.Point(318, 361);
             this.MaskPassword.Name = "MaskPassword";
             this.MaskPassword.Size = new System.Drawing.Size(35, 20);
             this.MaskPassword.TabIndex = 31;
@@ -191,7 +193,7 @@
             this.UsernameTxt.Font = new System.Drawing.Font("Montserrat", 9.749999F);
             this.UsernameTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.UsernameTxt.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.UsernameTxt.Location = new System.Drawing.Point(33, 250);
+            this.UsernameTxt.Location = new System.Drawing.Point(33, 256);
             this.UsernameTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.UsernameTxt.Name = "UsernameTxt";
             this.UsernameTxt.PasswordChar = '\0';
@@ -226,7 +228,7 @@
             this.EmailTxt.Font = new System.Drawing.Font("Montserrat", 9.749999F);
             this.EmailTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.EmailTxt.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.EmailTxt.Location = new System.Drawing.Point(33, 199);
+            this.EmailTxt.Location = new System.Drawing.Point(33, 205);
             this.EmailTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.EmailTxt.Name = "EmailTxt";
             this.EmailTxt.PasswordChar = '\0';
@@ -238,7 +240,7 @@
             // guna2Separator4
             // 
             this.guna2Separator4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
-            this.guna2Separator4.Location = new System.Drawing.Point(33, 467);
+            this.guna2Separator4.Location = new System.Drawing.Point(33, 518);
             this.guna2Separator4.Name = "guna2Separator4";
             this.guna2Separator4.Size = new System.Drawing.Size(331, 10);
             this.guna2Separator4.TabIndex = 23;
@@ -257,7 +259,7 @@
             this.ConfirmPasswordTxt.Font = new System.Drawing.Font("Montserrat", 9.749999F);
             this.ConfirmPasswordTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.ConfirmPasswordTxt.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.ConfirmPasswordTxt.Location = new System.Drawing.Point(33, 352);
+            this.ConfirmPasswordTxt.Location = new System.Drawing.Point(33, 400);
             this.ConfirmPasswordTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ConfirmPasswordTxt.Name = "ConfirmPasswordTxt";
             this.ConfirmPasswordTxt.PasswordChar = '•';
@@ -292,7 +294,7 @@
             this.PasswordTxt.Font = new System.Drawing.Font("Montserrat", 9.749999F);
             this.PasswordTxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
             this.PasswordTxt.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.PasswordTxt.Location = new System.Drawing.Point(33, 301);
+            this.PasswordTxt.Location = new System.Drawing.Point(33, 349);
             this.PasswordTxt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.PasswordTxt.Name = "PasswordTxt";
             this.PasswordTxt.PasswordChar = '•';
@@ -312,12 +314,53 @@
             this.CreateAccountBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(70)))), ((int)(((byte)(234)))));
             this.CreateAccountBtn.Font = new System.Drawing.Font("Montserrat", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateAccountBtn.ForeColor = System.Drawing.Color.White;
-            this.CreateAccountBtn.Location = new System.Drawing.Point(33, 422);
+            this.CreateAccountBtn.Location = new System.Drawing.Point(33, 473);
             this.CreateAccountBtn.Name = "CreateAccountBtn";
             this.CreateAccountBtn.Size = new System.Drawing.Size(331, 43);
             this.CreateAccountBtn.TabIndex = 19;
             this.CreateAccountBtn.Text = "Create account";
             this.CreateAccountBtn.Click += new System.EventHandler(this.CreateAccountBtn_Click);
+            // 
+            // TitleComboBox
+            // 
+            this.TitleComboBox.BackColor = System.Drawing.Color.Transparent;
+            this.TitleComboBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
+            this.TitleComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.TitleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TitleComboBox.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TitleComboBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.TitleComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.TitleComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.TitleComboBox.ItemHeight = 30;
+            this.TitleComboBox.Items.AddRange(new object[] {
+            "Software Engineer",
+            "Human Resources Manager",
+            "Recruiter",
+            "System Administrator",
+            "UI/UX Designer",
+            "Accountant",
+            "QA Tester",
+            "Project Manager",
+            "Account Executive",
+            "Marketing Manager",
+            "Marketing Specialist",
+            "Public Relations",
+            "Product Manager",
+            "Chief Information Officer (CIO)",
+            "Administrative Assistant",
+            "Chief Technology Officer (CTO)",
+            "Account Executive",
+            "Business Analyst",
+            "Office Assistant",
+            "Data Entry",
+            "Artificial Intelligence Engineer",
+            "SQL Developer",
+            "Network Administrator",
+            "DevOps Engineer"});
+            this.TitleComboBox.Location = new System.Drawing.Point(33, 306);
+            this.TitleComboBox.Name = "TitleComboBox";
+            this.TitleComboBox.Size = new System.Drawing.Size(331, 36);
+            this.TitleComboBox.TabIndex = 83;
             // 
             // CreateUC
             // 
@@ -351,5 +394,6 @@
         private Guna.UI2.WinForms.Guna2ToggleSwitch MaskPassword;
         private Guna.UI2.WinForms.Guna2TextBox LastNameTxt;
         private Guna.UI2.WinForms.Guna2TextBox FirstNameTxt;
+        private Guna.UI2.WinForms.Guna2ComboBox TitleComboBox;
     }
 }

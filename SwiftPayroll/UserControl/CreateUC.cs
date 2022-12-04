@@ -54,7 +54,7 @@ namespace SwiftPayroll
         public string GenerateEmployeeID()
         {
            
-            string month, year, EmployeeID;
+            string month, year;
             string min, sec;
             month = DateTime.Now.Month.ToString();
             year = DateTime.Now.Year.ToString();
@@ -62,13 +62,12 @@ namespace SwiftPayroll
             min = DateTime.Now.Minute.ToString();
             sec = DateTime.Now.Second.ToString();
 
-            return EmployeeID = year + "-" + month + min + sec;
+            return year + "-" + month + min + sec;
         }
 
         private void CreateAccountBtn_Click(object sender, EventArgs e)
         {
-            //Instantiate SQLiteConnect object which is used for opening connection to the database
-            //SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
+
 
 
             //check if data entries exist
@@ -92,32 +91,11 @@ namespace SwiftPayroll
 
                 try
                 {
+                    EmployeeInfo employee = new EmployeeInfo();
 
 
-                    using (var connection = new SQLiteConnection(@"Data Source=Database\Accounts.db"))
-                    {
-                        connection.Open();
-                        // creating a string variable "query" with a "INSERT" Statement
-
-                        string query = "INSERT INTO Accounts(employeeID,firstname,lastname,username,password,email) VALUES(@employeeid,@first,@last,@username,@password,@email);";
-
-                        using (var command = new SQLiteCommand(query, connection))
-                        {
-                            //cmd.Parameters.AddWithValue("ParameterName", ActualValue) base on VALUES(@Username,@Password,@Email)
-                            command.Parameters.AddWithValue("@employeeid", GenerateEmployeeID());
-                            command.Parameters.AddWithValue("@first", FirstNameTxt.Text.Trim());
-                            command.Parameters.AddWithValue("@last", LastNameTxt.Text.Trim());
-                            command.Parameters.AddWithValue("@username", UsernameTxt.Text.Trim());
-                            command.Parameters.AddWithValue("@password", PasswordTxt.Text.Trim());
-                            command.Parameters.AddWithValue("@email", EmailTxt.Text.Trim());
-                            //ExecuteNonQuery - execute The Command
-                            command.ExecuteNonQuery();
-                            MessageBox.Show("Account successfully created, Please Sign In");
-
-                        }
-                    }
-
-                    // notify
+                    employee.Register(FirstNameTxt.Text.Trim(), LastNameTxt.Text.Trim(), UsernameTxt.Text.Trim(), PasswordTxt.Text.Trim(), EmailTxt.Text.Trim(), TitleComboBox.SelectedItem.ToString());
+                    
 
                     // Clear all entries
                     FirstNameTxt.Text = "";
@@ -126,7 +104,7 @@ namespace SwiftPayroll
                     UsernameTxt.Text = "";
                     PasswordTxt.Text = "";
                     ConfirmPasswordTxt.Text = "";
-
+                    TitleComboBox.SelectedIndex = -1;
 
                 }
                 catch (Exception ex)

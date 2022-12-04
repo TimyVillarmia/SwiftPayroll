@@ -66,6 +66,7 @@
             this.SideBarPanel.Name = "SideBarPanel";
             this.SideBarPanel.Size = new System.Drawing.Size(216, 800);
             this.SideBarPanel.TabIndex = 2;
+            this.SideBarPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.SideBarPanel_Paint);
             // 
             // guna2CirclePictureBox1
             // 
@@ -182,6 +183,7 @@
             // DashboardBtn
             // 
             this.DashboardBtn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.DashboardBtn.Checked = true;
             this.DashboardBtn.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(70)))), ((int)(((byte)(234)))));
             this.DashboardBtn.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.DashboardBtn.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
@@ -205,6 +207,7 @@
             this.DashboardBtn.TabIndex = 2;
             this.DashboardBtn.Text = "Dashboard";
             this.DashboardBtn.TextOffset = new System.Drawing.Point(15, 0);
+            this.DashboardBtn.Click += new System.EventHandler(this.DashboardBtn_Click);
             // 
             // label3
             // 

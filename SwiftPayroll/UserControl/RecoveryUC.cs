@@ -141,29 +141,15 @@ namespace SwiftPayroll
 
                 try
                 {
+                    EmployeeInfo employee = new EmployeeInfo();
+                    employee.RecoverAccount(EmailTxt.Text.Trim(), PasswordTxt.Text.Trim());
 
-                    using (var connection = new SQLiteConnection(@"Data Source=Database\Accounts.db"))
-                    {
-                        connection.Open();
-                        // To update existing data in a table, you use SQLite UPDATE statement. 
-                        string query = "UPDATE Accounts SET password=@Password WHERE email = @Email;";
-
-                        using (var command = new SQLiteCommand(query, connection))
-                        {
-                            command.Parameters.AddWithValue("@Email", EmailTxt.Text);
-                            command.Parameters.AddWithValue("@Password", PasswordTxt.Text);
-                            command.ExecuteNonQuery();
-                            MessageBox.Show("Account successfully reset, Please Sign In");
-
-                            // Clear all entries
-                            EmailTxt.Text = "";
-                            OTPTxt.Text = "";
-                            PasswordTxt.Text = "";
-                            ConfirmPasswordTxt.Text = "";
-
-                        }
-                    }
-
+                    // Clear all entries
+                    EmailTxt.Text = "";
+                    OTPTxt.Text = "";
+                    PasswordTxt.Text = "";
+                    ConfirmPasswordTxt.Text = "";
+      
                 }
                 catch (Exception)
                 {

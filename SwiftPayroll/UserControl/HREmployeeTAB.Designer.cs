@@ -41,6 +41,7 @@
             this.JobTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Department = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,11 +94,11 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.DataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.DataGridView.Location = new System.Drawing.Point(18, 53);
+            this.DataGridView.Location = new System.Drawing.Point(18, 90);
             this.DataGridView.Name = "DataGridView";
             this.DataGridView.ReadOnly = true;
             this.DataGridView.RowHeadersVisible = false;
-            this.DataGridView.Size = new System.Drawing.Size(750, 729);
+            this.DataGridView.Size = new System.Drawing.Size(750, 692);
             this.DataGridView.TabIndex = 49;
             this.DataGridView.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.DataGridView.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -178,11 +179,23 @@
             this.Department.Name = "Department";
             this.Department.ReadOnly = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Montserrat", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
+            this.label1.Location = new System.Drawing.Point(10, 31);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(347, 44);
+            this.label1.TabIndex = 50;
+            this.label1.Text = "Manage Employees";
+            // 
             // HREmployeeTAB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(241)))), ((int)(((byte)(253)))));
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.DataGridView);
             this.Controls.Add(this.guna2ControlBox1);
             this.Name = "HREmployeeTAB";
@@ -190,6 +203,7 @@
             this.Load += new System.EventHandler(this.HREmployeeTAB_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridView)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -205,5 +219,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn JobTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
         private System.Windows.Forms.DataGridViewTextBoxColumn Department;
+        private System.Windows.Forms.Label label1;
     }
 }

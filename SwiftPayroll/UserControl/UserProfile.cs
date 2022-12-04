@@ -13,6 +13,9 @@ namespace SwiftPayroll
 {
     public partial class UserProfile : UserControl
     {
+        public LoginUC CurrentUser = new LoginUC();
+        public EmployeeInfo employee;
+
         public UserProfile()
         {
             InitializeComponent();
@@ -27,7 +30,7 @@ namespace SwiftPayroll
         private void UserProfile_Load(object sender, EventArgs e)
         {
 
-            LoginUC CurrentUser = new LoginUC();
+            employee = new EmployeeInfo(CurrentUser.CurrentUser);
 
             SaveBtn.Visible = false;
             EditBtn.Visible = true;
@@ -45,50 +48,37 @@ namespace SwiftPayroll
 
             try
             {
-                using (var connection = new SQLiteConnection(@"Data Source=Database\Accounts.db"))
-                {
-                    connection.Open();
-                    string query = "SELECT * FROM Accounts WHERE username=@Username";
 
-                    using (var command = new SQLiteCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@Username", CurrentUser.CurrentUser);
-                        //return The first column of the first row in the result set.
-                        using (SQLiteDataReader data = command.ExecuteReader())
-                        {
-                            data.Read();
+                employee.GetInformation();
 
-                            FullnameLbl.Text = $"{data["firstname"]} {data["lastname"]}";
-                            EmployeeIDLbl.Text = $"{data["employeeID"]}";
-                            TitleLbl.Text = $"{data["title"]}";
-                            TypeLbl.Text = $"{data["type"]}";
-                            DepartmentLbl.Text = $"{data["department"]}";
-                            EmailLbl.Text = $"{data["email"]}";
-                            ContactLbl.Text = $"{data["contactnumber"]}";
+                FullnameLbl.Text = employee.Fullname;
+                EmployeeIDLbl.Text = employee.EmployeeID;
+                TitleLbl.Text = employee.Title;
+                TypeLbl.Text = employee.Type;
+                DepartmentLbl.Text = employee.Department;
+                EmailLbl.Text = employee.Email;
+                ContactLbl.Text = employee.ContactNumber;
 
 
 
 
-                            //placeholders
-                            FirstnameTxt.PlaceholderText = $"{data["firstname"]}";
-                            LastnameTxt.PlaceholderText = $"{data["lastname"]}";
-                            UsernameTxt.PlaceholderText = $"{data["username"]}";
-                            PasswordTxt.PlaceholderText = $"{data["password"]}";
-                            PasswordTxt.PasswordChar = '•';
-                            SexComboBox.SelectedItem = $"{data["sex"]}";
-                            ContactTxt.PlaceholderText = $"{data["contactnumber"]}";
-                            EmailTxt.PlaceholderText = $"{data["email"]}";
-                            AddressTxt.PlaceholderText = $"{data["address"]}";
-                        }
-                           
-                    }
-
-                }
+                //placeholders
+                FirstnameTxt.Text = employee.FirstName;
+                LastnameTxt.Text = employee.LastName;
+                UsernameTxt.Text = employee.Username;
+                PasswordTxt.Text = employee.Password;
+                PasswordTxt.PasswordChar = '•';
+                SexComboBox.SelectedItem = employee.Sex;
+                ContactTxt.Text = employee.ContactNumber;
+                EmailTxt.Text = employee.Email;
+                AddressTxt.Text = employee.Address;
 
 
 
 
-     
+
+
+
             }
             catch(Exception ex)
             {
@@ -129,52 +119,55 @@ namespace SwiftPayroll
         private void SaveBtn_Click(object sender, EventArgs e)
         {
 
-
-            SaveBtn.Visible = false;
-            EditBtn.Visible = true;
             PasswordTxt.PasswordChar = '•';
 
-            LoginUC CurrentUser = new LoginUC();
+
 
             if (FirstnameTxt.Text != string.Empty && LastnameTxt.Text != string.Empty && PasswordTxt.Text != string.Empty && ContactTxt.Text != string.Empty && EmailTxt.Text != string.Empty && AddressTxt.Text != string.Empty)
             {
                 try
                 {
-                    using (var connection = new SQLiteConnection(@"Data Source=Database\Accounts.db"))
-                    {
-                        connection.Open();
-                        string query = "UPDATE Accounts SET sex=@sex,firstname=@first,lastname=@last,password=@password,email=@email,contactnumber=@contact,address=@address WHERE username=@currentuser;";
+                    EmployeeInfo employee = new EmployeeInfo(CurrentUser.CurrentUser);
 
-                        using (var command = new SQLiteCommand(query, connection))
-                        {
 
-                            //Set the values for each parameters
-                            //cmd.Parameters.AddWithValue("ParameterName", ActualValue) base on VALUES(@Username,@Password,@Email)
-                            command.Parameters.AddWithValue("@sex", SexComboBox.SelectedItem);
-                            command.Parameters.AddWithValue("@first", FirstnameTxt.Text);
-                            command.Parameters.AddWithValue("@last", LastnameTxt.Text);
-                            command.Parameters.AddWithValue("@currentuser", CurrentUser.CurrentUser);
-                            command.Parameters.AddWithValue("@password", PasswordTxt.Text);
-                            command.Parameters.AddWithValue("@email", EmailTxt.Text);
-                            command.Parameters.AddWithValue("@contact", ContactTxt.Text);
-                            command.Parameters.AddWithValue("@address", AddressTxt.Text);
-                            //ExecuteNonQuery - execute The Command
-                            command.ExecuteNonQuery();
+                    string New_Firstname = FirstnameTxt.Text;
+                    string New_Lastname = LastnameTxt.Text;
+                    string New_Password = PasswordTxt.Text;
+                    string New_Sex = SexComboBox.SelectedItem.ToString();
+                    string New_Contact = ContactTxt.Text;
+                    string New_Email = EmailTxt.Text;
+                    string New_Address = AddressTxt.Text;
+    
+
+
+                    employee.UpdateProfile(New_Firstname,New_Lastname,New_Password,New_Sex,New_Contact,New_Email,New_Address);
 
 
 
+                    FullnameLbl.Text = employee.Fullname;
+                    EmployeeIDLbl.Text = employee.EmployeeID;
+                    TitleLbl.Text = employee.Title;
+                    TypeLbl.Text = employee.Type;
+                    DepartmentLbl.Text = employee.Department;
+                    EmailLbl.Text = employee.Email;
+                    ContactLbl.Text = employee.ContactNumber;
 
-                            //lock textbox
-                            FirstnameTxt.Enabled = false;
-                            LastnameTxt.Enabled = false;
-                            UsernameTxt.Enabled = false;
-                            PasswordTxt.Enabled = false;
-                            SexComboBox.Enabled = false;
-                            ContactTxt.Enabled = false;
-                            EmailTxt.Enabled = false;
-                            AddressTxt.Enabled = false;
-                        }
-                    }
+
+
+                    //lock textbox
+                    FirstnameTxt.Enabled = false;
+                    LastnameTxt.Enabled = false;
+                    UsernameTxt.Enabled = false;
+                    PasswordTxt.Enabled = false;
+                    SexComboBox.Enabled = false;
+                    ContactTxt.Enabled = false;
+                    EmailTxt.Enabled = false;
+                    AddressTxt.Enabled = false;
+
+
+                    SaveBtn.Visible = false;
+                    EditBtn.Visible = true;
+
 
 
                
@@ -193,11 +186,52 @@ namespace SwiftPayroll
             {
                 MessageBox.Show("Kindly complete the form");
 
+
+                if (FirstnameTxt.Text == string.Empty)
+                {
+                    FirstnameTxt.BorderColor = Color.Red;
+                }
+                if (LastnameTxt.Text == string.Empty)
+                {
+                    LastnameTxt.BorderColor = Color.Red;
+                }
+                if (UsernameTxt.Text == string.Empty)
+                {
+                    UsernameTxt.BorderColor = Color.Red;
+                }
+                if (PasswordTxt.Text == string.Empty)
+                {
+                    PasswordTxt.BorderColor = Color.Red;
+                }
+                if (ContactTxt.Text == string.Empty)
+                {
+                    ContactTxt.BorderColor = Color.Red;
+                }
+                if (EmailTxt.Text == string.Empty)
+                {
+                    EmailTxt.BorderColor = Color.Red;
+                }
+                if (AddressTxt.Text == string.Empty)
+                {
+                    AddressTxt.BorderColor = Color.Red;
+                }
+
             }
 
 
 
 
+        }
+
+        private void ProfilePicture_Click(object sender, EventArgs e)
+        {
+
+            OpenFileDialog opnfd = new OpenFileDialog();
+            opnfd.Filter = "Image Files (*.jpg;*.jpeg;.*.gif;)|*.jpg;*.jpeg;.*.gif";
+            if (opnfd.ShowDialog() == DialogResult.OK)
+            {
+                ProfilePicture.Image = new Bitmap(opnfd.FileName);
+            }
         }
     }
 }

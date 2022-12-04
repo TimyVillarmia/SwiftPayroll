@@ -18,55 +18,30 @@ namespace SwiftPayroll
     public partial class EmployeePayrollTAB : UserControl
     {
         string Selected_PayslipDate = "";
+        public LoginUC currentuser = new LoginUC();
+        public EmployeeInfo employee;
+
+
+
         public EmployeePayrollTAB()
         {
             InitializeComponent();
         }
 
 
-        private string GetEmployeeID()
-        {
-            LoginUC currentuser = new LoginUC();
-            string EmployeeID = "";
-
-            try
-            {
-                using (var connection = new SQLiteConnection(@"Data Source=Database\Accounts.db"))
-                {
-                    connection.Open();
-                    string query = "SELECT employeeID FROM Accounts WHERE username=@Username";
-
-                    using (var command = new SQLiteCommand(query, connection))
-                    {
-                        command.Parameters.AddWithValue("@Username", currentuser.CurrentUser);
-
-
-                        using (SQLiteDataReader data = command.ExecuteReader())
-                        {
-                            data.Read();
-                            EmployeeID = $"{data["employeeID"]}";
-
-                        }
-
-                    }
-
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-
-            return EmployeeID;
-
-        }
+      
 
         private void EmployeePayrollTAB_Load(object sender, EventArgs e)
         {
 
+
+            employee = new EmployeeInfo(currentuser.CurrentUser);
+         
+
             try
             {
+                employee.GetInformation();
+
                 using (var connection = new SQLiteConnection(@"Data Source=Database\PaySlip.db"))
                 {
                     connection.Open();
@@ -74,7 +49,7 @@ namespace SwiftPayroll
 
                     using (var command = new SQLiteCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@employeeID", GetEmployeeID());
+                        command.Parameters.AddWithValue("@employeeID", employee.EmployeeID);
 
                         using (var adapter = new SQLiteDataAdapter(command))
                         {
@@ -111,119 +86,43 @@ namespace SwiftPayroll
         {
 
         
-            string Fullname = "-";
-            string paydate = Selected_PayslipDate;
-            string employeeID = "-";
-            string Department = "-";
-            string JobTitle = "-";
-            string Email = "-";
-            string Type = "-";
-            string ContactNumber = "-";
-            string WorkedDay = "-";
-            string AbsencesDay = "-";
+            string paydate = Selected_PayslipDate; 
             string Standard_HourlyRate = "-";
             string Standard_Hours = "-";
-            string Standard_Income= "-";
             string OT_Rate = "₱45";
-            string OT_Hours = "-";
-            string OT_Income = "-";
-            string SSS = "-";
-            string PagIbig = "-";
-            string PhilHealth = "-";
             string Absences_Rate = "₱200";
-            string Absences_Total = "-";
-            string Tax = "-";
-            string GrossIncome = "-";
-            string NetIncome = "-";
 
 
 
-            LoginUC currentuser = new LoginUC();
+            employee = new EmployeeInfo(currentuser.CurrentUser);
 
 
-            /*
-                For getting data from Accounts.db
-             
-             */
-            using (var connection = new SQLiteConnection(@"Data Source=Database\Accounts.db"))
+
+            try
             {
-                connection.Open();
-                string query = "SELECT * FROM Accounts WHERE username=@Username";
-
-                using (var command = new SQLiteCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@Username", currentuser.CurrentUser);
-
-                    // returns an object that can iterate over the entire result set.
-                    using (SQLiteDataReader data = command.ExecuteReader())
-                    {
-
-                        data.Read();
-
-
-                        // All the necessary employee's information
-                        Fullname = $"Name: {data["firstname"]} {data["lastname"]}";
-                        employeeID = $"{data["employeeID"]}";
-                        Department = $"{data["department"]}";
-                        JobTitle = $"{data["title"]}";
-                        Email = $"{data["email"]}";
-                        Type = $"{data["type"]}";
-                        ContactNumber = $"{data["contactnumber"]}";
-
-                        if(Type == "Full-Time")
-                        {
-                            Standard_HourlyRate = "₱150";
-                            Standard_Hours = "8 hours";
-
-                        }
-                        else if(Type == "Part-Time")
-                        {
-                            Standard_HourlyRate = "₱80";
-                            Standard_Hours = "4 hours";
-                        }
-
-                    }
-
-                }
-
-
+                // For getting data from Accounts.db
+                employee.GetInformation();
+                // For getting data from PaySlip.db
+                employee.GetPaySlip(paydate);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
 
-            /*
-                For getting data from PaySlip.db
 
-            */
-            using (var connection = new SQLiteConnection(@"Data Source=Database\PaySlip.db"))
+            if (employee.Type == "Full-Time")
             {
-                connection.Open();
-                string query = "SELECT * FROM EmployeePaySlip WHERE EmployeeID=@employeeID AND PayDate=@paydate;";
-                using (var command = new SQLiteCommand(query,connection))
-                {
-                    command.Parameters.AddWithValue("@employeeID", employeeID);
-                    command.Parameters.AddWithValue("@paydate", paydate);
+                Standard_HourlyRate = "₱150";
+                Standard_Hours = "8 hours";
 
-                    using (SQLiteDataReader data = command.ExecuteReader())
-                    {
-                        data.Read();
-
-                        WorkedDay = $"{data["WorkedDay"]}";
-                        AbsencesDay = $"{data["AbsencesDay"]}";
-                        Standard_Income = $"{data["StandardPay"]}";
-                        OT_Hours = $"{data["OvertimeHours"]}";
-                        OT_Income = $"{data["OvertimePay"]}";
-                        GrossIncome = $"{data["GrossIncome"]}";
-                        SSS = $"{data["SSS"]}";
-                        PagIbig = $"{data["PagIbig"]}";
-                        PhilHealth = $"{data["PhilHealth"]}";
-                        Absences_Total = $"{data["AbsencesDeduction"]}";
-                        Tax = $"{data["Tax"]}";
-                        NetIncome = $"{data["NetIncome"]}";
-
-                    }
-                }
-
-               
             }
+            else if (employee.Type == "Part-Time")
+            {
+                Standard_HourlyRate = "₱80";
+                Standard_Hours = "4 hours";
+            }
+
 
 
 
@@ -238,7 +137,7 @@ namespace SwiftPayroll
             //creating new pdf with a page size of letter
             var document = new Document(PageSize.LETTER);
             //pdf with a file name Day-Month-Year_employeeID_Payslip.Pdf
-            PdfWriter.GetInstance(document, new FileStream(directory + $"/{paydate}_{employeeID}_Payslip.pdf", FileMode.Create));
+            PdfWriter.GetInstance(document, new FileStream(directory + $"/{paydate}_{employee.EmployeeID}_Payslip.pdf", FileMode.Create));
             //open document to be able to write contents
             document.Open();
 
@@ -274,20 +173,20 @@ namespace SwiftPayroll
             InfoTable.AddCell(cell);
             //default cells
             //first row
-            InfoTable.AddCell($"Name: {Fullname}");
-            InfoTable.AddCell($"Pay Date: {paydate}");
+            InfoTable.AddCell($"Name: {employee.Fullname}");
+            InfoTable.AddCell($"Pay Date: {Selected_PayslipDate}");
             //second row
-            InfoTable.AddCell($"Employee ID: {employeeID}");
-            InfoTable.AddCell($"Department: {Department}");
+            InfoTable.AddCell($"Employee ID: {employee.EmployeeID}");
+            InfoTable.AddCell($"Department: {employee.Department}");
             //third row
-            InfoTable.AddCell($"Current Position: {JobTitle}");
-            InfoTable.AddCell($"Email: {Email}");
+            InfoTable.AddCell($"Current Position: {employee.Title}");
+            InfoTable.AddCell($"Email: {employee.Email}");
             //fourth row
-            InfoTable.AddCell($"Type: {Type}");
-            InfoTable.AddCell($"Contact Number: {ContactNumber}");
+            InfoTable.AddCell($"Type: {employee.Type}");
+            InfoTable.AddCell($"Contact Number: {employee.ContactNumber}");
             //fifth row
-            InfoTable.AddCell($"Worked Days: {WorkedDay}");
-            InfoTable.AddCell($"Absences: {AbsencesDay}");
+            InfoTable.AddCell($"Worked Days: {employee.WorkedDay}");
+            InfoTable.AddCell($"Absences: {employee.AbsencesDay}");
 
 
             /*
@@ -346,17 +245,17 @@ namespace SwiftPayroll
             EarningTable.AddCell("Standard Pay");
             EarningTable.AddCell($"{Standard_HourlyRate}");
             EarningTable.AddCell($"{Standard_Hours}");
-            EarningTable.AddCell($"{Standard_Income}");
+            EarningTable.AddCell($"{employee.StandardPay}");
             //second row
             EarningTable.AddCell("Overtime");
             EarningTable.AddCell($"{OT_Rate}");
-            EarningTable.AddCell($"{OT_Hours}");
-            EarningTable.AddCell($"{OT_Income}");
+            EarningTable.AddCell($"{employee.OvertimeHours}");
+            EarningTable.AddCell($"{employee.OvertimePay}");
             //third row
             EarningTable.AddCell("");
             EarningTable.AddCell("");
             EarningTable.AddCell("Gross Income: ");
-            EarningTable.AddCell($"{GrossIncome}");
+            EarningTable.AddCell($"{employee.GrossIncome}");
 
 
             /*
@@ -378,7 +277,7 @@ namespace SwiftPayroll
             PdfPCell Current1_Header = new PdfPCell(new Phrase("CURRENT"));
             //Final Row
             PdfPCell NetRow = new PdfPCell(new Phrase("Net Income: "));
-            PdfPCell NetIncomeCell = new PdfPCell(new Phrase($"{NetIncome}"));
+            PdfPCell NetIncomeCell = new PdfPCell(new Phrase($"{employee.NetIncome}"));
 
             //Column Headers
 
@@ -420,24 +319,24 @@ namespace SwiftPayroll
             DeductionTable.AddCell(Current1_Header);
             //first row
             DeductionTable.AddCell("SSS");
-            DeductionTable.AddCell($"{SSS}");
-            DeductionTable.AddCell($"{SSS}");
+            DeductionTable.AddCell($"{employee.SSS}");
+            DeductionTable.AddCell($"{employee.SSS}");
             //second row
             DeductionTable.AddCell("PAG-IBIG");
-            DeductionTable.AddCell($"{PagIbig}");
-            DeductionTable.AddCell($"{PagIbig}");
+            DeductionTable.AddCell($"{employee.PagIbig}");
+            DeductionTable.AddCell($"{employee.PagIbig}");
             //third row
             DeductionTable.AddCell("PHILHEALTH");
-            DeductionTable.AddCell($"{PhilHealth}");
-            DeductionTable.AddCell($"{PhilHealth}");
+            DeductionTable.AddCell($"{employee.PhilHealth}");
+            DeductionTable.AddCell($"{employee.PhilHealth}");
             //fouth row
             DeductionTable.AddCell("Absences");
             DeductionTable.AddCell($"{Absences_Rate}");
-            DeductionTable.AddCell($"{Absences_Total}");
+            DeductionTable.AddCell($"{employee.AbsencesDeduction}");
             //fifth row
             DeductionTable.AddCell("TAX");
             DeductionTable.AddCell("10%");
-            DeductionTable.AddCell($"{Tax}");
+            DeductionTable.AddCell($"{employee.Tax}");
             //final row
             DeductionTable.AddCell(NetRow);
             //Net Income Cell
@@ -471,6 +370,9 @@ namespace SwiftPayroll
             }
         }
 
-       
+        private void guna2Panel8_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

@@ -73,6 +73,26 @@ namespace SwiftPayroll.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap absent {
+            get {
+                object obj = ResourceManager.GetObject("absent", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap absent1 {
+            get {
+                object obj = ResourceManager.GetObject("absent1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Dashboard___Active {
             get {
                 object obj = ResourceManager.GetObject("Dashboard - Active", resourceCulture);
@@ -193,9 +213,79 @@ namespace SwiftPayroll.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap late {
+            get {
+                object obj = ResourceManager.GetObject("late", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap late1 {
+            get {
+                object obj = ResourceManager.GetObject("late1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap locked {
             get {
                 object obj = ResourceManager.GetObject("locked", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap material_symbols_arrow_right {
+            get {
+                object obj = ResourceManager.GetObject("material-symbols_arrow-right", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap material_symbols_arrow_right1 {
+            get {
+                object obj = ResourceManager.GetObject("material-symbols_arrow-right1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap material_symbols_check_box_outline_blank {
+            get {
+                object obj = ResourceManager.GetObject("material-symbols_check-box-outline-blank", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ot {
+            get {
+                object obj = ResourceManager.GetObject("ot", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ot1 {
+            get {
+                object obj = ResourceManager.GetObject("ot1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -316,6 +406,26 @@ namespace SwiftPayroll.Properties {
         internal static System.Drawing.Bitmap TimyPIc1 {
             get {
                 object obj = ResourceManager.GetObject("TimyPIc1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap worked_days {
+            get {
+                object obj = ResourceManager.GetObject("worked days", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap worked_days1 {
+            get {
+                object obj = ResourceManager.GetObject("worked days1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

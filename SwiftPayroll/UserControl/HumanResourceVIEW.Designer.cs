@@ -39,12 +39,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.JobTitleLbl = new System.Windows.Forms.Label();
             this.UsernameLbl = new System.Windows.Forms.Label();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.SideBarPanel.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // DashBoardPanel
@@ -55,6 +55,7 @@
             this.DashBoardPanel.Name = "DashBoardPanel";
             this.DashBoardPanel.Size = new System.Drawing.Size(784, 800);
             this.DashBoardPanel.TabIndex = 5;
+            this.DashBoardPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.DashBoardPanel_Paint);
             // 
             // SideBarPanel
             // 
@@ -72,6 +73,7 @@
             this.SideBarPanel.Name = "SideBarPanel";
             this.SideBarPanel.Size = new System.Drawing.Size(216, 800);
             this.SideBarPanel.TabIndex = 4;
+            this.SideBarPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.SideBarPanel_Paint);
             // 
             // guna2Panel1
             // 
@@ -203,6 +205,7 @@
             // DashboardBtn
             // 
             this.DashboardBtn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.DashboardBtn.Checked = true;
             this.DashboardBtn.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(70)))), ((int)(((byte)(234)))));
             this.DashboardBtn.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(254)))));
             this.DashboardBtn.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(44)))), ((int)(((byte)(52)))));
@@ -226,6 +229,8 @@
             this.DashboardBtn.TabIndex = 2;
             this.DashboardBtn.Text = "Dashboard";
             this.DashboardBtn.TextOffset = new System.Drawing.Point(15, 0);
+            this.DashboardBtn.CheckedChanged += new System.EventHandler(this.DashboardBtn_CheckedChanged);
+            this.DashboardBtn.Click += new System.EventHandler(this.DashboardBtn_Click);
             // 
             // label3
             // 
@@ -260,17 +265,6 @@
             this.UsernameLbl.Text = "John Doe";
             this.UsernameLbl.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.Image = global::SwiftPayroll.Properties.Resources.SWIFTPayroll;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(22, 57);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(173, 24);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.guna2PictureBox1.TabIndex = 7;
-            this.guna2PictureBox1.TabStop = false;
-            // 
             // guna2CirclePictureBox1
             // 
             this.guna2CirclePictureBox1.BackColor = System.Drawing.Color.Transparent;
@@ -285,6 +279,17 @@
             this.guna2CirclePictureBox1.TabIndex = 28;
             this.guna2CirclePictureBox1.TabStop = false;
             // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.Image = global::SwiftPayroll.Properties.Resources.SWIFTPayroll;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(22, 57);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(173, 24);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.guna2PictureBox1.TabIndex = 7;
+            this.guna2PictureBox1.TabStop = false;
+            // 
             // HumanResourceVIEW
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,8 +303,8 @@
             this.SideBarPanel.ResumeLayout(false);
             this.SideBarPanel.PerformLayout();
             this.guna2Panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

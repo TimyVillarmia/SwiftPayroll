@@ -241,7 +241,6 @@ namespace SwiftPayroll
 
                     }
 
-                    MessageBox.Show($"{count}");
 
                     // 0 = selected date does not exist in the db then insert the payslip informatio to the db
                     // 1 = selected date exist in the db then update the payslip informatio to the db
@@ -462,6 +461,11 @@ namespace SwiftPayroll
         }
 
         private void PayslipPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void ContactLbl_Click(object sender, EventArgs e)
         {
 
         }

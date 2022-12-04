@@ -85,57 +85,41 @@ namespace SwiftPayroll
 
                     try
                     {
-                        using (var connection = new SQLiteConnection(@"Data Source=Database\Accounts.db"))
+
+                        EmployeeInfo employee = new EmployeeInfo();
+                        
+
+                        if (employee.Login(UsernameTxt.Text.Trim(), PasswordTxt.Text.Trim()) == 1)
                         {
-                            connection.Open();
-                            string query = "SELECT count(*) FROM Accounts WHERE username = @Username AND password = @Password";
+                            currentuser = UsernameTxt.Text;
 
-                            using (var command = new SQLiteCommand(query, connection))
-                            {
+                            //notify
+                            MessageBox.Show("Login Successfully");
+                            // hide the MainForm
+                            ParentForm.Hide();
 
-                                command.Parameters.AddWithValue("@Username", UsernameTxt.Text);
-                                command.Parameters.AddWithValue("@Password", PasswordTxt.Text);
-                                int count = Convert.ToInt32(command.ExecuteScalar());
-                                //if count = 1 then the account exist; else account doesn't exist
-                                if (count == 1)
-                                {
-                                    currentuser = UsernameTxt.Text;
-                                    //notify
-                                    MessageBox.Show("Login Successfully");
-                                    // hide the MainForm
-                                    ParentForm.Hide();
-
-                                    // displaying sencond form "loading screen form"
-                                    LoadingScreenForm loading = new LoadingScreenForm();
-                                    loading.ShowDialog();
-                                    //Closing 
-                                    ParentForm.Close();
-
-                                    
+                            // displaying sencond form "loading screen form"
+                            LoadingScreenForm loading = new LoadingScreenForm();
+                            loading.ShowDialog();
+                            //Closing 
+                            ParentForm.Close();
 
 
-                                    //// Clear all entries
-                                    //UsernameTxt.Text = "";
-                                    //PasswordTxt.Text = "";
 
 
-                                }
-                                else
-                                {
-                                    //notify
-                                    attempt -= 1;
-                                    MessageBox.Show($"Wrong username and password combination. {attempt} Attempts left");
-
-
-                                }
-
-                              
-
-                            }
-
-
+                            //// Clear all entries
+                            UsernameTxt.Text = "";
+                            PasswordTxt.Text = "";
 
                         }
+                        else
+                        {
+                            //notify
+                            attempt -= 1;
+                            MessageBox.Show($"Wrong username and password combination. {attempt} Attempts left");
+                        }
+
+              
                     }
                     catch (Exception ex)
                     {

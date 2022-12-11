@@ -77,8 +77,8 @@ namespace SwiftPayroll
                 }
                 dashboard.BringToFront();
 
-                EmployeeInfo employee = new EmployeeInfo(user.CurrentUser);
-                employee.GetInformation();
+                EmployeeInfo employee = new EmployeeInfo();
+                employee.GetInformation(user.CurrentUser);
                 UsernameLbl.Text = employee.Username;
                 JobTitleLbl.Text = employee.Title;
 

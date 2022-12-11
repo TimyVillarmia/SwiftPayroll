@@ -17,16 +17,10 @@ namespace SwiftPayroll
     public partial class UserInfoView : Form
     {
         string JobType = "";
-        //constant values
-        readonly double PartTime_DailyIncome = 4 * 80;
-        readonly double FullTime_DailyIncome = 8 * 150;
-        readonly double OTRATE = 45;
-        readonly double ABSENT_RATE = 200;
 
         //variables
-        double FullTime_MonthlyIncome = 0;
-        double PartTime_MonthlyIncome = 0;
-        double TotalOvertime = 0;
+        double StandardPay = 0;
+        double OvertimeIncome = 0;
         double SSS = 0;
         double PAGIBIG = 0;
         double PHILHEALTH = 0;
@@ -102,13 +96,13 @@ namespace SwiftPayroll
             {
                 if(DaysTxt.Text != string.Empty)
                 {
-                    FullTime_MonthlyIncome = Convert.ToInt32(DaysTxt.Text) * FullTime_DailyIncome;
-                    IncomeLbl.Text = String.Format("₱{0:n}", FullTime_MonthlyIncome);
+                    StandardPay = Convert.ToInt32(DaysTxt.Text) * 8 * 150;
+                    IncomeLbl.Text = String.Format("₱{0:n}", StandardPay);
                 }
                 else
                 {
-                    FullTime_MonthlyIncome = 0 * FullTime_DailyIncome;
-                    IncomeLbl.Text = String.Format("₱{0:n}", FullTime_MonthlyIncome);
+                    StandardPay = 0;
+                    IncomeLbl.Text = String.Format("₱{0:n}", StandardPay);
                 }
                 
 
@@ -118,13 +112,13 @@ namespace SwiftPayroll
             {
                 if (DaysTxt.Text != string.Empty)
                 {
-                    PartTime_MonthlyIncome = Convert.ToInt32(DaysTxt.Text) * PartTime_DailyIncome;
-                    IncomeLbl.Text = String.Format("₱{0:n}", PartTime_MonthlyIncome);
+                    StandardPay = Convert.ToInt32(DaysTxt.Text) * 4 * 80;
+                    IncomeLbl.Text = String.Format("₱{0:n}", StandardPay);
                 }
                 else
                 {
-                    PartTime_MonthlyIncome = 0 * PartTime_DailyIncome;
-                    IncomeLbl.Text = String.Format("₱{0:n}", PartTime_MonthlyIncome);
+                    StandardPay = 0;
+                    IncomeLbl.Text = String.Format("₱{0:n}", StandardPay);
                 }
                     
             }
@@ -135,19 +129,19 @@ namespace SwiftPayroll
         {
             if (OvertimeTxt.Text != string.Empty)
             {
-                OvertimeRateLbl.Text = $"₱{OTRATE}";        
+                OvertimeRateLbl.Text = $"₱ 45";        
                 OTHourLbl.Text =  $"{OvertimeTxt.Text} hrs";
-                TotalOvertime = Convert.ToInt32(OvertimeTxt.Text) * OTRATE;
+                OvertimeIncome = Convert.ToInt32(OvertimeTxt.Text) * 45;
 
-                OvertimeIncomeLbl.Text = String.Format("₱{0:n}", TotalOvertime);
+                OvertimeIncomeLbl.Text = String.Format("₱{0:n}", OvertimeIncome);
             }
             else
             {
-                OvertimeRateLbl.Text = $"₱{OTRATE}";
-                OTHourLbl.Text = OvertimeTxt.Text;
-                TotalOvertime = 0 * OTRATE;
+                OvertimeRateLbl.Text = $"-";
+                OTHourLbl.Text = "-";
+                OvertimeIncome = 0;
                         
-                OvertimeIncomeLbl.Text = String.Format("₱{0:n}", TotalOvertime);
+                OvertimeIncomeLbl.Text = "-";
             } 
 
          
@@ -158,29 +152,27 @@ namespace SwiftPayroll
             if (AbsentTxt.Text != string.Empty)
             {
                 NumofAbsent = Convert.ToInt32(AbsentTxt.Text);
-                AbsentLbl1.Text = String.Format("₱{0:n}", ABSENT_RATE * NumofAbsent);
-                AbsentLbl.Text = $"₱{ABSENT_RATE}";
+                AbsentLbl1.Text = String.Format("₱{0:n}", 200 * NumofAbsent);
+                AbsentLbl.Text = $"₱ 200";
             }
             else
             {
-              
-                AbsentLbl1.Text = String.Format("₱{0:n}", ABSENT_RATE * 0);
-                AbsentLbl.Text = $"₱{ABSENT_RATE}";
+                NumofAbsent = 0;
+                AbsentLbl1.Text = "-";
+                AbsentLbl.Text = "-";
             }
 
   
          
         }
 
-
-
-        private void TimerCount_Tick(object sender, EventArgs e)
+        private void CalculatePaySlip()
         {
             //calculations
-            double GrossIncome = FullTime_MonthlyIncome+ PartTime_MonthlyIncome + TotalOvertime;
+            double GrossIncome = StandardPay + OvertimeIncome;
             double TaxTotal = GrossIncome * .1;
-            double TotalAbsent = ABSENT_RATE * NumofAbsent;
-            double TotalDeduction = SSS+ PAGIBIG + PHILHEALTH + TotalAbsent + TaxTotal;
+            double TotalAbsentDeduction = 200 * NumofAbsent;
+            double TotalDeduction = SSS + PAGIBIG + PHILHEALTH + TotalAbsentDeduction + TaxTotal;
             double NetIncome = GrossIncome - TotalDeduction;
 
             //displaying
@@ -189,6 +181,14 @@ namespace SwiftPayroll
             DeductionsLBL.Text = String.Format("₱{0:n}", TotalDeduction);
             NetIncomeLbl.Text = String.Format("₱{0:n}", NetIncome);
 
+        }
+
+
+
+        private void TimerCount_Tick(object sender, EventArgs e)
+        {
+
+            CalculatePaySlip();
         }
 
 
@@ -418,7 +418,7 @@ namespace SwiftPayroll
             else
             {
                 SSS = 0;
-                SSSLbl1.Text = $"₱{SSS}";
+                SSSLbl1.Text = "-";
 
             }
         }
@@ -433,7 +433,7 @@ namespace SwiftPayroll
             else
             {
                 PAGIBIG = 0;
-                PagibigLbl1.Text = $"₱{PAGIBIG}";
+                PagibigLbl1.Text = "-";
 
 
             }
@@ -450,7 +450,7 @@ namespace SwiftPayroll
             {
 
                 PHILHEALTH = 0;
-                PhilHealthLbl1.Text = $"₱{PHILHEALTH}";
+                PhilHealthLbl1.Text = "-";
 
             }
         }

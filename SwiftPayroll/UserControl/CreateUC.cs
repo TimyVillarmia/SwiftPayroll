@@ -93,7 +93,7 @@ namespace SwiftPayroll
                 {
                     EmployeeInfo employee = new EmployeeInfo();
 
-
+                    //call the register method from the EmployeeInfo class 
                     employee.Register(FirstNameTxt.Text.Trim(), LastNameTxt.Text.Trim(), UsernameTxt.Text.Trim(), PasswordTxt.Text.Trim(), EmailTxt.Text.Trim(), TitleComboBox.SelectedItem.ToString());
                     
 

@@ -30,7 +30,7 @@ namespace SwiftPayroll
         private void UserProfile_Load(object sender, EventArgs e)
         {
 
-            employee = new EmployeeInfo(CurrentUser.CurrentUser);
+            employee = new EmployeeInfo();
 
             SaveBtn.Visible = false;
             EditBtn.Visible = true;
@@ -49,7 +49,7 @@ namespace SwiftPayroll
             try
             {
 
-                employee.GetInformation();
+                employee.GetInformation(CurrentUser.CurrentUser);
 
                 FullnameLbl.Text = employee.Fullname;
                 EmployeeIDLbl.Text = employee.EmployeeID;
@@ -127,7 +127,7 @@ namespace SwiftPayroll
             {
                 try
                 {
-                    EmployeeInfo employee = new EmployeeInfo(CurrentUser.CurrentUser);
+                    EmployeeInfo employee = new EmployeeInfo();
 
 
                     string New_Firstname = FirstnameTxt.Text;

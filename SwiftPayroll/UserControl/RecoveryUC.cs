@@ -31,6 +31,7 @@ namespace SwiftPayroll
             ConfirmPasswordTxt.Text = "";
         }
 
+        //method for generating OTP
         private string GenerateOTP()
         {
             //OTP generator
@@ -49,6 +50,7 @@ namespace SwiftPayroll
 
         }
 
+        //method for sending OTP 
         private void OTPBtn_Click(object sender, EventArgs e)
         {
             using (var connection = new SQLiteConnection(@"Data Source=Database\Accounts.db"))
@@ -65,8 +67,8 @@ namespace SwiftPayroll
                         string msg = GenerateOTP();
                         string senderEmail, senderPass, receiverEmail;
                         receiverEmail = EmailTxt.Text;
-                        senderEmail = "timyvillarmia10@gmail.com";
-                        senderPass = "pyuzbklnkwwwwozg";  //Gmail's App Password Change this to your Gmail's App Password
+                        senderEmail = "Sender's Gmail Email Address"; //Change this to your Sender's Gmail Email Address
+                        senderPass = "Sender's Gmail App Password";  //Gmail's App Password Change this to your Sender's Gmail App Password
 
                         MimeMessage message = new MimeMessage(); // Creating object for Message
                         message.From.Add(new MailboxAddress("SwiftPayroll - OTP", senderEmail)); //Sender's information
@@ -108,13 +110,8 @@ namespace SwiftPayroll
 
                 }
 
-            }
-
-
-            //return The first column of the first row in the result set.
-            
+            }    
            
-
         }
 
         private void RecoverBtn_Click(object sender, EventArgs e)
@@ -142,6 +139,7 @@ namespace SwiftPayroll
                 try
                 {
                     EmployeeInfo employee = new EmployeeInfo();
+                    //call the RecoverAccount method from EmployeeInfo class
                     employee.RecoverAccount(EmailTxt.Text.Trim(), PasswordTxt.Text.Trim());
 
                     // Clear all entries

@@ -305,6 +305,7 @@
     </Compile>
     <EmbeddedResource Include="UserControl\DashboardHomeUC.resx">
       <DependentUpon>DashboardHomeUC.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControl\EmployeePayrollTAB.resx">
       <DependentUpon>EmployeePayrollTAB.cs</DependentUpon>
@@ -504,7 +505,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />
-    <Folder Include="PayslipReports\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ABOUT SWIFTPAYROLL.png">

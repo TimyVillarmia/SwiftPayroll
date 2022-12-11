@@ -55,16 +55,19 @@ namespace SwiftPayroll
 
         private void SignInBtn_Click(object sender, EventArgs e)
         {
-            //SQLiteConnection connection = new SQLiteConnection("Data Source=Accounts.db;Version=3;");
-            //Checking whether textboxes are empty or not
+            //SQLiteConnection connection = new SQLiteConnection(@"Data Source=Database\Accounts.db") 
+            // check login attempts
+            // if attempt != 0 - authenticate
+            // if attempt == 0 - login lock for 60 seconds
             if (attempt != 0)
             {
-
+                //check if textboxes are not empty
                 if (UsernameTxt.Text.Trim() == string.Empty && PasswordTxt.Text.Trim() == string.Empty)
                 {
                     MessageBox.Show("Make sure you correctly fill up the form");
 
                 }
+                // admin authentication
                 if (UsernameTxt.Text == "ADMIN" && PasswordTxt.Text == "ADMIN")
                 {
                     currentuser = UsernameTxt.Text;
@@ -80,15 +83,16 @@ namespace SwiftPayroll
                     //close connection 
 
                 }
-                else
+                else // non-admin authentication
                 {
 
                     try
                     {
 
                         EmployeeInfo employee = new EmployeeInfo();
-                        
 
+                        //call the login method from EmployeeInfo class
+                        // Login(argument 1, argument 2)
                         if (employee.Login(UsernameTxt.Text.Trim(), PasswordTxt.Text.Trim()) == 1)
                         {
                             currentuser = UsernameTxt.Text;

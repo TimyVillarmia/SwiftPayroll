@@ -35,7 +35,7 @@ namespace SwiftPayroll
         public string Type { get; set; }
         public string Department { get; set; }
 
-       // Employee's Payroll Information
+       // Employee's Payslip Information
        public string PayDate { get; set; }
        public string WorkedDay { get; set; }
        public string AbsencesDay { get; set; }
@@ -51,24 +51,17 @@ namespace SwiftPayroll
        public string NetIncome { get; set; }
 
 
-        //Employee Methods
-
-
-
-        public EmployeeInfo(string username)
-        {
-            Username = username;
-        }
-
         public EmployeeInfo()
         {
 
         }
 
+      
 
 
 
-        public void GetInformation()
+        //method for getting all the personal information of an employee
+        public void GetInformation(string username)
         {
             using (var connection = new SQLiteConnection(@"Data Source=Database\Accounts.db"))
             {
@@ -77,8 +70,7 @@ namespace SwiftPayroll
 
                 using (var command = new SQLiteCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@Username", Username);
-                    //return The first column of the first row in the result set.
+                    command.Parameters.AddWithValue("@Username", username);
                     SQLiteDataReader data = command.ExecuteReader();
                     data.Read();
 
@@ -105,7 +97,7 @@ namespace SwiftPayroll
         }
 
        
-
+        //method for logging in
         public int Login(string username, string password)
         {
             using (var connection = new SQLiteConnection(@"Data Source=Database\Accounts.db"))
@@ -127,6 +119,7 @@ namespace SwiftPayroll
 
             }
         }
+        //method for generating employee ID 
         public string GenerateEmployeeID()
         {
 
@@ -141,18 +134,17 @@ namespace SwiftPayroll
             return EmployeeID = year + "-" + month + min + sec;
         }
 
+        //method for registering an account
         public void Register(string firstname, string lastname, string username, string password, string email, string title)
         {
             using (var connection = new SQLiteConnection(@"Data Source=Database\Accounts.db"))
             {
                 connection.Open();
-                // creating a string variable "query" with a "INSERT" Statement
 
                 string query = "INSERT INTO Accounts(employeeID,firstname,lastname,username,password,email,title) VALUES(@employeeid,@first,@last,@username,@password,@email,@title);";
 
                 using (var command = new SQLiteCommand(query, connection))
                 {
-                    //cmd.Parameters.AddWithValue("ParameterName", ActualValue) base on VALUES(@Username,@Password,@Email)
                     command.Parameters.AddWithValue("@employeeid", GenerateEmployeeID());
                     command.Parameters.AddWithValue("@first", firstname);
                     command.Parameters.AddWithValue("@last", lastname);
@@ -160,7 +152,6 @@ namespace SwiftPayroll
                     command.Parameters.AddWithValue("@password", password);
                     command.Parameters.AddWithValue("@email", email);
                     command.Parameters.AddWithValue("@title", title);
-                    //ExecuteNonQuery - execute The Command
                     command.ExecuteNonQuery();
                     MessageBox.Show("Account successfully created, Please Sign In");
 
@@ -168,12 +159,12 @@ namespace SwiftPayroll
             }
         }
 
+        //method for recovering an account
         public void RecoverAccount(string email,string password)
         {
             using (var connection = new SQLiteConnection(@"Data Source=Database\Accounts.db"))
             {
                 connection.Open();
-                // To update existing data in a table, you use SQLite UPDATE statement. 
                 string query = "UPDATE Accounts SET password=@Password WHERE email = @Email;";
 
                 using (var command = new SQLiteCommand(query, connection))
@@ -189,8 +180,8 @@ namespace SwiftPayroll
             }
         }
 
-       
 
+        //method for updating employee's personal information
         public void UpdateProfile(string firstname, string lastname, string password, string sex, string contact, string email, string address)
         {
             using (var connection = new SQLiteConnection(@"Data Source=Database\Accounts.db"))
@@ -200,9 +191,6 @@ namespace SwiftPayroll
 
                 using (var command = new SQLiteCommand(query, connection))
                 {
-
-                    //Set the values for each parameters
-                    //cmd.Parameters.AddWithValue("ParameterName", ActualValue) base on VALUES(@Username,@Password,@Email)
                     command.Parameters.AddWithValue("@sex", sex);
                     command.Parameters.AddWithValue("@first", firstname);
                     command.Parameters.AddWithValue("@last", lastname);
@@ -211,7 +199,6 @@ namespace SwiftPayroll
                     command.Parameters.AddWithValue("@email", email);
                     command.Parameters.AddWithValue("@contact", contact);
                     command.Parameters.AddWithValue("@address", address);
-                    //ExecuteNonQuery - execute The Command
                     command.ExecuteNonQuery();
 
 
@@ -220,7 +207,7 @@ namespace SwiftPayroll
             }
         }
 
-
+        //method for getting payslip  of an employee
         public void GetPaySlip(string paydate)
         {
             using (var connection = new SQLiteConnection(@"Data Source=Database\PaySlip.db"))

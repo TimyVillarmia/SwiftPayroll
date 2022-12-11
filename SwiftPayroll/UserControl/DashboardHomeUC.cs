@@ -31,8 +31,8 @@ namespace SwiftPayroll
         {
             LoginUC user = new LoginUC();
 
-            EmployeeInfo employee = new EmployeeInfo(user.CurrentUser);
-            employee.GetInformation();
+            EmployeeInfo employee = new EmployeeInfo();
+            employee.GetInformation(user.CurrentUser);
             GreetingsLbl.Text = $"Hello {employee.Fullname}";
         }
     }

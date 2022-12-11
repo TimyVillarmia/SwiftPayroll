@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace SwiftPayroll
 {
@@ -35,8 +36,8 @@ namespace SwiftPayroll
             {
                 try
                 {
-                    EmployeeInfo employee = new EmployeeInfo(user.CurrentUser);
-                    employee.GetInformation();
+                    EmployeeInfo employee = new EmployeeInfo();
+                    employee.GetInformation(user.CurrentUser);
 
 
                     if (employee.Title == "Human Resources Manager")

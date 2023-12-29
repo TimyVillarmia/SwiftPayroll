@@ -1,6 +1,6 @@
 # SwiftPayroll
 
-SwiftPayroll is an efficient and user-friendly payroll automation system designed to streamline your company's human resources department. With SwiftPayroll, the Human Resources Manager can easily calculate employee wages based on factors such as working days, hourly rates or salaries, and overtime hours. The system automatically adjusts net pay by deducting SSS, Pag-IBIG, PhilHealth, absences, and tax, saving valuable time and effort. SwiftPayroll ensures convenience and accuracy, making payroll processing hassle-free and more efficient for your organization.
+SwiftPayroll is a practical payroll system crafted to simplify your company's human resources processes. It facilitates easy calculation of employee wages, considering factors like working days, hourly rates, and overtime hours. The system automates net pay adjustments, handling deductions for SSS, Pag-IBIG, PhilHealth, absences, and tax. SwiftPayroll prioritizes convenience and accuracy, streamlining payroll processing for your organization.
 
 ## About the Project
 

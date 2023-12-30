@@ -8,7 +8,7 @@ SwiftPayroll is a school project developed for the course of Object-Oriented Pro
 
 ## Documentation
 
-Detailed documentation for SwiftPayroll can be found [here](https://drive.google.com/file/d/1IED9eyog74wyDNssjN3slf7GeNSvp8Ts/view?usp=sharing). It provides comprehensive information on system features, installation instructions, usage guidelines, and more.
+Detailed documentation for SwiftPayroll can be found [here](https://github.com/TimyVillarmia/SwiftPayroll/blob/master/SwiftPayroll%20Documentation.pdf). It provides comprehensive information on system features, installation instructions, usage guidelines, and more.
 
 ## Getting Started
 
